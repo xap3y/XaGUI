@@ -38,4 +38,6 @@ interface GuiInterface {
 
     fun open(player: Player)
 
+    fun close(player: Player)
+
 }

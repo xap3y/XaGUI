@@ -4,6 +4,7 @@ package eu.xap3y.xagui
 
 import eu.xap3y.xagui.interfaces.GuiButtonInterface
 import eu.xap3y.xagui.interfaces.GuiInterface
+import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -46,6 +47,10 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         inv.setItem(slot, button.getItem())
     }
 
+    fun setSlot(slot: Int, item: ItemStack) {
+        setSlot(slot, GuiButton(item))
+    }
+
     override fun updateSlot(slot: Int, item: ItemStack) {
         val old = slots[slot] ?: return
         old.setItem(item)
@@ -81,6 +86,12 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     override fun open(player: Player) {
         Bukkit.getScheduler().runTask(plugin, Runnable {
             player.openInventory(inv)
+        })
+    }
+
+    override fun close(player: Player) {
+        Bukkit.getScheduler().runTask(plugin, Runnable {
+            player.closeInventory()
         })
     }
 
