@@ -9,6 +9,7 @@ import eu.xap3y.xagui.interfaces.GuiOpenInterface
 import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
@@ -102,6 +103,23 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         Bukkit.getScheduler().runTask(plugin, Runnable {
             player.closeInventory()
         })
+    }
+
+    fun fillSlots(slots: Set<Int>, item: ItemStack = ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }}) {
+        slots.forEach {
+            setSlot(it, GuiButton(item))
+        }
+    }
+
+    fun fillSlots(slots: IntRange, item: GuiButtonInterface = GuiButton(ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }})) {
+        slots.forEach {
+            setSlot(it, item)
+        }
+    }
+
+    fun fillBorder(rows: Int, item: ItemStack = ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }}) {
+        val slots = (0..8).toSet() + (9..<rows * 9 step 9) + (1..<rows * 9 step 9) + ((rows * 9 - 9)..<rows * 9)
+        fillSlots(slots, item)
     }
 
     private var rows: Int = rowsToSet
