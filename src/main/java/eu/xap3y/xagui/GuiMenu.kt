@@ -9,6 +9,7 @@ import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.InventoryHolder
+import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.concurrent.ConcurrentHashMap
 
@@ -43,6 +44,12 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     override fun setSlot(slot: Int, button: GuiButtonInterface) {
         slots[slot] = button
         inv.setItem(slot, button.getItem())
+    }
+
+    override fun updateSlot(slot: Int, item: ItemStack) {
+        val old = slots[slot] ?: return
+        old.setItem(item)
+        setSlot(slot, old)
     }
 
     override fun getSlot(slot: Int): GuiButtonInterface? =

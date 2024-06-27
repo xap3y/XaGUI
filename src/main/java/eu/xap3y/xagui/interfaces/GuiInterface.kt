@@ -1,7 +1,7 @@
 package eu.xap3y.xagui.interfaces
 
 import org.bukkit.entity.Player
-import org.bukkit.inventory.Inventory
+import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 
 interface GuiInterface {
@@ -19,6 +19,8 @@ interface GuiInterface {
     fun getSize(): Int
 
     fun setSlot(slot: Int, button: GuiButtonInterface)
+
+    fun updateSlot(slot: Int, item: ItemStack)
 
     fun getSlot(slot: Int): GuiButtonInterface?
 
