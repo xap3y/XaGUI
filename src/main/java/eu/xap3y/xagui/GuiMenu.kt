@@ -111,7 +111,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         }
     }
 
-    fun fillSlots(slots: IntRange, item: GuiButtonInterface = GuiButton(ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }})) {
+    fun fillSlots(slots: Set<Int>, item: GuiButtonInterface = GuiButton(ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }})) {
         slots.forEach {
             setSlot(it, item)
         }
