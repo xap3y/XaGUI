@@ -12,12 +12,12 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
     @EventHandler
     fun onInventoryClick(e: InventoryClickEvent) {
-        if (e.clickedInventory == null) return
+        if (e.clickedInventory == null || e.clickedInventory?.holder !is GuiMenu) return
 
         val clickedInventory = (e.clickedInventory?.holder ?: return) as GuiMenu
 
         val owner = clickedInventory.getOwner()
-        if (Objects.equals(owner, plugin)) return
+        if (!Objects.equals(owner, plugin)) return
 
         if (!clickedInventory.unlockedSlots.contains(e.slot)) {
             e.result = Event.Result.DENY
@@ -30,12 +30,12 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
     @EventHandler
     fun onInventoryClose(e: InventoryClickEvent) {
-        if (e.clickedInventory == null) return
+        if (e.clickedInventory == null || e.clickedInventory?.holder !is GuiMenu) return
 
         val clickedInventory = (e.clickedInventory?.holder ?: return) as GuiMenu
 
         val owner = clickedInventory.getOwner()
-        if (Objects.equals(owner, plugin)) return
+        if (!Objects.equals(owner, plugin)) return
 
         clickedInventory.onCloseAction?.invoke()
     }
