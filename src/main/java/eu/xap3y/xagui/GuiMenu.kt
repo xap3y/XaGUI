@@ -118,7 +118,12 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     fun fillBorder(rows: Int, item: ItemStack = ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }}) {
-        val slots = (0..8).toSet() + (9..<rows * 9 step 9) + (1..<rows * 9 step 9) + ((rows * 9 - 9)..<rows * 9)
+        val slots = mutableSetOf<Int>()
+        for (i in 0 until rows * 9) {
+            if (i < 9 || i >= (rows - 1) * 9 || i % 9 == 0 || i % 9 == 8) {
+                slots.add(i)
+            }
+        }
         fillSlots(slots, item)
     }
 
