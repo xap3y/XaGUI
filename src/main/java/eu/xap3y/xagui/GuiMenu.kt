@@ -3,11 +3,16 @@
 package eu.xap3y.xagui
 
 import eu.xap3y.xagui.interfaces.GuiButtonInterface
+import eu.xap3y.xagui.interfaces.GuiCloseInterface
 import eu.xap3y.xagui.interfaces.GuiInterface
+import eu.xap3y.xagui.interfaces.GuiOpenInterface
 import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryCloseEvent
+import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.InventoryHolder
 import org.bukkit.inventory.ItemStack
@@ -23,12 +28,20 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         return inv
     }
 
-    override fun onOpen(onOpen: () -> Unit) {
-        onOpenAction = onOpen
+    override fun setOnOpen(openAction: (InventoryOpenEvent) -> Unit) {
+        this.onOpenAction = object : GuiOpenInterface {
+            override fun onOpen(event: InventoryOpenEvent) {
+                openAction(event)
+            }
+        }
     }
 
-    override fun onClose(onClose: () -> Unit) {
-        onCloseAction = onClose
+    override fun setOnClose(closeAction: (InventoryCloseEvent) -> Unit) {
+        this.onCloseAction = object : GuiCloseInterface {
+            override fun onClose(event: InventoryCloseEvent) {
+                closeAction(event)
+            }
+        }
     }
 
     override fun setName(newName: String) {
@@ -69,10 +82,6 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         inv.clear()
     }
 
-    override fun refresh() {
-        // REOPEN THE MENU
-    }
-
     override fun getOwner(): JavaPlugin = plugin
 
     override fun unlockButton(slot: Int) {
@@ -97,9 +106,9 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     private var rows: Int = rowsToSet
 
-    var onCloseAction: (() -> Unit)? = null
+    var onCloseAction: GuiCloseInterface? = null
 
-    private var onOpenAction: (() -> Unit)? = null
+    var onOpenAction: GuiOpenInterface? = null
 
     private var name: String = title
 

@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
+import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.*
 
@@ -38,6 +39,18 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
         val owner = clickedInventory.getOwner()
         if (!Objects.equals(owner, plugin)) return
 
-        clickedInventory.onCloseAction?.invoke()
+        clickedInventory.onCloseAction?.onClose(e)
+    }
+
+    @EventHandler
+    fun onInventoryOpen(e: InventoryOpenEvent) {
+        if (e.inventory.holder !is GuiMenu) return
+
+        val clickedInventory = (e.inventory.holder ?: return) as GuiMenu
+
+        val owner = clickedInventory.getOwner()
+        if (!Objects.equals(owner, plugin)) return
+
+        clickedInventory.onOpenAction?.onOpen(e)
     }
 }

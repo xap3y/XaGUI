@@ -1,14 +1,16 @@
 package eu.xap3y.xagui.interfaces
 
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.InventoryCloseEvent
+import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 
 interface GuiInterface {
 
-    fun onOpen(onOpen: () -> Unit)
+    fun setOnOpen(openAction: (InventoryOpenEvent) -> Unit)
 
-    fun onClose(onClose: () -> Unit)
+    fun setOnClose(closeAction: (InventoryCloseEvent) -> Unit)
 
     fun setName(newName: String)
 
@@ -28,7 +30,7 @@ interface GuiInterface {
 
     fun clearAllSlots()
 
-    fun refresh()
+    //fun refresh()
 
     fun getOwner(): JavaPlugin
 
