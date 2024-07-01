@@ -1,0 +1,81 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:eu.xap3y.xagui.interfaces////PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/index.html
+$dokka.location:eu.xap3y.xagui.interfaces/ButtonListener///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-button-listener/index.html
+$dokka.location:eu.xap3y.xagui.interfaces/ButtonListener/onClick/#org.bukkit.event.inventory.InventoryClickEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-button-listener/on-click.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/index.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/getIcon/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/get-icon.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/getItem/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/get-item.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/listener/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/listener.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setItem/#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-item.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setListener/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-listener.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiCloseInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-close-interface/index.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiCloseInterface/onClose/#org.bukkit.event.inventory.InventoryCloseEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-close-interface/on-close.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/index.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/clearAllSlots/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/clear-all-slots.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/clearSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/clear-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/close/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/close.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getName/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-name.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getOwner/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-owner.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getRawName/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-raw-name.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getSize/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-size.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/lockButton/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/lock-button.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/open/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/open.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-name.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setOnClose/#kotlin.Function1[org.bukkit.event.inventory.InventoryCloseEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-on-close.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setOnOpen/#kotlin.Function1[org.bukkit.event.inventory.InventoryOpenEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-on-open.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setSlot/#kotlin.Int#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/unlockButton/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/unlock-button.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/updateSlot/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/update-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiOpenInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-open-interface/index.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiOpenInterface/onOpen/#org.bukkit.event.inventory.InventoryOpenEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-open-interface/on-open.html
+$dokka.location:eu.xap3y.xagui.listeners////PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/index.html
+$dokka.location:eu.xap3y.xagui.listeners/GuiMenuListener///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/-gui-menu-listener/index.html
+$dokka.location:eu.xap3y.xagui.listeners/GuiMenuListener/GuiMenuListener/#org.bukkit.plugin.java.JavaPlugin/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/-gui-menu-listener/-gui-menu-listener.html
+$dokka.location:eu.xap3y.xagui.listeners/GuiMenuListener/onInventoryClick/#org.bukkit.event.inventory.InventoryClickEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/-gui-menu-listener/on-inventory-click.html
+$dokka.location:eu.xap3y.xagui.listeners/GuiMenuListener/onInventoryClose/#org.bukkit.event.inventory.InventoryCloseEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/-gui-menu-listener/on-inventory-close.html
+$dokka.location:eu.xap3y.xagui.listeners/GuiMenuListener/onInventoryOpen/#org.bukkit.event.inventory.InventoryOpenEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/-gui-menu-listener/on-inventory-open.html
+$dokka.location:eu.xap3y.xagui.models////PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/index.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/index.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/GuiButton/#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/-gui-button.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/getIcon/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/get-icon.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/getItem/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/get-item.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/listener/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/listener.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/setItem/#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-item.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/setListener/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-listener.html
+$dokka.location:eu.xap3y.xagui////PointingToDeclaration/-xa-gui/eu.xap3y.xagui/index.html
+$dokka.location:eu.xap3y.xagui/GuiMenu///PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/index.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/GuiMenu/#org.bukkit.plugin.java.JavaPlugin#kotlin.String#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/-gui-menu.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/clearAllSlots/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/clear-all-slots.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/clearSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/clear-slot.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/close/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/close.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/fillBorder/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-border.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/fillSlots/#kotlin.collections.Set[kotlin.Int]#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-slots.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/fillSlots/#kotlin.collections.Set[kotlin.Int]#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-slots.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/getInventory/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-inventory.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/getName/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-name.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/getOwner/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-owner.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/getRawName/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-raw-name.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/getSize/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-size.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/getSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-slot.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/lockButton/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/lock-button.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/onCloseAction/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/on-close-action.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/onOpenAction/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/on-open-action.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/open/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/open.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-name.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setOnClose/#kotlin.Function1[org.bukkit.event.inventory.InventoryCloseEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-on-close.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setOnOpen/#kotlin.Function1[org.bukkit.event.inventory.InventoryOpenEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-on-open.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setSlot/#kotlin.Int#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-slot.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setSlot/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-slot.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/unlockButton/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/unlock-button.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/unlockedSlots/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/unlocked-slots.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/updateSlot/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/update-slot.html
+$dokka.location:eu.xap3y.xagui/XaGui///PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-xa-gui/index.html
+$dokka.location:eu.xap3y.xagui/XaGui/XaGui/#org.bukkit.plugin.java.JavaPlugin/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-xa-gui/-xa-gui.html
+$dokka.location:eu.xap3y.xagui/XaGui/createMenu/#kotlin.String#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-xa-gui/create-menu.html
+eu.xap3y.xagui
+eu.xap3y.xagui.interfaces
+eu.xap3y.xagui.listeners
+eu.xap3y.xagui.models
+
