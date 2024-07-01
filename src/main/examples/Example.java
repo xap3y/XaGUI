@@ -1,5 +1,7 @@
 public class Example {
 
+    // This is the result of the created gui below: https://github.com/xap3y/XaGUI/blob/main/docs/image.png
+
     public static void openGui(Player player, XaGui instance) {
 
         GuiMenu menu = instance.createMenu("&a&lExample 1", 3);

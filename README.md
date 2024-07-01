@@ -21,7 +21,7 @@
 
 ## Kotlin Examples
 
-> To see Java example, click [HERE](https://github.com/xap3y/XaGUI/blob/main/src/main/examples/Example.java)
+> To see Java example for [this GUI](https://github.com/xap3y/XaGUI/blob/main/docs/image.png), click [HERE](https://github.com/xap3y/XaGUI/blob/main/src/main/examples/Example.java)
 
 **Add this to your onEnable method**
 
