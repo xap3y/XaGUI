@@ -2,6 +2,7 @@ package eu.xap3y.xagui.models
 
 import eu.xap3y.xagui.interfaces.ButtonListener
 import eu.xap3y.xagui.interfaces.GuiButtonInterface
+import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemStack
@@ -42,6 +43,16 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
                 newListener(event)
             }
         }
+        return this
+    }
+
+    /**
+     * Sets the name of the button
+     * @param name The new name
+     * @return The button
+     */
+    override fun setName(name: String): GuiButton {
+        icon.itemMeta?.setDisplayName(ChatColor.translateAlternateColorCodes('&', name))
         return this
     }
 

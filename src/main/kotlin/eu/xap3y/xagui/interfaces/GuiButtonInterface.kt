@@ -15,6 +15,8 @@ interface GuiButtonInterface {
 
     fun setListener(newListener: (InventoryClickEvent) -> Unit): GuiButton
 
+    fun setName(name: String): GuiButton
+
     var listener: ButtonListener?
 
 }

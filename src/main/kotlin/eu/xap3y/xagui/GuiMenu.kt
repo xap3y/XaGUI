@@ -18,6 +18,7 @@ import org.bukkit.inventory.InventoryHolder
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.concurrent.ConcurrentHashMap
+import javax.annotation.Nullable
 
 /**
  * Represents a GUI menu
@@ -212,7 +213,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param rows The number of rows in the menu
      * @param item The item to fill the border with
      */
-    fun fillBorder(rows: Int, item: ItemStack = ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }}) {
+    fun fillBorder(rows: Int, item: ItemStack) {
         val slots = mutableSetOf<Int>()
         for (i in 0 until rows * 9) {
             if (i < 9 || i >= (rows - 1) * 9 || i % 9 == 0 || i % 9 == 8) {
@@ -220,6 +221,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
             }
         }
         fillSlots(slots, item)
+    }
+
+    /**
+     * Fill the border of the menu with an item
+     * @param rows The number of rows in the menu
+     */
+    fun fillBorder(rows: Int) {
+        fillBorder(rows, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
     }
 
     private var rows: Int = rowsToSet
