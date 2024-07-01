@@ -9,6 +9,7 @@ $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/getItem/#/PointingT
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/listener/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/listener.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setItem/#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-item.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setListener/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-listener.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-name.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiCloseInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-close-interface/index.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiCloseInterface/onClose/#org.bukkit.event.inventory.InventoryCloseEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-close-interface/on-close.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/index.html
@@ -44,6 +45,7 @@ $dokka.location:eu.xap3y.xagui.models/GuiButton/getItem/#/PointingToDeclaration/
 $dokka.location:eu.xap3y.xagui.models/GuiButton/listener/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/listener.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/setItem/#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-item.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/setListener/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-listener.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-name.html
 $dokka.location:eu.xap3y.xagui////PointingToDeclaration/-xa-gui/eu.xap3y.xagui/index.html
 $dokka.location:eu.xap3y.xagui/GuiMenu///PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/index.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/GuiMenu/#org.bukkit.plugin.java.JavaPlugin#kotlin.String#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/-gui-menu.html
@@ -51,6 +53,7 @@ $dokka.location:eu.xap3y.xagui/GuiMenu/clearAllSlots/#/PointingToDeclaration/-x
 $dokka.location:eu.xap3y.xagui/GuiMenu/clearSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/clear-slot.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/close/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/close.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillBorder/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-border.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/fillBorder/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-border.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillSlots/#kotlin.collections.Set[kotlin.Int]#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-slots.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillSlots/#kotlin.collections.Set[kotlin.Int]#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-slots.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/getInventory/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-inventory.html

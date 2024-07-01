@@ -19,9 +19,11 @@
 </dependency>
 ```
 
-### Example
+## Kotlin Examples
 
-add this to your onEnable method
+> To see Java example, click [HERE](https://github.com/xap3y/XaGUI/blob/main/src/main/examples/Example.java)
+
+**Add this to your onEnable method**
 
 ```kotlin
 val xaGui = XaGui(this)
