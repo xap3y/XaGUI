@@ -1,6 +1,6 @@
 package eu.xap3y.xagui.interfaces
 
-import eu.xap3y.xagui.events.GuiPageSwitchEvent
+import eu.xap3y.xagui.models.GuiPageSwitchModel
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -20,7 +20,7 @@ interface GuiInterface {
 
     fun setOnClick(onClick: (InventoryClickEvent) -> Unit)
 
-    fun setOnPageSwitch(onClick: (GuiPageSwitchEvent) -> Unit)
+    fun setOnPageSwitch(onPageSwitch: (GuiPageSwitchModel) -> Unit)
 
     fun setName(newName: String)
 

@@ -1,6 +1,6 @@
 package eu.xap3y.xagui.interfaces
 
-import eu.xap3y.xagui.events.GuiPageSwitchEvent
+import eu.xap3y.xagui.models.GuiPageSwitchModel
 
 /**
  * Interface for page switch event listeners
@@ -10,7 +10,7 @@ interface GuiPageSwitchInterface {
 
     /**
      * Called when the page is switched
-     * @param event The event of the page switch
+     * @param data The data of the switch
      */
-    fun onPageSwitch(event: GuiPageSwitchEvent)
+    fun onPageSwitch(data: GuiPageSwitchModel)
 }

@@ -2,11 +2,11 @@
 
 package eu.xap3y.xagui
 
-import eu.xap3y.xagui.events.GuiPageSwitchEvent
 import eu.xap3y.xagui.exceptions.RowsOutOfBoundException
 import eu.xap3y.xagui.exceptions.SlotOutOfBoundException
 import eu.xap3y.xagui.interfaces.*
 import eu.xap3y.xagui.models.GuiButton
+import eu.xap3y.xagui.models.GuiPageSwitchModel
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -111,10 +111,10 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * Set the action to be executed when the page is switched
      * @param onPageSwitch The action to be executed
      */
-    override fun setOnPageSwitch(onPageSwitch: (GuiPageSwitchEvent) -> Unit) {
+    override fun setOnPageSwitch(onPageSwitch: (GuiPageSwitchModel) -> Unit) {
         this.onPageSwitchAction = object : GuiPageSwitchInterface {
-            override fun onPageSwitch(event: GuiPageSwitchEvent) {
-                onPageSwitch(event)
+            override fun onPageSwitch(data: GuiPageSwitchModel) {
+                onPageSwitch(data)
             }
         }
     }
@@ -392,15 +392,17 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param player The player to switch the page for
      */
     override fun switchPage(page: Int, player: Player) {
-        plugin.server.pluginManager.callEvent(GuiPageSwitchEvent(player, page, currentOpenedPage))
+        val oldPage: Int = currentOpenedPage
         currentOpenedPage = page
-        val inv = invMapping[currentOpenedPage] ?: return
+        val inv: Inventory = invMapping[currentOpenedPage] ?: return
         stickySlots.forEach {
             setSlot(page, it, pageMapping[0]?.get(it) ?: return@forEach)
         }
         Bukkit.getScheduler().runTask(plugin, Runnable {
+            //plugin.server.pluginManager.callEvent(GuiPageSwitchEvent(player, page, currentOpenedPage, inv, invMapping[currentOpenedPage]))
             player.openInventory(inv)
         })
+        this.onPageSwitchAction?.onPageSwitch(GuiPageSwitchModel(page, oldPage))
     }
 
     /**
