@@ -26,15 +26,17 @@ import kotlin.jvm.Throws
  * @param title The title of the menu
  * @param rowsToSet The number of rows the menu should have
  */
-class GuiMenu(private val plugin: JavaPlugin, private val title: String, private val rowsToSet: Int, pages: Int): InventoryHolder, GuiInterface {
+class GuiMenu(private val plugin: JavaPlugin, private val title: String, private val rowsToSet: Int, private val pages: Int): InventoryHolder, GuiInterface {
 
     //private val slots: ConcurrentHashMap<Int, GuiButtonInterface> = ConcurrentHashMap()
     private val pageMapping: ConcurrentHashMap<Int, ConcurrentHashMap<Int, GuiButtonInterface>> = ConcurrentHashMap()
     private val invMapping: ConcurrentHashMap<Int, Inventory> = ConcurrentHashMap()
     private val totalPages = pages
     private val stickySlots = mutableSetOf<Int>()
+    private var name: String
 
     init {
+        name = title
         totalPages.let {
             for (i in 0..it) {
                 pageMapping[i] = ConcurrentHashMap()
@@ -352,8 +354,6 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     var onOpenAction: GuiOpenInterface? = null
 
     var onClickAction: GuiClickInterface? = null
-
-    private var name: String = title
 
     //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
 }
