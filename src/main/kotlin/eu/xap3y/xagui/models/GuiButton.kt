@@ -54,7 +54,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @return The button with the new name
      */
     override fun setName(name: String): GuiButton {
-        icon.itemMeta?.setDisplayName(ChatColor.translateAlternateColorCodes('&', name))
+        icon.apply {
+            itemMeta = itemMeta.apply {
+                setDisplayName(ChatColor.translateAlternateColorCodes('&', name))
+            }
+        }
         return this
     }
 
