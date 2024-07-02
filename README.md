@@ -1,5 +1,7 @@
 # Minecraft GUI library
 
+A simple GUI library for Minecraft plugins. This library is written in Kotlin and can be used in both Java and Kotlin plugins.
+
 ### Installation with jitpack
 
 > [!NOTE]\
@@ -64,6 +66,6 @@ gui.setOnOpen {
 gui.open(player)
 ```
 
-### TODO
+## TODO
 
-- Page support, that's all
+- docs
