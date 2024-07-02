@@ -64,8 +64,12 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @return The button with the new lore
      */
     override fun setLore(newLore: List<String>): GuiButton {
-        val lore: List<String> = newLore.map { ChatColor.translateAlternateColorCodes('&', it) }
-        icon.itemMeta?.lore = lore
+        val newLore2: List<String> = newLore.map { ChatColor.translateAlternateColorCodes('&', it) }
+        icon.apply {
+            itemMeta = itemMeta.apply {
+                lore = newLore2
+            }
+        }
         return this
     }
 
