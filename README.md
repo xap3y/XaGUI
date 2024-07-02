@@ -63,3 +63,7 @@ gui.setOnOpen {
 // Opens the GUI. Synchronous
 gui.open(player)
 ```
+
+### TODO
+
+- Page support, that's all

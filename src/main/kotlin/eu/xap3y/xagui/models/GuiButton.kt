@@ -4,7 +4,9 @@ import eu.xap3y.xagui.interfaces.ButtonListener
 import eu.xap3y.xagui.interfaces.GuiButtonInterface
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
 /**
@@ -35,9 +37,9 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
     /**
      * Sets the listener of the button
      * @param newListener The new listener
-     * @return The button
+     * @return The button with the new listener
      */
-    override fun setListener(newListener: (InventoryClickEvent) -> Unit): GuiButton {
+    override fun withListener(newListener: (InventoryClickEvent) -> Unit): GuiButton {
         this.listener = object : ButtonListener {
             override fun onClick(event: InventoryClickEvent) {
                 newListener(event)
@@ -49,12 +51,112 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
     /**
      * Sets the name of the button
      * @param name The new name
-     * @return The button
+     * @return The button with the new name
      */
     override fun setName(name: String): GuiButton {
-        icon.itemMeta?.setDisplayName(ChatColor.translateAlternateColorCodes('&', name))
+        icon.apply {
+            itemMeta = itemMeta.apply {
+                setDisplayName(ChatColor.translateAlternateColorCodes('&', name))
+            }
+        }
         return this
     }
+
+    /**
+     * Sets the lore of the button
+     * @param newLore The new lore
+     * @return The button with the new lore
+     */
+    override fun setLore(newLore: List<String>): GuiButton {
+        val newLore2: List<String> = newLore.map { ChatColor.translateAlternateColorCodes('&', it) }
+        icon.apply {
+            itemMeta = itemMeta.apply {
+                lore = newLore2
+            }
+        }
+        return this
+    }
+
+    /**
+     * Sets the amount of the button
+     * @param amount The new amount
+     * @return The button with the new amount
+     */
+    override fun setAmount(amount: Int): GuiButton {
+        icon.amount = amount
+        return this
+    }
+
+    /**
+     * Adds an enchantment to the button
+     * @param enchantment The enchantment to add
+     * @return The button with the enchantment added
+     */
+    override fun addEnchantment(enchantment: Enchantment): GuiButton {
+        icon.addUnsafeEnchantment(enchantment, 1)
+        return this
+    }
+
+    /**
+     * Adds an enchantment to the button
+     * @param enchantment The enchantment to add
+     * @param level The level of the enchantment
+     * @return The button with the enchantment added
+     */
+    override fun addEnchantment(enchantment: Enchantment, level: Int): GuiButton {
+        icon.addUnsafeEnchantment(enchantment, level)
+        return this
+    }
+
+    /**
+     * Removes an enchantment from the button
+     * @param enchantment The enchantment to remove
+     * @return The button with the enchantment removed
+     */
+    override fun removeEnchantment(enchantment: Enchantment): GuiButton {
+        icon.removeEnchantment(enchantment)
+        return this
+    }
+
+    /**
+     * Removes all enchantments from the button
+     * @return The button with all enchantments removed
+     */
+    override fun removeAllEnchantments(): GuiButton {
+        icon.enchantments.clear()
+        return this
+    }
+
+    /**
+     * Sets the durability of the button
+     * @param durability The new durability
+     * @return The button with the new durability
+     */
+    override fun setDurability(durability: Short): GuiButton {
+        icon.durability = durability
+        return this
+    }
+
+    /**
+     * Adds an item flag to the button
+     * @param flag The flag to add
+     * @return The button with the flag added
+     */
+    override fun addItemFlag(flag: ItemFlag): GuiButton {
+        icon.itemMeta?.addItemFlags(flag)
+        return this
+    }
+
+    /**
+     * Removes an item flag from the button
+     * @param flag The flag to remove
+     * @return The button with the flag removed
+     */
+    override fun removeItemFlag(flag: ItemFlag): GuiButton {
+        icon.itemMeta?.removeItemFlags(flag)
+        return this
+    }
+
 
     //override fun getListener(): ButtonListener? = listener
 

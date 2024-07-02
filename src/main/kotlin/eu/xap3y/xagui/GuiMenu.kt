@@ -2,15 +2,15 @@
 
 package eu.xap3y.xagui
 
-import eu.xap3y.xagui.interfaces.GuiButtonInterface
-import eu.xap3y.xagui.interfaces.GuiCloseInterface
-import eu.xap3y.xagui.interfaces.GuiInterface
-import eu.xap3y.xagui.interfaces.GuiOpenInterface
+import eu.xap3y.xagui.exceptions.RowsOutOfBoundException
+import eu.xap3y.xagui.exceptions.SlotOutOfBoundException
+import eu.xap3y.xagui.interfaces.*
 import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.inventory.Inventory
@@ -18,7 +18,7 @@ import org.bukkit.inventory.InventoryHolder
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.concurrent.ConcurrentHashMap
-import javax.annotation.Nullable
+import kotlin.jvm.Throws
 
 /**
  * Represents a GUI menu
@@ -26,17 +26,32 @@ import javax.annotation.Nullable
  * @param title The title of the menu
  * @param rowsToSet The number of rows the menu should have
  */
-class GuiMenu(private val plugin: JavaPlugin, private val title: String, private val rowsToSet: Int): InventoryHolder, GuiInterface {
+class GuiMenu(private val plugin: JavaPlugin, private val title: String, private val rowsToSet: Int, pages: Int): InventoryHolder, GuiInterface {
 
-    private val slots: ConcurrentHashMap<Int, GuiButtonInterface> = ConcurrentHashMap()
-    val unlockedSlots = mutableSetOf<Int>()
+    //private val slots: ConcurrentHashMap<Int, GuiButtonInterface> = ConcurrentHashMap()
+    private val pageMapping: ConcurrentHashMap<Int, ConcurrentHashMap<Int, GuiButtonInterface>> = ConcurrentHashMap()
+    private val invMapping: ConcurrentHashMap<Int, Inventory> = ConcurrentHashMap()
+    private val totalPages = pages
+    private val stickySlots = mutableSetOf<Int>()
+
+    init {
+        totalPages.let {
+            for (i in 0..it) {
+                pageMapping[i] = ConcurrentHashMap()
+                invMapping[i] = Bukkit.createInventory(this, getSize(), getName())
+            }
+        }
+    }
+
+    private var currentOpenedPage: Int = 0
+    val unlockedSlots: ConcurrentHashMap<Int, MutableSet<Int>> = ConcurrentHashMap()
 
     /**
      * The inventory of the menu
      * @return The inventory
      */
     override fun getInventory(): Inventory {
-        return inv
+        return invMapping[currentOpenedPage]!!
     }
 
     /**
@@ -59,6 +74,18 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         this.onCloseAction = object : GuiCloseInterface {
             override fun onClose(event: InventoryCloseEvent) {
                 closeAction(event)
+            }
+        }
+    }
+
+    /**
+     * Set the action to be executed when a button is clicked
+     * @param onClick The action to be executed
+     */
+    override fun setOnClick(onClick: (InventoryClickEvent) -> Unit) {
+        this.onClickAction = object : GuiClickInterface {
+            override fun onClick(event: InventoryClickEvent) {
+                onClick(event)
             }
         }
     }
@@ -90,14 +117,26 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun getSize(): Int = rows * 9
 
+    override fun getPages(): Int {
+        return pageMapping.keys.size
+    }
+
+    override fun getCurrentPage(): Int {
+        return currentOpenedPage
+    }
+
     /**
      * Set a button in a slot
      * @param slot The slot to set the button in
      * @param button The button to set
      */
     override fun setSlot(slot: Int, button: GuiButtonInterface) {
-        slots[slot] = button
-        inv.setItem(slot, button.getItem())
+        setSlot(currentOpenedPage, slot, button)
+    }
+
+    override fun setSlot(page: Int, slot: Int, button: GuiButtonInterface) {
+        pageMapping[page]?.set(slot, button)
+        invMapping[page]?.setItem(slot, button.getItem())
     }
 
     /**
@@ -115,7 +154,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param item The item to update to
      */
     override fun updateSlot(slot: Int, item: ItemStack) {
-        val old = slots[slot] ?: return
+        updateSlot(currentOpenedPage, slot, item)
+    }
+
+    override fun updateSlot(page: Int, slot: Int, item: ItemStack) {
+        val old = pageMapping[page]?.get(slot) ?: return
         old.setItem(item)
         setSlot(slot, old)
     }
@@ -126,22 +169,35 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @return The button in the slot
      */
     override fun getSlot(slot: Int): GuiButtonInterface? =
-        slots[slot]
+        getSlot(currentOpenedPage, slot)
+
+    override fun getSlot(page: Int, slot: Int): GuiButtonInterface? {
+        return pageMapping[page]?.get(slot)
+    }
 
     /**
      * Clear the button in a slot
      * @param slot The slot to clear
      */
     override fun clearSlot(slot: Int) {
-        slots.remove(slot)
-        inv.setItem(slot, null)
+        clearSlot(currentOpenedPage, slot)
+    }
+
+    override fun clearSlot(page: Int, slot: Int) {
+        pageMapping[page]?.remove(slot)
+        invMapping[page]?.setItem(slot, null)
     }
 
     /**
      * Clear all buttons in the menu
      */
     override fun clearAllSlots() {
-        inv.clear()
+        clearAllSlots(currentOpenedPage)
+    }
+
+    override fun clearAllSlots(page: Int) {
+        pageMapping[page]?.clear()
+        invMapping[currentOpenedPage]?.clear()
     }
 
     /**
@@ -153,17 +209,31 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     /**
      * Unlock a slot so the player can take items from it
      * @param slot The slot to unlock
+     * @throws SlotOutOfBoundException If the slot is out of bounds
      */
+    @Throws(SlotOutOfBoundException::class)
     override fun unlockButton(slot: Int) {
-        unlockedSlots.add(slot)
+        if (slot > getSize()) throw SlotOutOfBoundException()
+        unlockedSlots[0]?.add(slot)
+    }
+
+    override fun unlockButton(page: Int, slot: Int) {
+        unlockedSlots[page]?.add(slot)
     }
 
     /**
      * Lock a slot
      * @param slot The slot to lock
+     * @throws SlotOutOfBoundException If the slot is out of bounds
      */
+    @Throws(SlotOutOfBoundException::class)
     override fun lockButton(slot: Int) {
-        unlockedSlots.remove(slot)
+        if (slot > getSize()) throw SlotOutOfBoundException()
+        unlockedSlots[0]?.remove(slot)
+    }
+
+    override fun lockButton(page: Int, slot: Int) {
+        unlockedSlots[page]?.remove(slot)
     }
 
     /**
@@ -171,9 +241,34 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param player The player to open the menu for
      */
     override fun open(player: Player) {
+        switchPage(0, player)
+    }
+
+    override fun open(page: Int, player: Player) {
+        switchPage(page, player)
+    }
+
+    override fun switchPage(page: Int, player: Player) {
+        currentOpenedPage = page
+        val inv = invMapping[currentOpenedPage] ?: return
+        stickySlots.forEach {
+            inv.setItem(it, pageMapping[0]?.get(it)?.getItem())
+        }
         Bukkit.getScheduler().runTask(plugin, Runnable {
             player.openInventory(inv)
         })
+    }
+
+    override fun getMaxPages(): Int {
+        return totalPages
+    }
+
+    override fun stickSlot(slot: Int) {
+        stickySlots.add(slot)
+    }
+
+    override fun unStickSlot(slot: Int) {
+        stickySlots.remove(slot)
     }
 
     /**
@@ -186,25 +281,38 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         })
     }
 
+    override fun fillSlots(slots: Set<Int>) {
+        fillSlots(currentOpenedPage, slots, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }})
+    }
+
     /**
      * Fill a set of slots with an item
      * @param slots The slots to fill
      * @param item The item to fill the slots with
      */
-    fun fillSlots(slots: Set<Int>, item: ItemStack = ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }}) {
+    override fun fillSlots(slots: Set<Int>, item: ItemStack) {
+        fillSlots(currentOpenedPage, slots, item)
+    }
+
+    override fun fillSlots(page: Int, slots: Set<Int>) {
+        fillSlots(page, slots, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
+    }
+
+    override fun fillSlots(page: Int, slots: Set<Int>, item: ItemStack) {
         slots.forEach {
-            setSlot(it, GuiButton(item))
+            setSlot(page, it, GuiButton(item))
         }
     }
 
     /**
      * Fill the border of the menu with an item
+     * @param page The page of the menu
      * @param slots The set of slots to fill
-     * @param item The gui button to fill the slots with
+     * @param button The gui button to fill the slots with
      */
-    fun fillSlots(slots: Set<Int>, item: GuiButtonInterface = GuiButton(ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }})) {
+    override fun fillSlots(page: Int, slots: Set<Int>, button: GuiButtonInterface) {
         slots.forEach {
-            setSlot(it, item)
+            setSlot(page, it, button)
         }
     }
 
@@ -212,8 +320,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * Fill the border of the menu with an item
      * @param rows The number of rows in the menu
      * @param item The item to fill the border with
+     * @throws RowsOutOfBoundException If the number of rows is out of bounds
      */
+    @Throws(RowsOutOfBoundException::class)
     fun fillBorder(rows: Int, item: ItemStack) {
+        if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
         val slots = mutableSetOf<Int>()
         for (i in 0 until rows * 9) {
             if (i < 9 || i >= (rows - 1) * 9 || i % 9 == 0 || i % 9 == 8) {
@@ -226,8 +337,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     /**
      * Fill the border of the menu with an item
      * @param rows The number of rows in the menu
+     * @throws RowsOutOfBoundException If the number of rows is out of bounds
      */
+    @Throws(RowsOutOfBoundException::class)
     fun fillBorder(rows: Int) {
+        if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
         fillBorder(rows, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
     }
 
@@ -237,7 +351,9 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     var onOpenAction: GuiOpenInterface? = null
 
+    var onClickAction: GuiClickInterface? = null
+
     private var name: String = title
 
-    private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
+    //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
 }
