@@ -34,9 +34,17 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     private val totalPages = pages
     private val stickySlots = mutableSetOf<Int>()
     private var name: String
+    private var rows: Int
+
+    var onCloseAction: GuiCloseInterface? = null
+
+    var onOpenAction: GuiOpenInterface? = null
+
+    var onClickAction: GuiClickInterface? = null
 
     init {
         name = title
+        rows = rowsToSet
         totalPages.let {
             for (i in 0..it) {
                 pageMapping[i] = ConcurrentHashMap()
@@ -346,14 +354,6 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
         fillBorder(rows, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
     }
-
-    private var rows: Int = rowsToSet
-
-    var onCloseAction: GuiCloseInterface? = null
-
-    var onOpenAction: GuiOpenInterface? = null
-
-    var onClickAction: GuiClickInterface? = null
 
     //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
 }
