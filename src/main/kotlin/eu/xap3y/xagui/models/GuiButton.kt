@@ -39,7 +39,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param newListener The new listener
      * @return The button with the new listener
      */
-    override fun setListener(newListener: (InventoryClickEvent) -> Unit): GuiButton {
+    override fun withListener(newListener: (InventoryClickEvent) -> Unit): GuiButton {
         this.listener = object : ButtonListener {
             override fun onClick(event: InventoryClickEvent) {
                 newListener(event)
