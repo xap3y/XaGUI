@@ -42,6 +42,9 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     var onClickAction: GuiClickInterface? = null
 
+    /**
+     * Initialize the menu
+     */
     init {
         name = title
         rows = rowsToSet
@@ -54,14 +57,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     private var currentOpenedPage: Int = 0
-    val unlockedSlots: ConcurrentHashMap<Int, MutableSet<Int>> = ConcurrentHashMap()
+    val unlockedSlots: HashMap<Int, MutableSet<Int>> = hashMapOf() // page -> slots
 
     /**
      * The inventory of the menu
      * @return The inventory
      */
     override fun getInventory(): Inventory {
-        return invMapping[currentOpenedPage]!!
+        return invMapping[currentOpenedPage] ?: Bukkit.createInventory(this, getSize(), getName())
     }
 
     /**
@@ -127,10 +130,18 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun getSize(): Int = rows * 9
 
+    /**
+     * Get the number of pages in the menu
+     * @return The number of pages in the menu
+     */
     override fun getPages(): Int {
         return pageMapping.keys.size
     }
 
+    /**
+     * Get the current page of the menu
+     * @return The current page of the menu
+     */
     override fun getCurrentPage(): Int {
         return currentOpenedPage
     }
@@ -144,6 +155,12 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         setSlot(currentOpenedPage, slot, button)
     }
 
+    /**
+     * Set a button in a slot
+     * @param page The page of the menu
+     * @param slot The slot to set the button in
+     * @param button The button to set
+     */
     override fun setSlot(page: Int, slot: Int, button: GuiButtonInterface) {
         pageMapping[page]?.set(slot, button)
         invMapping[page]?.setItem(slot, button.getItem())
@@ -167,6 +184,12 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         updateSlot(currentOpenedPage, slot, item)
     }
 
+    /**
+     * Update the item in a slot
+     * @param page The page of the menu
+     * @param slot The slot to update
+     * @param item The item to update to
+     */
     override fun updateSlot(page: Int, slot: Int, item: ItemStack) {
         val old = pageMapping[page]?.get(slot) ?: return
         old.setItem(item)
@@ -181,6 +204,12 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     override fun getSlot(slot: Int): GuiButtonInterface? =
         getSlot(currentOpenedPage, slot)
 
+    /**
+     * Get the button in a slot
+     * @param page The page of the menu
+     * @param slot The slot to get the button from
+     * @return The button in the slot
+     */
     override fun getSlot(page: Int, slot: Int): GuiButtonInterface? {
         return pageMapping[page]?.get(slot)
     }
@@ -193,6 +222,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         clearSlot(currentOpenedPage, slot)
     }
 
+    /**
+     * Clear the button in a slot
+     * @param page The page of the menu
+     * @param slot The slot to clear
+     */
     override fun clearSlot(page: Int, slot: Int) {
         pageMapping[page]?.remove(slot)
         invMapping[page]?.setItem(slot, null)
@@ -205,6 +239,10 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         clearAllSlots(currentOpenedPage)
     }
 
+    /**
+     * Clear all buttons in the menu
+     * @param page The page of the menu
+     */
     override fun clearAllSlots(page: Int) {
         pageMapping[page]?.clear()
         invMapping[currentOpenedPage]?.clear()
@@ -227,6 +265,12 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         unlockedSlots[currentOpenedPage]?.add(slot)
     }
 
+    /**
+     * Unlock a slot so the player can take items from it
+     * @param page The page of the menu
+     * @param slot The slot to unlock
+     * @throws SlotOutOfBoundException If the slot is out of bounds
+     */
     override fun unlockButton(page: Int, slot: Int) {
         unlockedSlots[page]?.add(slot)
     }
@@ -238,11 +282,18 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     @Throws(SlotOutOfBoundException::class)
     override fun lockButton(slot: Int) {
-        if (slot > getSize()) throw SlotOutOfBoundException()
-        unlockedSlots[0]?.remove(slot)
+       lockButton(currentOpenedPage, slot)
     }
 
+    /**
+     * Lock a slot
+     * @param page The page of the menu
+     * @param slot The slot to lock
+     * @throws SlotOutOfBoundException If the slot is out of bounds
+     */
+    @Throws(SlotOutOfBoundException::class)
     override fun lockButton(page: Int, slot: Int) {
+        if (slot > getSize()) throw SlotOutOfBoundException()
         unlockedSlots[page]?.remove(slot)
     }
 
@@ -254,10 +305,20 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         switchPage(0, player)
     }
 
+    /**
+     * Open a specific page of the menu for a player
+     * @param page The page to open
+     * @param player The player to open the menu for
+     */
     override fun open(page: Int, player: Player) {
         switchPage(page, player)
     }
 
+    /**
+     * Switch the page of the menu for a player
+     * @param page The page to switch to
+     * @param player The player to switch the page for
+     */
     override fun switchPage(page: Int, player: Player) {
         currentOpenedPage = page
         val inv = invMapping[currentOpenedPage] ?: return
@@ -269,14 +330,26 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         })
     }
 
+    /**
+     * Get the maximum number of pages in the menu
+     * @return The maximum number of pages
+     */
     override fun getMaxPages(): Int {
         return totalPages
     }
 
+    /**
+     * Stick a slot so it will be displayed on every page
+     * @param slot The slot to stick
+     */
     override fun stickSlot(slot: Int) {
         stickySlots.add(slot)
     }
 
+    /**
+     * Unstick a slot
+     * @param slot The slot to unstick
+     */
     override fun unStickSlot(slot: Int) {
         stickySlots.remove(slot)
     }
@@ -291,6 +364,10 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         })
     }
 
+    /**
+     * Fill a set of slots with a gray stained glass pane
+     * @param slots The slots to fill
+     */
     override fun fillSlots(slots: Set<Int>) {
         fillSlots(currentOpenedPage, slots, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }})
     }
@@ -304,10 +381,21 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         fillSlots(currentOpenedPage, slots, item)
     }
 
+    /**
+     * Fill a set of slots with an item
+     * @param page The page of the menu
+     * @param slots The slots to fill
+     */
     override fun fillSlots(page: Int, slots: Set<Int>) {
         fillSlots(page, slots, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
     }
 
+    /**
+     * Fill a set of slots with an item
+     * @param page The page of the menu
+     * @param slots The slots to fill
+     * @param item The item to fill the slots with
+     */
     override fun fillSlots(page: Int, slots: Set<Int>, item: ItemStack) {
         slots.forEach {
             setSlot(page, it, GuiButton(item))
@@ -354,6 +442,5 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
         fillBorder(rows, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
     }
-
     //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
 }

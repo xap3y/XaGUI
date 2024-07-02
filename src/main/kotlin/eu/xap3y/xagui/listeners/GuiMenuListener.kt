@@ -1,6 +1,7 @@
 package eu.xap3y.xagui.listeners
 
 import eu.xap3y.xagui.GuiMenu
+import eu.xap3y.xagui.interfaces.GuiButtonInterface
 import org.bukkit.event.Event
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -25,13 +26,15 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
         val owner = clickedInventory.getOwner()
         if (!Objects.equals(owner, plugin)) return
 
-        if (clickedInventory.unlockedSlots[clickedInventory.getCurrentPage()]?.contains(e.slot)?.not() == true) {
+        val allowClick: Boolean = clickedInventory.unlockedSlots[clickedInventory.getCurrentPage()]?.contains(e.slot) ?: false
+
+        if (!allowClick) {
             e.result = Event.Result.DENY
         }
 
         clickedInventory.onClickAction?.onClick(e)
 
-        val button = clickedInventory.getSlot(e.slot) ?: return
+        val button: GuiButtonInterface = clickedInventory.getSlot(e.slot) ?: return
 
         button.listener?.onClick(e)
 
