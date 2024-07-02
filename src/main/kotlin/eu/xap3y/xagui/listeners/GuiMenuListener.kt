@@ -10,6 +10,10 @@ import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.*
 
+/**
+ * The listener for the menus
+ * @param plugin The plugin instance
+ */
 class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
     @EventHandler
@@ -25,9 +29,12 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
             e.result = Event.Result.DENY
         }
 
+        clickedInventory.onClickAction?.onClick(e)
+
         val button = clickedInventory.getSlot(e.slot) ?: return
 
         button.listener?.onClick(e)
+
     }
 
     @EventHandler

@@ -2,15 +2,15 @@
 
 package eu.xap3y.xagui
 
-import eu.xap3y.xagui.interfaces.GuiButtonInterface
-import eu.xap3y.xagui.interfaces.GuiCloseInterface
-import eu.xap3y.xagui.interfaces.GuiInterface
-import eu.xap3y.xagui.interfaces.GuiOpenInterface
+import eu.xap3y.xagui.exceptions.RowsOutOfBoundException
+import eu.xap3y.xagui.exceptions.SlotOutOfBoundException
+import eu.xap3y.xagui.interfaces.*
 import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.inventory.Inventory
@@ -18,7 +18,7 @@ import org.bukkit.inventory.InventoryHolder
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.concurrent.ConcurrentHashMap
-import javax.annotation.Nullable
+import kotlin.jvm.Throws
 
 /**
  * Represents a GUI menu
@@ -59,6 +59,18 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         this.onCloseAction = object : GuiCloseInterface {
             override fun onClose(event: InventoryCloseEvent) {
                 closeAction(event)
+            }
+        }
+    }
+
+    /**
+     * Set the action to be executed when a button is clicked
+     * @param onClick The action to be executed
+     */
+    override fun setOnClick(onClick: (InventoryClickEvent) -> Unit) {
+        this.onClickAction = object : GuiClickInterface {
+            override fun onClick(event: InventoryClickEvent) {
+                onClick(event)
             }
         }
     }
@@ -153,16 +165,22 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     /**
      * Unlock a slot so the player can take items from it
      * @param slot The slot to unlock
+     * @throws SlotOutOfBoundException If the slot is out of bounds
      */
+    @Throws(SlotOutOfBoundException::class)
     override fun unlockButton(slot: Int) {
+        if (slot > getSize()) throw SlotOutOfBoundException()
         unlockedSlots.add(slot)
     }
 
     /**
      * Lock a slot
      * @param slot The slot to lock
+     * @throws SlotOutOfBoundException If the slot is out of bounds
      */
+    @Throws(SlotOutOfBoundException::class)
     override fun lockButton(slot: Int) {
+        if (slot > getSize()) throw SlotOutOfBoundException()
         unlockedSlots.remove(slot)
     }
 
@@ -212,8 +230,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * Fill the border of the menu with an item
      * @param rows The number of rows in the menu
      * @param item The item to fill the border with
+     * @throws RowsOutOfBoundException If the number of rows is out of bounds
      */
+    @Throws(RowsOutOfBoundException::class)
     fun fillBorder(rows: Int, item: ItemStack) {
+        if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
         val slots = mutableSetOf<Int>()
         for (i in 0 until rows * 9) {
             if (i < 9 || i >= (rows - 1) * 9 || i % 9 == 0 || i % 9 == 8) {
@@ -226,8 +247,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     /**
      * Fill the border of the menu with an item
      * @param rows The number of rows in the menu
+     * @throws RowsOutOfBoundException If the number of rows is out of bounds
      */
+    @Throws(RowsOutOfBoundException::class)
     fun fillBorder(rows: Int) {
+        if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
         fillBorder(rows, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
     }
 
@@ -236,6 +260,8 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     var onCloseAction: GuiCloseInterface? = null
 
     var onOpenAction: GuiOpenInterface? = null
+
+    var onClickAction: GuiClickInterface? = null
 
     private var name: String = title
 

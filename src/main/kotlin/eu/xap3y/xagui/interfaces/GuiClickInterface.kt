@@ -3,14 +3,15 @@ package eu.xap3y.xagui.interfaces
 import org.bukkit.event.inventory.InventoryClickEvent
 
 /**
- * Interface for button listeners
- * @see GuiButtonInterface
+ * Interface for click event listeners
+ * @see GuiInterface
  */
-interface ButtonListener {
+interface GuiClickInterface {
 
     /**
-     * Called when the button is clicked
+     * Called when the GUI is clicked
      * @param event The event of the click
      */
     fun onClick(event: InventoryClickEvent)
+
 }
