@@ -26,7 +26,7 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
         val owner = clickedInventory.getOwner()
         if (!Objects.equals(owner, plugin)) return
 
-        val allowClick: Boolean = clickedInventory.unlockedSlots[clickedInventory.getCurrentPage()]?.contains(e.slot) ?: false
+        val allowClick: Boolean = clickedInventory.unlockedSlots[clickedInventory.getCurrentPageIndex()]?.contains(e.slot) ?: false
 
         if (!allowClick) {
             e.result = Event.Result.DENY

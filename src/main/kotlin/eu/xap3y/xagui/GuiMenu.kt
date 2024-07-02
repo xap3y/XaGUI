@@ -2,6 +2,7 @@
 
 package eu.xap3y.xagui
 
+import eu.xap3y.xagui.events.GuiPageSwitchEvent
 import eu.xap3y.xagui.exceptions.RowsOutOfBoundException
 import eu.xap3y.xagui.exceptions.SlotOutOfBoundException
 import eu.xap3y.xagui.interfaces.*
@@ -42,6 +43,8 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     var onClickAction: GuiClickInterface? = null
 
+    var onPageSwitchAction: GuiPageSwitchInterface? = null
+
     private var currentOpenedPage: Int = 0
     val unlockedSlots: HashMap<Int, MutableSet<Int>> = hashMapOf() // page -> slots
 
@@ -51,7 +54,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     init {
         name = title
         rows = rowsToSet
-        totalPages.let {
+        (totalPages-1).let {
             for (i in 0..it) {
                 pageMapping[i] = ConcurrentHashMap()
                 invMapping[i] = Bukkit.createInventory(this, getSize(), getName())
@@ -105,6 +108,18 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     /**
+     * Set the action to be executed when the page is switched
+     * @param onPageSwitch The action to be executed
+     */
+    override fun setOnPageSwitch(onPageSwitch: (GuiPageSwitchEvent) -> Unit) {
+        this.onPageSwitchAction = object : GuiPageSwitchInterface {
+            override fun onPageSwitch(event: GuiPageSwitchEvent) {
+                onPageSwitch(event)
+            }
+        }
+    }
+
+    /**
      * Set the name of the menu
      * @param newName The new name of the menu
      */
@@ -140,11 +155,19 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     /**
+     * Get the current index of page of the menu
+     * @return The current index of the menu page
+     */
+    override fun getCurrentPageIndex(): Int {
+        return currentOpenedPage
+    }
+
+    /**
      * Get the current page of the menu
      * @return The current page of the menu
      */
     override fun getCurrentPage(): Int {
-        return currentOpenedPage
+        return currentOpenedPage + 1
     }
 
     /**
@@ -167,13 +190,41 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         invMapping[page]?.setItem(slot, button.getItem())
     }
 
+
+    /**
+     * Set a button in a slot
+     * @param slot The slot to set the button in
+     * @param button The button to set
+     */
+    override fun setSlot(page: Int, slot: Int, button: ItemStack) {
+        setSlot(page, slot, GuiButton(button))
+    }
+
+    /**
+     * Set a button in a slot
+     * @param slot The slot to set the button in
+     * @param button The button to set
+     */
+    override fun setSlot(page: Int, slot: Int, button: Material) {
+        setSlot(page, slot, GuiButton(ItemStack(button)))
+    }
+
     /**
      * Set a button in a slot
      * @param slot The slot to set the button in
      * @param item The item to set
      */
-    fun setSlot(slot: Int, item: ItemStack) {
-        setSlot(slot, GuiButton(item))
+    override fun setSlot(slot: Int, item: ItemStack) {
+        setSlot(currentOpenedPage, slot, GuiButton(item))
+    }
+
+    /**
+     * Set a button in a slot
+     * @param slot The slot to set the button in
+     * @param item The item to set
+     */
+    override fun setSlot(slot: Int, item: Material) {
+        setSlot(currentOpenedPage, slot, GuiButton(ItemStack(item)))
     }
 
     /**
@@ -187,6 +238,15 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Update the item in a slot
+     * @param slot The slot to update
+     * @param item The item to update to
+     */
+    override fun updateSlot(slot: Int, item: Material) {
+        updateSlot(currentOpenedPage, slot, ItemStack(item))
+    }
+
+    /**
+     * Update the item in a slot
      * @param page The page of the menu
      * @param slot The slot to update
      * @param item The item to update to
@@ -195,6 +255,16 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         val old = pageMapping[page]?.get(slot) ?: return
         old.setItem(item)
         setSlot(slot, old)
+    }
+
+    /**
+     * Update the item in a slot
+     * @param page The page of the menu
+     * @param slot The slot to update
+     * @param item The item to update to
+     */
+    override fun updateSlot(page: Int, slot: Int, item: Material) {
+        updateSlot(page, slot, ItemStack(item))
     }
 
     /**
@@ -322,6 +392,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param player The player to switch the page for
      */
     override fun switchPage(page: Int, player: Player) {
+        plugin.server.pluginManager.callEvent(GuiPageSwitchEvent(player, page, currentOpenedPage))
         currentOpenedPage = page
         val inv = invMapping[currentOpenedPage] ?: return
         stickySlots.forEach {

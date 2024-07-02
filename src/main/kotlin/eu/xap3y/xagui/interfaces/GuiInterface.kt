@@ -1,6 +1,7 @@
 package eu.xap3y.xagui.interfaces
 
-import eu.xap3y.xagui.exceptions.RowsOutOfBoundException
+import eu.xap3y.xagui.events.GuiPageSwitchEvent
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
@@ -19,6 +20,8 @@ interface GuiInterface {
 
     fun setOnClick(onClick: (InventoryClickEvent) -> Unit)
 
+    fun setOnPageSwitch(onClick: (GuiPageSwitchEvent) -> Unit)
+
     fun setName(newName: String)
 
     fun getName(): String
@@ -29,15 +32,29 @@ interface GuiInterface {
 
     fun getPages(): Int
 
+    fun getCurrentPageIndex(): Int
+
     fun getCurrentPage(): Int
 
     fun setSlot(slot: Int, button: GuiButtonInterface)
 
+    fun setSlot(slot: Int, item: ItemStack)
+
+    fun setSlot(slot: Int, item: Material)
+
     fun setSlot(page: Int, slot: Int, button: GuiButtonInterface)
+
+    fun setSlot(page: Int, slot: Int, button: ItemStack)
+
+    fun setSlot(page: Int, slot: Int, button: Material)
 
     fun updateSlot(slot: Int, item: ItemStack)
 
+    fun updateSlot(slot: Int, item: Material)
+
     fun updateSlot(page: Int, slot: Int, item: ItemStack)
+
+    fun updateSlot(page: Int, slot: Int, item: Material)
 
     fun getSlot(slot: Int): GuiButtonInterface?
 

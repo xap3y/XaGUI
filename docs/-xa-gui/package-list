@@ -1,5 +1,14 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
+$dokka.location:eu.xap3y.xagui.events////PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/index.html
+$dokka.location:eu.xap3y.xagui.events/GuiPageSwitchEvent.Companion///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/-gui-page-switch-event/-companion/index.html
+$dokka.location:eu.xap3y.xagui.events/GuiPageSwitchEvent.Companion/getHandlerList/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/-gui-page-switch-event/-companion/get-handler-list.html
+$dokka.location:eu.xap3y.xagui.events/GuiPageSwitchEvent///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/-gui-page-switch-event/index.html
+$dokka.location:eu.xap3y.xagui.events/GuiPageSwitchEvent/GuiPageSwitchEvent/#org.bukkit.entity.Player#kotlin.Int#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/-gui-page-switch-event/-gui-page-switch-event.html
+$dokka.location:eu.xap3y.xagui.events/GuiPageSwitchEvent/getHandlers/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/-gui-page-switch-event/get-handlers.html
+$dokka.location:eu.xap3y.xagui.events/GuiPageSwitchEvent/newPage/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/-gui-page-switch-event/new-page.html
+$dokka.location:eu.xap3y.xagui.events/GuiPageSwitchEvent/oldPage/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/-gui-page-switch-event/old-page.html
+$dokka.location:eu.xap3y.xagui.events/GuiPageSwitchEvent/player/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.events/-gui-page-switch-event/player.html
 $dokka.location:eu.xap3y.xagui.exceptions////PointingToDeclaration/-xa-gui/eu.xap3y.xagui.exceptions/index.html
 $dokka.location:eu.xap3y.xagui.exceptions/RowsOutOfBoundException///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.exceptions/-rows-out-of-bound-exception/index.html
 $dokka.location:eu.xap3y.xagui.exceptions/RowsOutOfBoundException/RowsOutOfBoundException/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.exceptions/-rows-out-of-bound-exception/-rows-out-of-bound-exception.html
@@ -40,6 +49,7 @@ $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/fillSlots/#kotlin.Int#kot
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/fillSlots/#kotlin.collections.Set[kotlin.Int]#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/fill-slots.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/fillSlots/#kotlin.collections.Set[kotlin.Int]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/fill-slots.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getCurrentPage/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-current-page.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getCurrentPageIndex/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-current-page-index.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getMaxPages/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-max-pages.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getName/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-name.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/getOwner/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/get-owner.html
@@ -56,17 +66,26 @@ $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setName/#kotlin.String/Po
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setOnClick/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-on-click.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setOnClose/#kotlin.Function1[org.bukkit.event.inventory.InventoryCloseEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-on-close.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setOnOpen/#kotlin.Function1[org.bukkit.event.inventory.InventoryOpenEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-on-open.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setOnPageSwitch/#kotlin.Function1[eu.xap3y.xagui.events.GuiPageSwitchEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-on-page-switch.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setSlot/#kotlin.Int#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setSlot/#kotlin.Int#kotlin.Int#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setSlot/#kotlin.Int#kotlin.Int#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setSlot/#kotlin.Int#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setSlot/#kotlin.Int#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/setSlot/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/set-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/stickSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/stick-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/switchPage/#kotlin.Int#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/switch-page.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/unStickSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/un-stick-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/unlockButton/#kotlin.Int#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/unlock-button.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/unlockButton/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/unlock-button.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/updateSlot/#kotlin.Int#kotlin.Int#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/update-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/updateSlot/#kotlin.Int#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/update-slot.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/updateSlot/#kotlin.Int#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/update-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/updateSlot/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/update-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiOpenInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-open-interface/index.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiOpenInterface/onOpen/#org.bukkit.event.inventory.InventoryOpenEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-open-interface/on-open.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiPageSwitchInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-page-switch-interface/index.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiPageSwitchInterface/onPageSwitch/#eu.xap3y.xagui.events.GuiPageSwitchEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-page-switch-interface/on-page-switch.html
 $dokka.location:eu.xap3y.xagui.listeners////PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/index.html
 $dokka.location:eu.xap3y.xagui.listeners/GuiMenuListener///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/-gui-menu-listener/index.html
 $dokka.location:eu.xap3y.xagui.listeners/GuiMenuListener/GuiMenuListener/#org.bukkit.plugin.java.JavaPlugin/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.listeners/-gui-menu-listener/-gui-menu-listener.html
@@ -107,6 +126,7 @@ $dokka.location:eu.xap3y.xagui/GuiMenu/fillSlots/#kotlin.Int#kotlin.collections.
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillSlots/#kotlin.collections.Set[kotlin.Int]#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-slots.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillSlots/#kotlin.collections.Set[kotlin.Int]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-slots.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/getCurrentPage/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-current-page.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/getCurrentPageIndex/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-current-page-index.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/getInventory/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-inventory.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/getMaxPages/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-max-pages.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/getName/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/get-name.html
@@ -121,14 +141,19 @@ $dokka.location:eu.xap3y.xagui/GuiMenu/lockButton/#kotlin.Int/PointingToDeclarat
 $dokka.location:eu.xap3y.xagui/GuiMenu/onClickAction/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/on-click-action.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/onCloseAction/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/on-close-action.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/onOpenAction/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/on-open-action.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/onPageSwitchAction/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/on-page-switch-action.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/open/#kotlin.Int#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/open.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/open/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/open.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-name.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/setOnClick/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-on-click.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/setOnClose/#kotlin.Function1[org.bukkit.event.inventory.InventoryCloseEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-on-close.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/setOnOpen/#kotlin.Function1[org.bukkit.event.inventory.InventoryOpenEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-on-open.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setOnPageSwitch/#kotlin.Function1[eu.xap3y.xagui.events.GuiPageSwitchEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-on-page-switch.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/setSlot/#kotlin.Int#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-slot.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/setSlot/#kotlin.Int#kotlin.Int#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-slot.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setSlot/#kotlin.Int#kotlin.Int#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-slot.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setSlot/#kotlin.Int#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-slot.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/setSlot/#kotlin.Int#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-slot.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/setSlot/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/set-slot.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/stickSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/stick-slot.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/switchPage/#kotlin.Int#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/switch-page.html
@@ -136,13 +161,16 @@ $dokka.location:eu.xap3y.xagui/GuiMenu/unStickSlot/#kotlin.Int/PointingToDeclara
 $dokka.location:eu.xap3y.xagui/GuiMenu/unlockButton/#kotlin.Int#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/unlock-button.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/unlockButton/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/unlock-button.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/unlockedSlots/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/unlocked-slots.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/updateSlot/#kotlin.Int#kotlin.Int#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/update-slot.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/updateSlot/#kotlin.Int#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/update-slot.html
+$dokka.location:eu.xap3y.xagui/GuiMenu/updateSlot/#kotlin.Int#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/update-slot.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/updateSlot/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/update-slot.html
 $dokka.location:eu.xap3y.xagui/XaGui///PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-xa-gui/index.html
 $dokka.location:eu.xap3y.xagui/XaGui/XaGui/#org.bukkit.plugin.java.JavaPlugin/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-xa-gui/-xa-gui.html
 $dokka.location:eu.xap3y.xagui/XaGui/createMenu/#kotlin.String#kotlin.Int#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-xa-gui/create-menu.html
 $dokka.location:eu.xap3y.xagui/XaGui/createMenu/#kotlin.String#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-xa-gui/create-menu.html
 eu.xap3y.xagui
+eu.xap3y.xagui.events
 eu.xap3y.xagui.exceptions
 eu.xap3y.xagui.interfaces
 eu.xap3y.xagui.listeners
