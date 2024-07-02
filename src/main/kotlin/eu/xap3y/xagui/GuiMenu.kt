@@ -42,6 +42,9 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     var onClickAction: GuiClickInterface? = null
 
+    private var currentOpenedPage: Int = 0
+    val unlockedSlots: HashMap<Int, MutableSet<Int>> = hashMapOf() // page -> slots
+
     /**
      * Initialize the menu
      */
@@ -52,12 +55,10 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
             for (i in 0..it) {
                 pageMapping[i] = ConcurrentHashMap()
                 invMapping[i] = Bukkit.createInventory(this, getSize(), getName())
+                unlockedSlots[i] = mutableSetOf()
             }
         }
     }
-
-    private var currentOpenedPage: Int = 0
-    val unlockedSlots: HashMap<Int, MutableSet<Int>> = hashMapOf() // page -> slots
 
     /**
      * The inventory of the menu
@@ -261,8 +262,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     @Throws(SlotOutOfBoundException::class)
     override fun unlockButton(slot: Int) {
-        if (slot > getSize()) throw SlotOutOfBoundException()
-        unlockedSlots[currentOpenedPage]?.add(slot)
+        unlockButton(currentOpenedPage, slot)
     }
 
     /**
@@ -271,7 +271,9 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param slot The slot to unlock
      * @throws SlotOutOfBoundException If the slot is out of bounds
      */
+    @Throws(SlotOutOfBoundException::class)
     override fun unlockButton(page: Int, slot: Int) {
+        if (slot > getSize()) throw SlotOutOfBoundException()
         unlockedSlots[page]?.add(slot)
     }
 
