@@ -224,7 +224,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     @Throws(SlotOutOfBoundException::class)
     override fun unlockButton(slot: Int) {
         if (slot > getSize()) throw SlotOutOfBoundException()
-        unlockedSlots[0]?.add(slot)
+        unlockedSlots[currentOpenedPage]?.add(slot)
     }
 
     override fun unlockButton(page: Int, slot: Int) {
@@ -262,7 +262,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         currentOpenedPage = page
         val inv = invMapping[currentOpenedPage] ?: return
         stickySlots.forEach {
-            inv.setItem(it, pageMapping[0]?.get(it)?.getItem())
+            setSlot(page, it, pageMapping[0]?.get(it) ?: return@forEach)
         }
         Bukkit.getScheduler().runTask(plugin, Runnable {
             player.openInventory(inv)
