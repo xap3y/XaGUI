@@ -23,7 +23,19 @@ class XaGui(private val plugin: JavaPlugin) {
      * @see GuiMenu
      */
     fun createMenu(name: String, rows: Int): GuiMenu {
-        return GuiMenu(plugin, name, rows)
+        return createMenu(name, rows, 1)
+    }
+
+    /**
+     * Create a new menu
+     * @param name The name of the menu
+     * @param rows The number of rows in the menu
+     * @param pages The number of pages in the menu
+     * @return The created menu
+     * @see GuiMenu
+     */
+    fun createMenu(name: String, rows: Int, pages: Int): GuiMenu {
+        return GuiMenu(plugin, name, rows, pages)
     }
 
 }
