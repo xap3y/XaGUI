@@ -12,7 +12,6 @@ import org.bukkit.inventory.ItemStack
 /**
  * Represents a button in a GUI
  */
-@Suppress("INAPPLICABLE_JVM_NAME")
 class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
@@ -78,7 +77,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param newLore The new lore
      * @return The button with the new lore
      */
-    override fun setLore(newLore: List<String>): GuiButton {
+    override fun setLoreList(newLore: List<String>): GuiButton {
         val newLore2: List<String> = newLore.map { ChatColor.translateAlternateColorCodes('&', it) }
         icon.apply {
             itemMeta = itemMeta.apply {
@@ -93,9 +92,8 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param args The new lore
      * @return The button with the new lore
      */
-    @JvmName("setLoreArgs")
     override fun setLore(vararg args: String): GuiButton {
-        return setLore(*args)
+        return setLoreList(args.toList())
     }
 
     /**
@@ -103,9 +101,8 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param array The new lore
      * @return The button with the new lore
      */
-    @JvmName("setLoreArray")
-    override fun setLore(array: Array<String>): GuiButton {
-        return setLore(array.toList())
+    override fun setLoreArray(array: Array<String>): GuiButton {
+        return setLoreList(array.toList())
     }
 
     /**
@@ -127,7 +124,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param lines The lore to add
      * @return The button with the lore added
      */
-    override fun addLore(lines: List<String>): GuiButton {
+    override fun addLoreList(lines: List<String>): GuiButton {
         val lines2: List<String> = lines.map { ChatColor.translateAlternateColorCodes('&', it) }
         icon.apply {
             itemMeta = itemMeta.apply {
@@ -142,9 +139,8 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param args The lore to add
      * @return The button with the lore added
      */
-    @JvmName("addLoreArgs")
     override fun addLore(vararg args: String): GuiButton {
-        return addLore(*args)
+        return addLoreList(args.toList())
     }
 
     /**
@@ -152,9 +148,8 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param array The lore to add
      * @return The button with the lore added
      */
-    @JvmName("addLoreArray")
-    override fun addLore(array: Array<String>): GuiButton {
-        return addLore(array)
+    override fun addLoreArray(array: Array<String>): GuiButton {
+        return addLoreList(array.toList())
     }
 
     /**
