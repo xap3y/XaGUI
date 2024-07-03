@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack
  * Interface for buttons in a GUI
  * @see ButtonListener
  */
+@Suppress("INAPPLICABLE_JVM_NAME")
 interface GuiButtonInterface {
 
     fun getIcon(): Material
@@ -25,18 +26,24 @@ interface GuiButtonInterface {
 
     fun setName(name: String): GuiButton
 
+    @JvmName("setLoreList")
     fun setLore(newLore: List<String>): GuiButton
 
+    @JvmName("setLoreArgs")
     fun setLore(vararg args: String): GuiButton
 
+    @JvmName("setLoreArray")
     fun setLore(array: Array<String>): GuiButton
 
     fun addLoreLine(line: String): GuiButton
 
+    @JvmName("addLoreList")
     fun addLore(lines: List<String>): GuiButton
 
+    @JvmName("addLoreArgs")
     fun addLore(vararg args: String): GuiButton
 
+    @JvmName("addLoreArray")
     fun addLore(array: Array<String>): GuiButton
 
     fun clearLore(): GuiButton
