@@ -84,6 +84,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     /**
+     * The action to be executed when the menu is opened
+     * @param openAction The action to be executed
+     */
+    override fun setOnOpen(openAction: GuiOpenInterface) {
+        this.onOpenAction = openAction
+    }
+
+    /**
      * The action to be executed when the menu is closed
      * @param closeAction The action to be executed
      */
@@ -93,6 +101,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
                 closeAction(event)
             }
         }
+    }
+
+    /**
+     * The action to be executed when the menu is closed
+     * @param closeAction The action to be executed
+     */
+    override fun setOnClose(closeAction: GuiCloseInterface) {
+        this.onCloseAction = closeAction
     }
 
     /**
@@ -108,6 +124,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     /**
+     * Set the action to be executed when a button is clicked
+     * @param onClick The action to be executed
+     */
+    override fun setOnClick(onClick: GuiClickInterface) {
+        this.onClickAction = onClick
+    }
+
+    /**
      * Set the action to be executed when the page is switched
      * @param onPageSwitch The action to be executed
      */
@@ -117,6 +141,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
                 onPageSwitch(data)
             }
         }
+    }
+
+    /**
+     * Set the action to be executed when the page is switched
+     * @param onPageSwitch The action to be executed
+     */
+    override fun setOnPageSwitch(onPageSwitch: GuiPageSwitchInterface) {
+        this.onPageSwitchAction = onPageSwitch
     }
 
     /**
@@ -402,7 +434,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
             //plugin.server.pluginManager.callEvent(GuiPageSwitchEvent(player, page, currentOpenedPage, inv, invMapping[currentOpenedPage]))
             player.openInventory(inv)
         })
-        this.onPageSwitchAction?.onPageSwitch(GuiPageSwitchModel(page, oldPage))
+        this.onPageSwitchAction?.onPageSwitch(GuiPageSwitchModel(player, page, oldPage))
     }
 
     /**

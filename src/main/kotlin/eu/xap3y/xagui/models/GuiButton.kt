@@ -49,6 +49,16 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
     }
 
     /**
+     * Sets the listener of the button
+     * @param newListener The new listener
+     * @return The button with the new listener
+     */
+    override fun withListener(newListener: ButtonListener): GuiButton {
+        this.listener = newListener
+        return this
+    }
+
+    /**
      * Sets the name of the button
      * @param name The new name
      * @return The button with the new name
@@ -72,6 +82,84 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
         icon.apply {
             itemMeta = itemMeta.apply {
                 lore = newLore2
+            }
+        }
+        return this
+    }
+
+    /**
+     * Sets the lore of the button
+     * @param args The new lore
+     * @return The button with the new lore
+     */
+    override fun setLore(vararg args: String): GuiButton {
+        return setLore(*args)
+    }
+
+    /**
+     * Sets the lore of the button
+     * @param array The new lore
+     * @return The button with the new lore
+     */
+    override fun setLore(array: Array<String>): GuiButton {
+        return setLore(array.toList())
+    }
+
+    /**
+     * Adds a line to the lore of the button
+     * @param line The line to add
+     * @return The button with the line added
+     */
+    override fun addLoreLine(line: String): GuiButton {
+        icon.apply {
+            itemMeta = itemMeta.apply {
+                lore = lore?.plus(ChatColor.translateAlternateColorCodes('&', line))
+            }
+        }
+        return this
+    }
+
+    /**
+     * Adds lore to the button
+     * @param lines The lore to add
+     * @return The button with the lore added
+     */
+    override fun addLore(lines: List<String>): GuiButton {
+        val lines2: List<String> = lines.map { ChatColor.translateAlternateColorCodes('&', it) }
+        icon.apply {
+            itemMeta = itemMeta.apply {
+                lore = lore?.plus(lines2)
+            }
+        }
+        return this
+    }
+
+    /**
+     * Adds lore to the button
+     * @param args The lore to add
+     * @return The button with the lore added
+     */
+    override fun addLore(vararg args: String): GuiButton {
+        return addLore(*args)
+    }
+
+    /**
+     * Adds lore to the button
+     * @param array The lore to add
+     * @return The button with the lore added
+     */
+    override fun addLore(array: Array<String>): GuiButton {
+        return addLore(array)
+    }
+
+    /**
+     * Clears the lore of the button
+     * @return The button with the lore cleared
+     */
+    override fun clearLore(): GuiButton {
+        icon.apply {
+            itemMeta = itemMeta.apply {
+                lore = null
             }
         }
         return this

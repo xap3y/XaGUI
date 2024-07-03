@@ -15,12 +15,16 @@ import org.bukkit.plugin.java.JavaPlugin
 interface GuiInterface {
 
     fun setOnOpen(openAction: (InventoryOpenEvent) -> Unit)
+    fun setOnOpen(openAction: GuiOpenInterface)
 
     fun setOnClose(closeAction: (InventoryCloseEvent) -> Unit)
+    fun setOnClose(closeAction: GuiCloseInterface)
 
     fun setOnClick(onClick: (InventoryClickEvent) -> Unit)
+    fun setOnClick(onClick: GuiClickInterface)
 
     fun setOnPageSwitch(onPageSwitch: (GuiPageSwitchModel) -> Unit)
+    fun setOnPageSwitch(onPageSwitch: GuiPageSwitchInterface)
 
     fun setName(newName: String)
 
@@ -103,6 +107,5 @@ interface GuiInterface {
     fun fillSlots(page: Int, slots: Set<Int>, item: ItemStack)
 
     fun fillSlots(page: Int, slots: Set<Int>, button: GuiButtonInterface)
-
 
 }
