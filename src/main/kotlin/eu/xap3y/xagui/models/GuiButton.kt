@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack
 /**
  * Represents a button in a GUI
  */
+@Suppress("INAPPLICABLE_JVM_NAME")
 class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
@@ -92,6 +93,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param args The new lore
      * @return The button with the new lore
      */
+    @JvmName("setLoreArgs")
     override fun setLore(vararg args: String): GuiButton {
         return setLore(*args)
     }
@@ -101,6 +103,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param array The new lore
      * @return The button with the new lore
      */
+    @JvmName("setLoreArray")
     override fun setLore(array: Array<String>): GuiButton {
         return setLore(array.toList())
     }
@@ -139,6 +142,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param args The lore to add
      * @return The button with the lore added
      */
+    @JvmName("addLoreArgs")
     override fun addLore(vararg args: String): GuiButton {
         return addLore(*args)
     }
@@ -148,6 +152,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param array The lore to add
      * @return The button with the lore added
      */
+    @JvmName("addLoreArray")
     override fun addLore(array: Array<String>): GuiButton {
         return addLore(array)
     }
