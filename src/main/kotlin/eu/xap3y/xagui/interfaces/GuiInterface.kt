@@ -88,7 +88,7 @@ interface GuiInterface {
 
     fun open(page: Int, player: Player)
 
-    fun switchPage(page: Int, player: Player)
+    fun switchPage(pageIndex: Int, player: Player)
 
     fun getMaxPages(): Int
 

@@ -4,6 +4,7 @@ import org.bukkit.event.inventory.InventoryClickEvent
 
 /**
  * Interface for button listeners
+ *
  * @see GuiButtonInterface
  */
 interface ButtonListener {

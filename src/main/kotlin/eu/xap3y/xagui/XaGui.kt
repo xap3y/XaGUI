@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin
 
 /**
  * The main class of the library
+ *
  * @param plugin The plugin instance
  */
 class XaGui(private val plugin: JavaPlugin) {
@@ -17,6 +18,7 @@ class XaGui(private val plugin: JavaPlugin) {
 
     /**
      * Create a new menu
+     *
      * @param name The name of the menu
      * @param rows The number of rows in the menu
      * @return The created menu
@@ -28,6 +30,7 @@ class XaGui(private val plugin: JavaPlugin) {
 
     /**
      * Create a new menu
+     *
      * @param name The name of the menu
      * @param rows The number of rows in the menu
      * @param pages The number of pages in the menu

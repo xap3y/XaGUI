@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack
 
 /**
  * Interface for buttons in a GUI
+ *
  * @see ButtonListener
  */
 interface GuiButtonInterface {
@@ -57,6 +58,6 @@ interface GuiButtonInterface {
 
     fun setDurability(durability: Short): GuiButton
 
-    var listener: ButtonListener?
+    fun getClickListener(): ButtonListener?
 
 }

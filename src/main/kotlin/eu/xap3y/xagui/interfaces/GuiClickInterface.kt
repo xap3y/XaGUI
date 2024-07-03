@@ -4,6 +4,7 @@ import org.bukkit.event.inventory.InventoryClickEvent
 
 /**
  * Interface for click event listeners
+ *
  * @see GuiInterface
  */
 interface GuiClickInterface {

@@ -2,6 +2,7 @@
 
 package eu.xap3y.xagui
 
+import eu.xap3y.xagui.exceptions.PageOutOfBoundException
 import eu.xap3y.xagui.exceptions.RowsOutOfBoundException
 import eu.xap3y.xagui.exceptions.SlotOutOfBoundException
 import eu.xap3y.xagui.interfaces.*
@@ -327,6 +328,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Clear the button in a slot
+     *
      * @param page The page of the menu
      * @param slot The slot to clear
      */
@@ -344,6 +346,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Clear all buttons in the menu
+     *
      * @param page The page of the menu
      */
     override fun clearAllSlots(page: Int) {
@@ -353,12 +356,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Get the plugin that owns the menu
+     *
      * @return The plugin that owns the menu
      */
     override fun getOwner(): JavaPlugin = plugin
 
     /**
      * Unlock a slot so the player can take items from it
+     *
      * @param slot The slot to unlock
      * @throws SlotOutOfBoundException If the slot is out of bounds
      */
@@ -369,6 +374,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Unlock a slot so the player can take items from it
+     *
      * @param page The page of the menu
      * @param slot The slot to unlock
      * @throws SlotOutOfBoundException If the slot is out of bounds
@@ -381,6 +387,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Lock a slot
+     *
      * @param slot The slot to lock
      * @throws SlotOutOfBoundException If the slot is out of bounds
      */
@@ -391,6 +398,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Lock a slot
+     *
      * @param page The page of the menu
      * @param slot The slot to lock
      * @throws SlotOutOfBoundException If the slot is out of bounds
@@ -403,6 +411,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Open the menu for a player
+     *
      * @param player The player to open the menu for
      */
     override fun open(player: Player) {
@@ -411,6 +420,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Open a specific page of the menu for a player
+     *
      * @param page The page to open
      * @param player The player to open the menu for
      */
@@ -420,21 +430,25 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     /**
      * Switch the page of the menu for a player
-     * @param page The page to switch to
+     *
+     * @param pageIndex The index of a page to switch to
      * @param player The player to switch the page for
+     * @throws PageOutOfBoundException If the page is out of bounds
      */
-    override fun switchPage(page: Int, player: Player) {
+    @Throws(PageOutOfBoundException::class)
+    override fun switchPage(pageIndex: Int, player: Player) {
+        if (pageIndex > totalPages-1 || pageIndex < 0) throw PageOutOfBoundException()
         val oldPage: Int = currentOpenedPage
-        currentOpenedPage = page
+        currentOpenedPage = pageIndex
         val inv: Inventory = invMapping[currentOpenedPage] ?: return
         stickySlots.forEach {
-            setSlot(page, it, pageMapping[0]?.get(it) ?: return@forEach)
+            setSlot(pageIndex, it, pageMapping[0]?.get(it) ?: return@forEach)
         }
         Bukkit.getScheduler().runTask(plugin, Runnable {
             //plugin.server.pluginManager.callEvent(GuiPageSwitchEvent(player, page, currentOpenedPage, inv, invMapping[currentOpenedPage]))
             player.openInventory(inv)
         })
-        this.onPageSwitchAction?.onPageSwitch(GuiPageSwitchModel(player, page, oldPage))
+        this.onPageSwitchAction?.onPageSwitch(GuiPageSwitchModel(player, pageIndex, oldPage))
     }
 
     /**

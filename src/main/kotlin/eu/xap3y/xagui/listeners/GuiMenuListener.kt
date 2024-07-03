@@ -36,7 +36,7 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
         val button: GuiButtonInterface = clickedInventory.getSlot(e.slot) ?: return
 
-        button.listener?.onClick(e)
+        button.getClickListener()?.onClick(e)
 
     }
 
