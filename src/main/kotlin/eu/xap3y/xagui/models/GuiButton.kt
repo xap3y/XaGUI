@@ -11,24 +11,34 @@ import org.bukkit.inventory.ItemStack
 
 /**
  * Represents a button in a GUI
+ *
+ * It can be clickable and have a listener
+ * You can set the item, name, lore, amount, enchantments, durability, item flags
+ *
+ * @see GuiButtonInterface
+ * @see ButtonListener
+ * @param item The ItemStack of the button
+ *
  */
-@Suppress("INAPPLICABLE_JVM_NAME")
 class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * The icon of the button
+     *
      * @return The material of the button
      */
     override fun getIcon(): Material = icon.type
 
     /**
      * The item of the button
-     * @return The itemstack of the button
+     *
+     * @return The ItemStack of the button
      */
     override fun getItem(): ItemStack = icon
 
     /**
      * Sets the item of the button
+     *
      * @param item The new itemstack
      */
     override fun setItem(item: ItemStack) {
@@ -37,6 +47,9 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Sets the listener of the button
+     *
+     * Use this if you are writing in Kotlin
+     *
      * @param newListener The new listener
      * @return The button with the new listener
      */
@@ -51,6 +64,9 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Sets the listener of the button
+     *
+     * Use this if you are writing in Java so no return statement is needed
+     *
      * @param newListener The new listener
      * @return The button with the new listener
      */
@@ -61,6 +77,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Sets the name of the button
+     *
      * @param name The new name
      * @return The button with the new name
      */
@@ -75,10 +92,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Sets the lore of the button
+     *
      * @param newLore The new lore
      * @return The button with the new lore
      */
-    override fun setLore(newLore: List<String>): GuiButton {
+    override fun setLoreList(newLore: List<String>): GuiButton {
         val newLore2: List<String> = newLore.map { ChatColor.translateAlternateColorCodes('&', it) }
         icon.apply {
             itemMeta = itemMeta.apply {
@@ -90,26 +108,27 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Sets the lore of the button
+     *
      * @param args The new lore
      * @return The button with the new lore
      */
-    @JvmName("setLoreArgs")
     override fun setLore(vararg args: String): GuiButton {
-        return setLore(*args)
+        return setLoreList(args.toList())
     }
 
     /**
      * Sets the lore of the button
+     *
      * @param array The new lore
      * @return The button with the new lore
      */
-    @JvmName("setLoreArray")
-    override fun setLore(array: Array<String>): GuiButton {
-        return setLore(array.toList())
+    override fun setLoreArray(array: Array<String>): GuiButton {
+        return setLoreList(array.toList())
     }
 
     /**
      * Adds a line to the lore of the button
+     *
      * @param line The line to add
      * @return The button with the line added
      */
@@ -124,10 +143,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Adds lore to the button
+     *
      * @param lines The lore to add
      * @return The button with the lore added
      */
-    override fun addLore(lines: List<String>): GuiButton {
+    override fun addLoreList(lines: List<String>): GuiButton {
         val lines2: List<String> = lines.map { ChatColor.translateAlternateColorCodes('&', it) }
         icon.apply {
             itemMeta = itemMeta.apply {
@@ -139,26 +159,27 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Adds lore to the button
+     *
      * @param args The lore to add
      * @return The button with the lore added
      */
-    @JvmName("addLoreArgs")
     override fun addLore(vararg args: String): GuiButton {
-        return addLore(*args)
+        return addLoreList(args.toList())
     }
 
     /**
      * Adds lore to the button
+     *
      * @param array The lore to add
      * @return The button with the lore added
      */
-    @JvmName("addLoreArray")
-    override fun addLore(array: Array<String>): GuiButton {
-        return addLore(array)
+    override fun addLoreArray(array: Array<String>): GuiButton {
+        return addLoreList(array.toList())
     }
 
     /**
      * Clears the lore of the button
+     *
      * @return The button with the lore cleared
      */
     override fun clearLore(): GuiButton {
@@ -172,6 +193,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Sets the amount of the button
+     *
      * @param amount The new amount
      * @return The button with the new amount
      */
@@ -182,6 +204,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Adds an enchantment to the button
+     *
      * @param enchantment The enchantment to add
      * @return The button with the enchantment added
      */
@@ -192,6 +215,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Adds an enchantment to the button
+     *
      * @param enchantment The enchantment to add
      * @param level The level of the enchantment
      * @return The button with the enchantment added
@@ -203,6 +227,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Removes an enchantment from the button
+     *
      * @param enchantment The enchantment to remove
      * @return The button with the enchantment removed
      */
@@ -213,6 +238,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Removes all enchantments from the button
+     *
      * @return The button with all enchantments removed
      */
     override fun removeAllEnchantments(): GuiButton {
@@ -222,6 +248,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Sets the durability of the button
+     *
      * @param durability The new durability
      * @return The button with the new durability
      */
@@ -232,6 +259,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Adds an item flag to the button
+     *
      * @param flag The flag to add
      * @return The button with the flag added
      */
@@ -242,6 +270,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     /**
      * Removes an item flag from the button
+     *
      * @param flag The flag to remove
      * @return The button with the flag removed
      */
@@ -255,7 +284,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     private var icon: ItemStack = item
 
-    override var listener: ButtonListener? = null
+    private var listener: ButtonListener? = null
+
+    override fun getClickListener(): ButtonListener? {
+        return listener
+    }
 
 
 }

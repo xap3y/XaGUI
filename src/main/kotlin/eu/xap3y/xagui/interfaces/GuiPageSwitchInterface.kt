@@ -4,6 +4,7 @@ import eu.xap3y.xagui.models.GuiPageSwitchModel
 
 /**
  * Interface for page switch event listeners
+ *
  * @see GuiInterface
  */
 interface GuiPageSwitchInterface {
