@@ -18,7 +18,7 @@ public class Example {
                 menu.updateSlot(4, new ItemStack(Material.DIAMOND, 1));
         });
 
-        Integer[] unlockedSlots = {10, 11, 12, 13, 14, 15, 16};
+        int[] unlockedSlots = {10, 11, 12, 13, 14, 15, 16};
 
         // Unlock all slots
         for (Integer unlockedSlot : unlockedSlots) {

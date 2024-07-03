@@ -21,9 +21,25 @@ interface GuiButtonInterface {
 
     fun withListener(newListener: (InventoryClickEvent) -> Unit): GuiButton
 
+    fun withListener(newListener: ButtonListener): GuiButton
+
     fun setName(name: String): GuiButton
 
     fun setLore(newLore: List<String>): GuiButton
+
+    fun setLore(vararg args: String): GuiButton
+
+    fun setLore(array: Array<String>): GuiButton
+
+    fun addLoreLine(line: String): GuiButton
+
+    fun addLore(lines: List<String>): GuiButton
+
+    fun addLore(vararg args: String): GuiButton
+
+    fun addLore(array: Array<String>): GuiButton
+
+    fun clearLore(): GuiButton
 
     fun addItemFlag(flag: ItemFlag): GuiButton
 
