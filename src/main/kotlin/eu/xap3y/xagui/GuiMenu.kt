@@ -2,6 +2,7 @@
 
 package eu.xap3y.xagui
 
+import com.cryptomorin.xseries.XMaterial
 import eu.xap3y.xagui.exceptions.PageOutOfBoundException
 import eu.xap3y.xagui.exceptions.RowsOutOfBoundException
 import eu.xap3y.xagui.exceptions.SlotOutOfBoundException
@@ -490,7 +491,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param slots The slots to fill
      */
     override fun fillSlots(slots: Set<Int>) {
-        fillSlots(currentOpenedPage, slots, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }})
+        fillSlots(currentOpenedPage, slots, ItemStack(XMaterial.GRAY_STAINED_GLASS_PANE.parseMaterial() ?: Material.AIR).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }})
     }
 
     /**
@@ -508,7 +509,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param slots The slots to fill
      */
     override fun fillSlots(page: Int, slots: Set<Int>) {
-        fillSlots(page, slots, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
+        fillSlots(page, slots, ItemStack(XMaterial.GRAY_STAINED_GLASS_PANE.parseMaterial() ?: Material.AIR).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
     }
 
     /**
@@ -561,7 +562,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     @Throws(RowsOutOfBoundException::class)
     fun fillBorder(rows: Int) {
         if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
-        fillBorder(rows, ItemStack(Material.GRAY_STAINED_GLASS_PANE).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
+        fillBorder(rows, ItemStack(XMaterial.GRAY_STAINED_GLASS_PANE.parseMaterial() ?: Material.AIR).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
     }
     //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
 }
