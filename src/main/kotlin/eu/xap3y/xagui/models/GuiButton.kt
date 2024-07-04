@@ -221,7 +221,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @return The button with the enchantment added
      */
     override fun addEnchantment(enchantment: Enchantment, level: Int): GuiButton {
-        icon.addUnsafeEnchantment(enchantment, level)
+        icon = icon.apply {
+            itemMeta = itemMeta.apply {
+                addUnsafeEnchantment(enchantment, level)
+            }
+        }
         return this
     }
 
@@ -242,7 +246,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @return The button with all enchantments removed
      */
     override fun removeAllEnchantments(): GuiButton {
-        icon.enchantments.clear()
+        icon = icon.apply {
+            itemMeta = itemMeta.apply {
+                enchants.clear()
+            }
+        }
         return this
     }
 
@@ -264,7 +272,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @return The button with the flag added
      */
     override fun addItemFlag(flag: ItemFlag): GuiButton {
-        icon.itemMeta?.addItemFlags(flag)
+        icon = icon.apply {
+            itemMeta = itemMeta.apply {
+                addItemFlags(flag)
+            }
+        }
         return this
     }
 
@@ -275,7 +287,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @return The button with the flag removed
      */
     override fun removeItemFlag(flag: ItemFlag): GuiButton {
-        icon.itemMeta?.removeItemFlags(flag)
+        icon = icon.apply {
+            itemMeta = itemMeta.apply {
+                removeItemFlags(flag)
+            }
+        }
         return this
     }
 
