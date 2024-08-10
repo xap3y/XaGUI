@@ -570,7 +570,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     override fun fillBorder() {
         (totalPages-1).let {
             for (i in 0..it) {
-                fillBorder(i, GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("").getItem())
+                fillBorder(i, (XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).apply {
+                    itemMeta = itemMeta.apply {
+                        setDisplayName("")
+                    }
+                })
             }
         }
         //fillBorder(currentOpenedPage, GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("").getItem())
