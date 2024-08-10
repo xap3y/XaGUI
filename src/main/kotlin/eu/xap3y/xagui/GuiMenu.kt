@@ -537,14 +537,34 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     /**
-     * Fill the border of the menu with an item
-     * @param rows The number of rows in the menu
-     * @param item The item to fill the border with
-     * @throws RowsOutOfBoundException If the number of rows is out of bounds
+     * Add a close button to the menu
      */
-    @Throws(RowsOutOfBoundException::class)
-    fun fillBorder(rows: Int, item: ItemStack) {
-        if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
+    override fun addCloseButton() {
+        addCloseButton(GuiButton(ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR).apply { itemMeta = itemMeta.apply { setDisplayName("&c&lClose") }}).getItem())
+    }
+
+    /**
+     * Add a close button to the menu
+     * @param button The button to add
+     */
+    override fun addCloseButton(button: ItemStack) {
+        val row = rows - 1
+        val middle = 4
+        setSlot(row * 9 + middle, GuiButton(button).withListener { it.whoClicked.closeInventory() })
+    }
+
+    /**
+     * Fills a border with gray stained glass panes
+     */
+    override fun fillBorder() {
+        fillBorder(GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("").getItem())
+    }
+
+    /**
+     * Fills a border with specified itemstack
+     * @param item ItemStack to fill border with
+     */
+    override fun fillBorder(item: ItemStack) {
         val slots = mutableSetOf<Int>()
         for (i in 0 until rows * 9) {
             if (i < 9 || i >= (rows - 1) * 9 || i % 9 == 0 || i % 9 == 8) {
@@ -555,14 +575,12 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     /**
-     * Fill the border of the menu with an item
-     * @param rows The number of rows in the menu
-     * @throws RowsOutOfBoundException If the number of rows is out of bounds
+     * Fills a border with specified material
+     * @param material Material to fill border with
      */
-    @Throws(RowsOutOfBoundException::class)
-    fun fillBorder(rows: Int) {
-        if (rows > this.rows || rows < 1) throw RowsOutOfBoundException()
-        fillBorder(rows, ItemStack(XMaterial.GRAY_STAINED_GLASS_PANE.parseMaterial() ?: Material.AIR).apply { itemMeta = itemMeta.apply { setDisplayName(" ") }} )
+    override fun fillBorder(material: Material) {
+        fillBorder(ItemStack(material))
     }
+
     //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
 }

@@ -1,5 +1,6 @@
 package eu.xap3y.xagui.interfaces
 
+import eu.xap3y.xagui.GuiMenu
 import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
@@ -59,5 +60,11 @@ interface GuiButtonInterface {
     fun setDurability(durability: Short): GuiButton
 
     fun getClickListener(): ButtonListener?
+
+    fun clone(): GuiButton
+
+    fun setRedirect(menu: GuiMenu)
+
+    fun getRedirect(): GuiMenu?
 
 }

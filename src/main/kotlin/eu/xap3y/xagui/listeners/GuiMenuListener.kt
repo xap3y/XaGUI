@@ -2,6 +2,7 @@ package eu.xap3y.xagui.listeners
 
 import eu.xap3y.xagui.GuiMenu
 import eu.xap3y.xagui.interfaces.GuiButtonInterface
+import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -37,6 +38,8 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
         val button: GuiButtonInterface = clickedInventory.getSlot(e.slot) ?: return
 
         button.getClickListener()?.onClick(e)
+
+        button.getRedirect()?.open(e.whoClicked as Player)
 
     }
 
