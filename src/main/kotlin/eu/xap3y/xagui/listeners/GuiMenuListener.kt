@@ -20,10 +20,13 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
     @EventHandler
     fun onInventoryClick(e: InventoryClickEvent) {
-        if (e.clickedInventory == null || e.clickedInventory?.holder !is GuiMenu) return
 
-        (e.whoClicked as Player).sendMessage("Clicked SLOT: ${e.slot}")
-        e.result = Event.Result.DENY
+        if (e.clickedInventory == null || e.clickedInventory?.holder !is GuiMenu) {
+            if (e.view.topInventory.holder is GuiMenu) {
+                e.result = Event.Result.DENY
+            }
+            return
+        }
 
         val clickedInventory = (e.clickedInventory?.holder ?: return) as GuiMenu
 
@@ -45,7 +48,6 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
         button.getClickListener()?.onClick(e)
 
         button.callRedirect(e.whoClicked as Player)
-
     }
 
     @EventHandler
