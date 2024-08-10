@@ -39,7 +39,7 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
         button.getClickListener()?.onClick(e)
 
-        button.getRedirect()?.open(e.whoClicked as Player)
+        button.callRedirect(e.whoClicked as Player)
 
     }
 

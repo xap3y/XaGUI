@@ -18,12 +18,12 @@ $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/addLore/#kotlin.Arr
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/addLoreArray/#kotlin.Array[kotlin.String]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/add-lore-array.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/addLoreLine/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/add-lore-line.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/addLoreList/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/add-lore-list.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/callRedirect/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/call-redirect.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/clearLore/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/clear-lore.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/clone/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/clone.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/getClickListener/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/get-click-listener.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/getIcon/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/get-icon.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/getItem/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/get-item.html
-$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/getRedirect/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/get-redirect.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/removeAllEnchantments/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/remove-all-enchantments.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/removeEnchantment/#org.bukkit.enchantments.Enchantment/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/remove-enchantment.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/removeItemFlag/#org.bukkit.inventory.ItemFlag/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/remove-item-flag.html
@@ -36,7 +36,7 @@ $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setLoreList/#kotlin
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-name.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/withListener/#eu.xap3y.xagui.interfaces.ButtonListener/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/with-listener.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/withListener/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/with-listener.html
-$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/withRedirect/#eu.xap3y.xagui.GuiMenu/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/with-redirect.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/withRedirect/#kotlin.Function0[eu.xap3y.xagui.GuiMenu]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/with-redirect.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiClickInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-click-interface/index.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiClickInterface/onClick/#org.bukkit.event.inventory.InventoryClickEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-click-interface/on-click.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiCloseInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-close-interface/index.html
@@ -115,12 +115,12 @@ $dokka.location:eu.xap3y.xagui.models/GuiButton/addLore/#kotlin.Array[kotlin.Str
 $dokka.location:eu.xap3y.xagui.models/GuiButton/addLoreArray/#kotlin.Array[kotlin.String]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/add-lore-array.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/addLoreLine/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/add-lore-line.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/addLoreList/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/add-lore-list.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/callRedirect/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/call-redirect.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/clearLore/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/clear-lore.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/clone/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/clone.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/getClickListener/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/get-click-listener.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/getIcon/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/get-icon.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/getItem/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/get-item.html
-$dokka.location:eu.xap3y.xagui.models/GuiButton/getRedirect/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/get-redirect.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/removeAllEnchantments/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/remove-all-enchantments.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/removeEnchantment/#org.bukkit.enchantments.Enchantment/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/remove-enchantment.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/removeItemFlag/#org.bukkit.inventory.ItemFlag/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/remove-item-flag.html
@@ -133,7 +133,7 @@ $dokka.location:eu.xap3y.xagui.models/GuiButton/setLoreList/#kotlin.collections.
 $dokka.location:eu.xap3y.xagui.models/GuiButton/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-name.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/withListener/#eu.xap3y.xagui.interfaces.ButtonListener/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/with-listener.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/withListener/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/with-listener.html
-$dokka.location:eu.xap3y.xagui.models/GuiButton/withRedirect/#eu.xap3y.xagui.GuiMenu/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/with-redirect.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/withRedirect/#kotlin.Function0[eu.xap3y.xagui.GuiMenu]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/with-redirect.html
 $dokka.location:eu.xap3y.xagui.models/GuiPageSwitchModel///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-page-switch-model/index.html
 $dokka.location:eu.xap3y.xagui.models/GuiPageSwitchModel/GuiPageSwitchModel/#org.bukkit.entity.Player#kotlin.Int#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-page-switch-model/-gui-page-switch-model.html
 $dokka.location:eu.xap3y.xagui.models/GuiPageSwitchModel/oldPage/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-page-switch-model/old-page.html
