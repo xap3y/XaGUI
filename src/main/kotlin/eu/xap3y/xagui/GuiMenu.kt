@@ -544,11 +544,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * Add a close button to the menu
      */
     override fun addCloseButton() {
+
         addCloseButton(0, ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR))
+
     }
 
     /**
      * Add a close button to the menu
+
      */
     override fun addCloseButtonAllPages() {
         for (i in 0 until totalPages) {
@@ -574,6 +577,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
             }
         }
         //fillBorder(currentOpenedPage, GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("").getItem())
+
     }
 
     /**
@@ -605,6 +609,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun fillBorder(material: Material) {
         fillBorder(ItemStack(material))
+
     }
 
     /**
