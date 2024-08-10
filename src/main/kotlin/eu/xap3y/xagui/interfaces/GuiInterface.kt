@@ -3,6 +3,7 @@ package eu.xap3y.xagui.interfaces
 import eu.xap3y.xagui.models.GuiPageSwitchModel
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
@@ -117,5 +118,18 @@ interface GuiInterface {
     fun fillBorder(item: ItemStack)
 
     fun fillBorder(material: Material)
+
+    fun setSelfInventoryAccess(value: Boolean)
+
+    fun getSelfInventoryAccess(): Boolean
+
+    fun allowClickTypes(vararg types: ClickType)
+
+    fun blacklistClickTypes(vararg types: ClickType)
+
+    fun getAllowedClickTypes(): Set<ClickType>
+
+    fun getBlacklistedClickTypes(): Set<ClickType>
+
 
 }

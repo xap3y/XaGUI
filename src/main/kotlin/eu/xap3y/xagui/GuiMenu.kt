@@ -13,6 +13,7 @@ import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
@@ -38,6 +39,9 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     private val stickySlots = mutableSetOf<Int>()
     private var name: String
     private var rows: Int
+    private var unlockSelfInventoryClick: Boolean = false
+    private val allowedClickTypes = mutableSetOf<ClickType>()
+    private val blacklistedClickTypes = mutableSetOf<ClickType>()
 
     var onCloseAction: GuiCloseInterface? = null
 
@@ -580,6 +584,54 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun fillBorder(material: Material) {
         fillBorder(ItemStack(material))
+    }
+
+    /**
+     * If the player can access their own inventory
+     * @param value The new value (boolean)
+     */
+    override fun setSelfInventoryAccess(value: Boolean) {
+        unlockSelfInventoryClick = value
+    }
+
+    /**
+     * If the player can access their own inventory
+     * @return If the player can access their own inventory
+     */
+    override fun getSelfInventoryAccess(): Boolean {
+        return unlockSelfInventoryClick
+    }
+
+    /**
+     * Allow a set of click types
+     * @param types The click types to allow
+     */
+    override fun allowClickTypes(vararg types: ClickType) {
+        allowedClickTypes.addAll(types.toSet())
+    }
+
+    /**
+     * Get the allowed click types
+     * @return The allowed click types
+     */
+    override fun getAllowedClickTypes(): Set<ClickType> {
+        return allowedClickTypes
+    }
+
+    /**
+     * Blacklist a set of click types
+     * @param types The click types to blacklist
+     */
+    override fun blacklistClickTypes(vararg types: ClickType) {
+        blacklistedClickTypes.addAll(types.toSet())
+    }
+
+    /**
+     * Get the blacklisted click types
+     * @return The blacklisted click types
+     */
+    override fun getBlacklistedClickTypes(): Set<ClickType> {
+        return blacklistedClickTypes
     }
 
     //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
