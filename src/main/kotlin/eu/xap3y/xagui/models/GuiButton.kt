@@ -310,10 +310,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * Redirect player to another menu
      *
      * @param menu The menu to redirect to after clicking
-     * @return The cloned button
+     * @return The button with the new redirect
      */
-    override fun setRedirect(menu: GuiMenu) {
+    override fun withRedirect(menu: GuiMenu): GuiButton {
         redirectMenu = menu
+        return this
     }
 
     /**
