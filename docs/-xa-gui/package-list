@@ -34,9 +34,9 @@ $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setLore/#kotlin.Arr
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setLoreArray/#kotlin.Array[kotlin.String]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-lore-array.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setLoreList/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-lore-list.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-name.html
-$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/setRedirect/#eu.xap3y.xagui.GuiMenu/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/set-redirect.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/withListener/#eu.xap3y.xagui.interfaces.ButtonListener/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/with-listener.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/withListener/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/with-listener.html
+$dokka.location:eu.xap3y.xagui.interfaces/GuiButtonInterface/withRedirect/#eu.xap3y.xagui.GuiMenu/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-button-interface/with-redirect.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiClickInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-click-interface/index.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiClickInterface/onClick/#org.bukkit.event.inventory.InventoryClickEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-click-interface/on-click.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiCloseInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-close-interface/index.html
@@ -131,9 +131,9 @@ $dokka.location:eu.xap3y.xagui.models/GuiButton/setLore/#kotlin.Array[kotlin.Str
 $dokka.location:eu.xap3y.xagui.models/GuiButton/setLoreArray/#kotlin.Array[kotlin.String]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-lore-array.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/setLoreList/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-lore-list.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/setName/#kotlin.String/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-name.html
-$dokka.location:eu.xap3y.xagui.models/GuiButton/setRedirect/#eu.xap3y.xagui.GuiMenu/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/set-redirect.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/withListener/#eu.xap3y.xagui.interfaces.ButtonListener/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/with-listener.html
 $dokka.location:eu.xap3y.xagui.models/GuiButton/withListener/#kotlin.Function1[org.bukkit.event.inventory.InventoryClickEvent,kotlin.Unit]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/with-listener.html
+$dokka.location:eu.xap3y.xagui.models/GuiButton/withRedirect/#eu.xap3y.xagui.GuiMenu/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-button/with-redirect.html
 $dokka.location:eu.xap3y.xagui.models/GuiPageSwitchModel///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-page-switch-model/index.html
 $dokka.location:eu.xap3y.xagui.models/GuiPageSwitchModel/GuiPageSwitchModel/#org.bukkit.entity.Player#kotlin.Int#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-page-switch-model/-gui-page-switch-model.html
 $dokka.location:eu.xap3y.xagui.models/GuiPageSwitchModel/oldPage/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.models/-gui-page-switch-model/old-page.html

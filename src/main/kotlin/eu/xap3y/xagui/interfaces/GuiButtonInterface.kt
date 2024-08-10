@@ -63,7 +63,7 @@ interface GuiButtonInterface {
 
     fun clone(): GuiButton
 
-    fun setRedirect(menu: GuiMenu)
+    fun withRedirect(menu: GuiMenu): GuiButton
 
     fun getRedirect(): GuiMenu?
 
