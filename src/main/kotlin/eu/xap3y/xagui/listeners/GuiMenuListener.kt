@@ -22,6 +22,9 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
     fun onInventoryClick(e: InventoryClickEvent) {
         if (e.clickedInventory == null || e.clickedInventory?.holder !is GuiMenu) return
 
+        (e.whoClicked as Player).sendMessage("Clicked SLOT: ${e.slot}")
+        e.result = Event.Result.DENY
+
         val clickedInventory = (e.clickedInventory?.holder ?: return) as GuiMenu
 
         val owner = clickedInventory.getOwner()
@@ -31,6 +34,8 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
         if (!allowClick) {
             e.result = Event.Result.DENY
+        } else {
+            e.result = Event.Result.ALLOW
         }
 
         clickedInventory.onClickAction?.onClick(e)
