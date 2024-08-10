@@ -540,7 +540,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * Add a close button to the menu
      */
     override fun addCloseButton() {
-        addCloseButton(GuiButton(ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR).apply { itemMeta = itemMeta.apply { setDisplayName("&c&lClose") }}).getItem())
+        addCloseButton(ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR))
     }
 
     /**
@@ -550,7 +550,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     override fun addCloseButton(button: ItemStack) {
         val row = rows - 1
         val middle = 4
-        setSlot(row * 9 + middle, GuiButton(button).withListener { it.whoClicked.closeInventory() })
+        setSlot(row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
     }
 
     /**
