@@ -108,4 +108,14 @@ interface GuiInterface {
 
     fun fillSlots(page: Int, slots: Set<Int>, button: GuiButtonInterface)
 
+    fun addCloseButton()
+
+    fun addCloseButton(button: ItemStack)
+
+    fun fillBorder()
+
+    fun fillBorder(item: ItemStack)
+
+    fun fillBorder(material: Material)
+
 }

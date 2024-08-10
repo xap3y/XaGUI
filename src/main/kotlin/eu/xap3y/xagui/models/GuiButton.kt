@@ -1,10 +1,12 @@
 package eu.xap3y.xagui.models
 
+import eu.xap3y.xagui.GuiMenu
 import eu.xap3y.xagui.interfaces.ButtonListener
 import eu.xap3y.xagui.interfaces.GuiButtonInterface
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
+import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -295,12 +297,42 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
         return this
     }
 
+    /**
+     * Clone a button class
+     *
+     * @return The cloned button
+     */
+    override fun clone(): GuiButton {
+        return this.clone()
+    }
+
+    /**
+     * Redirect player to another menu
+     *
+     * @param menu The menu to redirect to after clicking
+     * @return The cloned button
+     */
+    override fun setRedirect(menu: GuiMenu) {
+        redirectMenu = menu
+    }
+
+    /**
+     * Redirect player to another menu
+     *
+     * @return The cloned button
+     */
+    override fun getRedirect(): GuiMenu? {
+        return redirectMenu
+    }
+
 
     //override fun getListener(): ButtonListener? = listener
 
     private var icon: ItemStack = item
 
     private var listener: ButtonListener? = null
+
+    private var redirectMenu: GuiMenu? = null
 
     override fun getClickListener(): ButtonListener? {
         return listener
