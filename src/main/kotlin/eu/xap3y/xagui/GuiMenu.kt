@@ -4,7 +4,6 @@ package eu.xap3y.xagui
 
 import com.cryptomorin.xseries.XMaterial
 import eu.xap3y.xagui.exceptions.PageOutOfBoundException
-import eu.xap3y.xagui.exceptions.RowsOutOfBoundException
 import eu.xap3y.xagui.exceptions.SlotOutOfBoundException
 import eu.xap3y.xagui.interfaces.*
 import eu.xap3y.xagui.models.GuiButton
@@ -554,14 +553,24 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     override fun addCloseButton(button: ItemStack) {
         val row = rows - 1
         val middle = 4
+        (totalPages-1).let { page ->
+            for (i in 0 until page) {
+                setSlot(i, row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
+            }
+        }
         setSlot(row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
     }
 
     /**
-     * Fills a border with gray stained glass panes
+     * Fills a border for all pages with gray stained glass panes
      */
     override fun fillBorder() {
-        fillBorder(GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("").getItem())
+        (totalPages-1).let {
+            for (i in 0..it) {
+                fillBorder(i, GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("").getItem())
+            }
+        }
+        //fillBorder(currentOpenedPage, GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("").getItem())
     }
 
     /**
@@ -569,13 +578,22 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param item ItemStack to fill border with
      */
     override fun fillBorder(item: ItemStack) {
+        fillBorder(currentOpenedPage, item)
+    }
+
+    /**
+     * Fills a border with specified ItemStack for a specific page
+     * @param page The page of the menu
+     * @param item ItemStack to fill border with
+     */
+    override fun fillBorder(page: Int, item: ItemStack) {
         val slots = mutableSetOf<Int>()
         for (i in 0 until rows * 9) {
             if (i < 9 || i >= (rows - 1) * 9 || i % 9 == 0 || i % 9 == 8) {
                 slots.add(i)
             }
         }
-        fillSlots(slots, item)
+        fillSlots(page, slots, item)
     }
 
     /**

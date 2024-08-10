@@ -115,6 +115,8 @@ interface GuiInterface {
 
     fun fillBorder()
 
+    fun fillBorder(page: Int, item: ItemStack)
+
     fun fillBorder(item: ItemStack)
 
     fun fillBorder(material: Material)
