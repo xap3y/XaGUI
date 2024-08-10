@@ -113,6 +113,8 @@ interface GuiInterface {
 
     fun addCloseButton(button: ItemStack)
 
+    fun addCloseButton(page: Int, button: ItemStack)
+
     fun fillBorder()
 
     fun fillBorder(page: Int, item: ItemStack)

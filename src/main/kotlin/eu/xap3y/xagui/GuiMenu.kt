@@ -551,14 +551,19 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * @param button The button to add
      */
     override fun addCloseButton(button: ItemStack) {
-        val row = rows - 1
-        val middle = 4
         (totalPages-1).let { page ->
             for (i in 0 until page) {
-                setSlot(i, row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
+                addCloseButton(i, button)
             }
         }
         //setSlot(row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
+    }
+
+    override fun addCloseButton(page: Int, button: ItemStack) {
+        val row = rows - 1
+        val middle = 4
+        val slot = row * 9 + middle
+        setSlot(page, slot, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
     }
 
     /**
