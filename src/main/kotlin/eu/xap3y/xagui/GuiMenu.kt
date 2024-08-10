@@ -28,6 +28,7 @@ import kotlin.jvm.Throws
  * @param plugin The plugin that owns the menu
  * @param title The title of the menu
  * @param rowsToSet The number of rows the menu should have
+ * @param pages The number of pages the menu should have
  */
 class GuiMenu(private val plugin: JavaPlugin, private val title: String, private val rowsToSet: Int, private val pages: Int): InventoryHolder, GuiInterface {
 
@@ -543,18 +544,15 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      * Add a close button to the menu
      */
     override fun addCloseButton() {
-        addCloseButton(ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR))
+        addCloseButton(0, ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR))
     }
 
     /**
      * Add a close button to the menu
-     * @param button The button to add
      */
-    override fun addCloseButton(button: ItemStack) {
-        (totalPages-1).let { page ->
-            for (i in 0 until page) {
-                addCloseButton(i, button)
-            }
+    override fun addCloseButtonAllPages() {
+        for (i in 0 until totalPages) {
+            addCloseButton(i, ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR))
         }
         //setSlot(row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
     }

@@ -111,7 +111,7 @@ interface GuiInterface {
 
     fun addCloseButton()
 
-    fun addCloseButton(button: ItemStack)
+    fun addCloseButtonAllPages()
 
     fun addCloseButton(page: Int, button: ItemStack)
 
