@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>GuiButtonInterface</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            XaGui
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter="XaGui/JVM">JVM</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="XaGui::eu.xap3y.xagui.interfaces/GuiButtonInterface///PointingToDeclaration//-1051066164">
+  <div class="breadcrumbs"><a href="../../../index.html">XaGui</a><span class="delimiter">/</span><a href="../index.html">eu.xap3y.xagui.interfaces</a><span class="delimiter">/</span><span class="current">GuiButtonInterface</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Gui</span><wbr></wbr><span>Button</span><wbr></wbr><span><span>Interface</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">GuiButtonInterface</a></div><p class="paragraph">Interface for buttons in a GUI</p><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-button-listener/index.html"><span>Button</span><wbr></wbr><span><span>Listener</span></span></a></div></span></div><div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1777075647%2FFunctions%2F-1051066164" anchor-label="addEnchantment" id="-1777075647%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-enchantment.html"><span>add</span><wbr></wbr><span><span>Enchantment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1777075647%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="add-enchantment.html"><span class="token function">addEnchantment</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">enchantment<span class="token operator">: </span><span data-unresolved-link="org.bukkit.enchantments/Enchantment///PointingToDeclaration/">Enchantment</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="add-enchantment.html"><span class="token function">addEnchantment</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">enchantment<span class="token operator">: </span><span data-unresolved-link="org.bukkit.enchantments/Enchantment///PointingToDeclaration/">Enchantment</span><span class="token punctuation">, </span></span><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1543660027%2FFunctions%2F-1051066164" anchor-label="addItemFlag" id="-1543660027%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-item-flag.html"><span>add</span><wbr></wbr><span>Item</span><wbr></wbr><span><span>Flag</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1543660027%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="add-item-flag.html"><span class="token function">addItemFlag</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">flag<span class="token operator">: </span><span data-unresolved-link="org.bukkit.inventory/ItemFlag///PointingToDeclaration/">ItemFlag</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1960931867%2FFunctions%2F-1051066164" anchor-label="addLore" id="-1960931867%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-lore.html"><span>add</span><wbr></wbr><span><span>Lore</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1960931867%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="add-lore.html"><span class="token function">addLore</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>args<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1638353666%2FFunctions%2F-1051066164" anchor-label="addLoreArray" id="1638353666%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-lore-array.html"><span>add</span><wbr></wbr><span>Lore</span><wbr></wbr><span><span>Array</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1638353666%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="add-lore-array.html"><span class="token function">addLoreArray</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">array<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1215171927%2FFunctions%2F-1051066164" anchor-label="addLoreLine" id="-1215171927%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-lore-line.html"><span>add</span><wbr></wbr><span>Lore</span><wbr></wbr><span><span>Line</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1215171927%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="add-lore-line.html"><span class="token function">addLoreLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">line<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1631625179%2FFunctions%2F-1051066164" anchor-label="addLoreList" id="1631625179%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-lore-list.html"><span>add</span><wbr></wbr><span>Lore</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1631625179%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="add-lore-list.html"><span class="token function">addLoreList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">lines<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="566825059%2FFunctions%2F-1051066164" anchor-label="clearLore" id="566825059%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-lore.html"><span>clear</span><wbr></wbr><span><span>Lore</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="566825059%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="clear-lore.html"><span class="token function">clearLore</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-159936599%2FFunctions%2F-1051066164" anchor-label="clone" id="-159936599%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clone.html"><span><span>clone</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-159936599%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="clone.html"><span class="token function">clone</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1033608590%2FFunctions%2F-1051066164" anchor-label="getClickListener" id="1033608590%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-click-listener.html"><span>get</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1033608590%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-click-listener.html"><span class="token function">getClickListener</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-button-listener/index.html">ButtonListener</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1421276649%2FFunctions%2F-1051066164" anchor-label="getIcon" id="-1421276649%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-icon.html"><span>get</span><wbr></wbr><span><span>Icon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1421276649%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-icon.html"><span class="token function">getIcon</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.bukkit/Material///PointingToDeclaration/">Material</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1780911293%2FFunctions%2F-1051066164" anchor-label="getItem" id="1780911293%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-item.html"><span>get</span><wbr></wbr><span><span>Item</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1780911293%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-item.html"><span class="token function">getItem</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="org.bukkit.inventory/ItemStack///PointingToDeclaration/">ItemStack</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="697254548%2FFunctions%2F-1051066164" anchor-label="getRedirect" id="697254548%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-redirect.html"><span>get</span><wbr></wbr><span><span>Redirect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="697254548%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-redirect.html"><span class="token function">getRedirect</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui/-gui-menu/index.html">GuiMenu</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2112922957%2FFunctions%2F-1051066164" anchor-label="removeAllEnchantments" id="2112922957%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-all-enchantments.html"><span>remove</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Enchantments</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2112922957%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="remove-all-enchantments.html"><span class="token function">removeAllEnchantments</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1452579196%2FFunctions%2F-1051066164" anchor-label="removeEnchantment" id="-1452579196%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-enchantment.html"><span>remove</span><wbr></wbr><span><span>Enchantment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1452579196%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="remove-enchantment.html"><span class="token function">removeEnchantment</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">enchantment<span class="token operator">: </span><span data-unresolved-link="org.bukkit.enchantments/Enchantment///PointingToDeclaration/">Enchantment</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1035424218%2FFunctions%2F-1051066164" anchor-label="removeItemFlag" id="1035424218%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-item-flag.html"><span>remove</span><wbr></wbr><span>Item</span><wbr></wbr><span><span>Flag</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1035424218%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="remove-item-flag.html"><span class="token function">removeItemFlag</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">flag<span class="token operator">: </span><span data-unresolved-link="org.bukkit.inventory/ItemFlag///PointingToDeclaration/">ItemFlag</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="784480874%2FFunctions%2F-1051066164" anchor-label="setAmount" id="784480874%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-amount.html"><span>set</span><wbr></wbr><span><span>Amount</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="784480874%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-amount.html"><span class="token function">setAmount</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">amount<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-290953044%2FFunctions%2F-1051066164" anchor-label="setDurability" id="-290953044%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-durability.html"><span>set</span><wbr></wbr><span><span>Durability</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-290953044%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-durability.html"><span class="token function">setDurability</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">durability<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html">Short</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1892719828%2FFunctions%2F-1051066164" anchor-label="setItem" id="1892719828%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-item.html"><span>set</span><wbr></wbr><span><span>Item</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1892719828%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-item.html"><span class="token function">setItem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">item<span class="token operator">: </span><span data-unresolved-link="org.bukkit.inventory/ItemStack///PointingToDeclaration/">ItemStack</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1642816858%2FFunctions%2F-1051066164" anchor-label="setLore" id="-1642816858%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-lore.html"><span>set</span><wbr></wbr><span><span>Lore</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1642816858%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-lore.html"><span class="token function">setLore</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>args<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2079330017%2FFunctions%2F-1051066164" anchor-label="setLoreArray" id="2079330017%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-lore-array.html"><span>set</span><wbr></wbr><span>Lore</span><wbr></wbr><span><span>Array</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2079330017%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-lore-array.html"><span class="token function">setLoreArray</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">array<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="686381306%2FFunctions%2F-1051066164" anchor-label="setLoreList" id="686381306%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-lore-list.html"><span>set</span><wbr></wbr><span>Lore</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="686381306%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-lore-list.html"><span class="token function">setLoreList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">newLore<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-885087509%2FFunctions%2F-1051066164" anchor-label="setName" id="-885087509%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-name.html"><span>set</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-885087509%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-name.html"><span class="token function">setName</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-491697431%2FFunctions%2F-1051066164" anchor-label="setRedirect" id="-491697431%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-redirect.html"><span>set</span><wbr></wbr><span><span>Redirect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-491697431%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-redirect.html"><span class="token function">setRedirect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">menu<span class="token operator">: </span><a href="../../eu.xap3y.xagui/-gui-menu/index.html">GuiMenu</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2110874398%2FFunctions%2F-1051066164" anchor-label="withListener" id="-2110874398%2FFunctions%2F-1051066164" data-filterable-set="XaGui/JVM"></a>
+          <div class="table-row" data-filterable-current="XaGui/JVM" data-filterable-set="XaGui/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="with-listener.html"><span>with</span><wbr></wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2110874398%2FFunctions%2F-1051066164"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="XaGui/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="with-listener.html"><span class="token function">withListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">newListener<span class="token operator">: </span><a href="../-button-listener/index.html">ButtonListener</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="with-listener.html"><span class="token function">withListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">newListener<span class="token operator">: </span><span class="token punctuation">(</span><span data-unresolved-link="org.bukkit.event.inventory/InventoryClickEvent///PointingToDeclaration/">InventoryClickEvent</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../eu.xap3y.xagui.models/-gui-button/index.html">GuiButton</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
