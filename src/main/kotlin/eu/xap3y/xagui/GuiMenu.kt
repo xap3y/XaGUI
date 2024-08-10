@@ -558,7 +558,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
                 setSlot(i, row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
             }
         }
-        setSlot(row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
+        //setSlot(row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
     }
 
     /**
