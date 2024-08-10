@@ -303,7 +303,10 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @return The cloned button
      */
     override fun clone(): GuiButton {
-        return this.clone()
+        val new = GuiButton(this.icon)
+        new.listener = this.listener
+        new.redirectMenu = this.redirectMenu
+        return new
     }
 
     /**
