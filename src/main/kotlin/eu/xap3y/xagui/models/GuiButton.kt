@@ -24,6 +24,8 @@ import org.bukkit.inventory.ItemStack
  */
 class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
+    constructor(material: Material) : this(ItemStack(material))
+
     /**
      * The icon of the button
      *
