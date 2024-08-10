@@ -134,6 +134,4 @@ interface GuiInterface {
     fun getAllowedClickTypes(): Set<ClickType>
 
     fun getBlacklistedClickTypes(): Set<ClickType>
-
-
 }
