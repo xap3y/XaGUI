@@ -23,7 +23,10 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
         if (e.clickedInventory == null || e.clickedInventory?.holder !is GuiMenu) {
             if (e.view.topInventory.holder is GuiMenu) {
-                e.result = Event.Result.DENY
+                val clickedInventory = e.view.topInventory.holder as GuiMenu
+                if (!clickedInventory.getSelfInventoryAccess()) {
+                    e.result = Event.Result.DENY
+                }
             }
             return
         }
@@ -32,6 +35,15 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
         val owner = clickedInventory.getOwner()
         if (!Objects.equals(owner, plugin)) return
+
+        if (clickedInventory.getAllowedClickTypes().isNotEmpty() && !clickedInventory.getAllowedClickTypes().contains(e.click)) {
+            e.result = Event.Result.DENY
+            return
+        }
+        else if (clickedInventory.getBlacklistedClickTypes().isNotEmpty() && clickedInventory.getBlacklistedClickTypes().contains(e.click)) {
+            e.result = Event.Result.DENY
+            return
+        }
 
         val allowClick: Boolean = clickedInventory.unlockedSlots[clickedInventory.getCurrentPageIndex()]?.contains(e.slot) ?: false
 
