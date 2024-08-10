@@ -315,7 +315,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      * @param menu The menu to redirect to after clicking
      * @return The button with the new redirect
      */
-    override fun withRedirect(menu: GuiMenu): GuiButton {
+    override fun withRedirect(menu: () -> GuiMenu): GuiButton {
         redirectMenu = menu
         return this
     }
@@ -323,10 +323,11 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
     /**
      * Redirect player to another menu
      *
+     * @param p The player that will be redirected
      * @return The cloned button
      */
-    override fun getRedirect(): GuiMenu? {
-        return redirectMenu
+    override fun callRedirect(p: Player) {
+        redirectMenu?.invoke()?.open(p)
     }
 
 
@@ -336,7 +337,7 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     private var listener: ButtonListener? = null
 
-    private var redirectMenu: GuiMenu? = null
+    private var redirectMenu: (() -> GuiMenu)? = null
 
     override fun getClickListener(): ButtonListener? {
         return listener

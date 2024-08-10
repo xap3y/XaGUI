@@ -4,6 +4,7 @@ import eu.xap3y.xagui.GuiMenu
 import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
+import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
@@ -63,8 +64,8 @@ interface GuiButtonInterface {
 
     fun clone(): GuiButton
 
-    fun withRedirect(menu: GuiMenu): GuiButton
+    fun withRedirect(menu: () -> GuiMenu): GuiButton
 
-    fun getRedirect(): GuiMenu?
+    fun callRedirect(p: Player)
 
 }
