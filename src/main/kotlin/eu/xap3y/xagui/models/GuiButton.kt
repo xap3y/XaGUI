@@ -345,5 +345,4 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
         return listener
     }
 
-
 }
