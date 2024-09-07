@@ -43,8 +43,10 @@ $dokka.location:eu.xap3y.xagui.interfaces/GuiCloseInterface///PointingToDeclarat
 $dokka.location:eu.xap3y.xagui.interfaces/GuiCloseInterface/onClose/#org.bukkit.event.inventory.InventoryCloseEvent/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-close-interface/on-close.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface///PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/index.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/addCloseButton/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/add-close-button.html
+
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/addCloseButton/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/add-close-button.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/addCloseButtonAllPages/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/add-close-button-all-pages.html
+
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/allowClickTypes/#kotlin.Array[org.bukkit.event.inventory.ClickType]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/allow-click-types.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/blacklistClickTypes/#kotlin.Array[org.bukkit.event.inventory.ClickType]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/blacklist-click-types.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/clearAllSlots/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/clear-all-slots.html
@@ -52,8 +54,9 @@ $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/clearAllSlots/#kotlin.Int
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/clearSlot/#kotlin.Int#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/clear-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/clearSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/clear-slot.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/close/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/close.html
-$dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/fillBorder/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/fill-border.html
+
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/fillBorder/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/fill-border.html
+
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/fillBorder/#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/fill-border.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/fillBorder/#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/fill-border.html
 $dokka.location:eu.xap3y.xagui.interfaces/GuiInterface/fillSlots/#kotlin.Int#kotlin.collections.Set[kotlin.Int]#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui.interfaces/-gui-interface/fill-slots.html
@@ -152,8 +155,11 @@ $dokka.location:eu.xap3y.xagui////PointingToDeclaration/-xa-gui/eu.xap3y.xagui/
 $dokka.location:eu.xap3y.xagui/GuiMenu///PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/index.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/GuiMenu/#org.bukkit.plugin.java.JavaPlugin#kotlin.String#kotlin.Int#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/-gui-menu.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/addCloseButton/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/add-close-button.html
+
 $dokka.location:eu.xap3y.xagui/GuiMenu/addCloseButton/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/add-close-button.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/addCloseButtonAllPages/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/add-close-button-all-pages.html
+
+
 $dokka.location:eu.xap3y.xagui/GuiMenu/allowClickTypes/#kotlin.Array[org.bukkit.event.inventory.ClickType]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/allow-click-types.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/blacklistClickTypes/#kotlin.Array[org.bukkit.event.inventory.ClickType]/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/blacklist-click-types.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/clearAllSlots/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/clear-all-slots.html
@@ -162,7 +168,9 @@ $dokka.location:eu.xap3y.xagui/GuiMenu/clearSlot/#kotlin.Int#kotlin.Int/Pointing
 $dokka.location:eu.xap3y.xagui/GuiMenu/clearSlot/#kotlin.Int/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/clear-slot.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/close/#org.bukkit.entity.Player/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/close.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillBorder/#/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-border.html
+
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillBorder/#kotlin.Int#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-border.html
+
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillBorder/#org.bukkit.Material/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-border.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillBorder/#org.bukkit.inventory.ItemStack/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-border.html
 $dokka.location:eu.xap3y.xagui/GuiMenu/fillSlots/#kotlin.Int#kotlin.collections.Set[kotlin.Int]#eu.xap3y.xagui.interfaces.GuiButtonInterface/PointingToDeclaration/-xa-gui/eu.xap3y.xagui/-gui-menu/fill-slots.html
