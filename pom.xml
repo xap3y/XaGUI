@@ -5,8 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>eu.xap3y</groupId>
+
   <artifactId>xagui</artifactId>
   <version>1.1</version>
+
   <packaging>jar</packaging>
     <url>https://xagui.xap3y.eu</url>
   <name>XaGui</name>
@@ -68,6 +70,7 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.3.1</version>
                 <executions>
@@ -81,6 +84,7 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.6</version>
                 <executions>
@@ -134,6 +138,32 @@
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.nicoulaj.maven.plugins</groupId>
+                <artifactId>checksum-maven-plugin</artifactId>
+                <version>1.10</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>artifacts</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- put your configurations here -->
                 </configuration>
             </plugin>
         </plugins>
