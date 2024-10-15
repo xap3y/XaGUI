@@ -1,7 +1,7 @@
 public class Example {
 
     // This is the result of the created gui below: https://github.com/xap3y/XaGUI/blob/main/docs/image.png
-
+    // @Deprecated
     public static void openGui(Player player, XaGui instance) {
 
         GuiMenu menu = instance.createMenu("&a&lExample 1", 3);
@@ -18,7 +18,7 @@ public class Example {
                 menu.updateSlot(4, new ItemStack(Material.DIAMOND, 1));
         });
 
-        Integer[] unlockedSlots = {10, 11, 12, 13, 14, 15, 16};
+        int[] unlockedSlots = {10, 11, 12, 13, 14, 15, 16};
 
         // Unlock all slots
         for (Integer unlockedSlot : unlockedSlots) {

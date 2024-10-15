@@ -1,6 +1,8 @@
 package eu.xap3y.xagui.listeners
 
 import eu.xap3y.xagui.GuiMenu
+import eu.xap3y.xagui.interfaces.GuiButtonInterface
+import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -10,24 +12,54 @@ import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.*
 
+/**
+ * The listener for the menus
+ * @param plugin The plugin instance
+ */
 class GuiMenuListener(private val plugin: JavaPlugin): Listener {
 
     @EventHandler
     fun onInventoryClick(e: InventoryClickEvent) {
-        if (e.clickedInventory == null || e.clickedInventory?.holder !is GuiMenu) return
+
+        if (e.clickedInventory == null || e.clickedInventory?.holder !is GuiMenu) {
+            if (e.view.topInventory.holder is GuiMenu) {
+                val clickedInventory = e.view.topInventory.holder as GuiMenu
+                if (!clickedInventory.getSelfInventoryAccess()) {
+                    e.result = Event.Result.DENY
+                }
+            }
+            return
+        }
 
         val clickedInventory = (e.clickedInventory?.holder ?: return) as GuiMenu
 
         val owner = clickedInventory.getOwner()
         if (!Objects.equals(owner, plugin)) return
 
-        if (!clickedInventory.unlockedSlots.contains(e.slot)) {
+        if (clickedInventory.getAllowedClickTypes().isNotEmpty() && !clickedInventory.getAllowedClickTypes().contains(e.click)) {
             e.result = Event.Result.DENY
+            return
+        }
+        else if (clickedInventory.getBlacklistedClickTypes().isNotEmpty() && clickedInventory.getBlacklistedClickTypes().contains(e.click)) {
+            e.result = Event.Result.DENY
+            return
         }
 
-        val button = clickedInventory.getSlot(e.slot) ?: return
+        val allowClick: Boolean = clickedInventory.unlockedSlots[clickedInventory.getCurrentPageIndex()]?.contains(e.slot) ?: false
 
-        button.listener?.onClick(e)
+        if (!allowClick) {
+            e.result = Event.Result.DENY
+        } else {
+            e.result = Event.Result.ALLOW
+        }
+
+        clickedInventory.onClickAction?.onClick(e)
+
+        val button: GuiButtonInterface = clickedInventory.getSlot(e.slot) ?: return
+
+        button.getClickListener()?.onClick(e)
+
+        button.callRedirect(e.whoClicked as Player)
     }
 
     @EventHandler
