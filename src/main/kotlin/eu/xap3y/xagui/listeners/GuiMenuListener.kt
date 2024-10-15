@@ -26,6 +26,10 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
                 val clickedInventory = e.view.topInventory.holder as GuiMenu
                 if (!clickedInventory.getSelfInventoryAccess()) {
                     e.result = Event.Result.DENY
+                } else if (clickedInventory.getAllowedSelfInventoryClickTypes().isNotEmpty() && clickedInventory.getAllowedSelfInventoryClickTypes().contains(e.click)) {
+                    e.result = Event.Result.ALLOW
+                } else {
+                    e.result = Event.Result.DENY
                 }
             }
             return
