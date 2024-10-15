@@ -41,6 +41,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     private var rows: Int
     private var unlockSelfInventoryClick: Boolean = false
     private val allowedClickTypes = mutableSetOf<ClickType>()
+    private val allowedClickTypesSelf = mutableSetOf<ClickType>()
     private val blacklistedClickTypes = mutableSetOf<ClickType>()
 
     var onCloseAction: GuiCloseInterface? = null
@@ -414,6 +415,10 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         unlockedSlots[page]?.remove(slot)
     }
 
+    override fun isButtonLocked(slot: Int): Boolean {
+        return unlockedSlots[currentOpenedPage]?.contains(slot) ?: false
+    }
+
     /**
      * Open the menu for a player
      *
@@ -541,11 +546,20 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     }
 
     /**
+     * Fill slots with an item
+     * @param slots The array of slots to fill
+     * @param item The item to fill the slots with
+     */
+    override fun fillSlotsArr(slots: Array<Int>, item: ItemStack) {
+        fillSlots(currentOpenedPage, slots.toSet(), item)
+    }
+
+    /**
      * Add a close button to the menu
      */
     override fun addCloseButton() {
 
-        addCloseButton(0, ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR))
+        addCloseButton(0, XaGui.closeButton)
 
     }
 
@@ -555,16 +569,28 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun addCloseButtonAllPages() {
         for (i in 0 until totalPages) {
-            addCloseButton(i, ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR))
+            addCloseButton(i, XaGui.closeButton)
         }
         //setSlot(row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
     }
 
-    override fun addCloseButton(page: Int, button: ItemStack) {
+    /**
+     * Add a close button to the menu
+     * @param button The button to add
+     */
+    override fun addCloseButton(page: Int, button: GuiButtonInterface) {
         val row = rows - 1
         val middle = 4
         val slot = row * 9 + middle
-        setSlot(page, slot, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
+        setSlot(page, slot, button)
+    }
+
+    /**
+     * Add a close button to the menu
+     * @param button The button to add
+     */
+    override fun addCloseButton(page: Int, button: ItemStack) {
+        addCloseButton(page,  GuiButton(button).withListener { it.whoClicked.closeInventory() })
     }
 
     /**
@@ -573,7 +599,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     override fun fillBorder() {
         (totalPages-1).let {
             for (i in 0..it) {
-                fillBorder(i, GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("&r").getItem())
+                fillBorder(i, XaGui.borderFiller)
             }
         }
         //fillBorder(currentOpenedPage, GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("").getItem())
@@ -626,6 +652,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun getSelfInventoryAccess(): Boolean {
         return unlockSelfInventoryClick
+    }
+
+    override fun allowSelfInventoryClickTypes(vararg types: ClickType) {
+        allowedClickTypesSelf.addAll(types.toSet())
+    }
+
+    override fun getAllowedSelfInventoryClickTypes(): Set<ClickType> {
+        return allowedClickTypesSelf
     }
 
     /**

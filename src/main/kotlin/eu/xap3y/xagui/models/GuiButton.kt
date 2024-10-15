@@ -1,10 +1,12 @@
 package eu.xap3y.xagui.models
 
 import eu.xap3y.xagui.GuiMenu
+import eu.xap3y.xagui.XaGui
 import eu.xap3y.xagui.interfaces.ButtonListener
 import eu.xap3y.xagui.interfaces.GuiButtonInterface
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -330,6 +332,9 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
      */
     override fun callRedirect(p: Player) {
         redirectMenu?.invoke()?.open(p)
+        if (redirectMenu != null && XaGui.redirectSound != null) {
+            p.playSound(p, XaGui.redirectSound ?: Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 1f)
+        }
     }
 
 

@@ -85,6 +85,8 @@ interface GuiInterface {
 
     fun lockButton(page: Int, slot: Int)
 
+    fun isButtonLocked(slot: Int): Boolean
+
     fun open(player: Player)
 
     fun open(page: Int, player: Player)
@@ -103,6 +105,8 @@ interface GuiInterface {
 
     fun fillSlots(slots: Set<Int>, item: ItemStack)
 
+    fun fillSlotsArr(slots: Array<Int>, item: ItemStack)
+
     fun fillSlots(page: Int, slots: Set<Int>)
 
     fun fillSlots(page: Int, slots: Set<Int>, item: ItemStack)
@@ -115,6 +119,8 @@ interface GuiInterface {
 
     fun addCloseButton(page: Int, button: ItemStack)
 
+    fun addCloseButton(page: Int, button: GuiButtonInterface)
+
     fun fillBorder()
 
     fun fillBorder(page: Int, item: ItemStack)
@@ -126,6 +132,10 @@ interface GuiInterface {
     fun setSelfInventoryAccess(value: Boolean)
 
     fun getSelfInventoryAccess(): Boolean
+
+    fun allowSelfInventoryClickTypes(vararg types: ClickType)
+
+    fun getAllowedSelfInventoryClickTypes(): Set<ClickType>
 
     fun allowClickTypes(vararg types: ClickType)
 
