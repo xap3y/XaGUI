@@ -83,6 +83,18 @@ class XaGui(private val plugin: JavaPlugin) {
         closeButtonSound = sound
     }
 
+    inline fun <reified T : Any> initRegistry() {
+        registry = GuiRegistry<T>()
+    }
+
+    fun <T : Any> initRegistry(clazz: Class<T>) {
+        registry = GuiRegistry<T>()
+    }
+
+    fun getRegistry(): GuiRegistry<*> {
+        return registry
+    }
+
     companion object {
         var redirectSound: Sound? = null
         var closeButtonSound: Sound? = null
@@ -93,6 +105,8 @@ class XaGui(private val plugin: JavaPlugin) {
                 (it.whoClicked as Player).playSound(it.whoClicked as Player, closeButtonSound ?: Sound.BLOCK_ENDER_CHEST_CLOSE, .5f, 1f)
             }
         }
+
+        lateinit var registry: GuiRegistry<*>
     }
 
 }

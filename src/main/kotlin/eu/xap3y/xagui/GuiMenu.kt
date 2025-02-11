@@ -22,6 +22,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.jvm.Throws
+import kotlin.reflect.KClass
 
 /**
  * Represents a GUI menu
@@ -31,7 +32,6 @@ import kotlin.jvm.Throws
  * @param pages The number of pages the menu should have
  */
 class GuiMenu(private val plugin: JavaPlugin, private val title: String, private val rowsToSet: Int, private val pages: Int): InventoryHolder, GuiInterface {
-
     //private val slots: ConcurrentHashMap<Int, GuiButtonInterface> = ConcurrentHashMap()
     private val pageMapping: ConcurrentHashMap<Int, ConcurrentHashMap<Int, GuiButtonInterface>> = ConcurrentHashMap()
     private val invMapping: ConcurrentHashMap<Int, Inventory> = ConcurrentHashMap()
@@ -50,7 +50,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
 
     var onClickAction: GuiClickInterface? = null
 
+    var onClickActionOwn: GuiOwnClickInterface? = null
+
     var onPageSwitchAction: GuiPageSwitchInterface? = null
+
+    private var callbackAction: (() -> Unit)? = null
 
     private var currentOpenedPage: Int = 0
     val unlockedSlots: HashMap<Int, MutableSet<Int>> = hashMapOf() // page -> slots
@@ -136,6 +140,28 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun setOnClick(onClick: GuiClickInterface) {
         this.onClickAction = onClick
+    }
+
+    /**
+     * Set the action to be executed when the player clicks their own inventory
+     * @param onClick The action to be executed
+     * @see GuiOwnClickInterface
+     */
+    override fun setOnClickOwn(onClick: (InventoryClickEvent) -> Unit) {
+        this.onClickActionOwn = object : GuiOwnClickInterface {
+            override fun onClick(event: InventoryClickEvent) {
+                onClick(event)
+            }
+        }
+    }
+
+    /**
+     * Set the action to be executed when the player clicks their own inventory
+     * @param onClick The action to be executed
+     * @see GuiOwnClickInterface
+     */
+    override fun setOnClickOwn(onClick: GuiOwnClickInterface) {
+        this.onClickActionOwn = onClick
     }
 
     /**
@@ -692,6 +718,14 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun getBlacklistedClickTypes(): Set<ClickType> {
         return blacklistedClickTypes
+    }
+
+    override fun callback() {
+        callbackAction?.invoke()
+    }
+
+    override fun setCallback(callback: () -> Unit) {
+        callbackAction = callback
     }
 
     //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())
