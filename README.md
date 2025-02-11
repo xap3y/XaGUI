@@ -4,4 +4,4 @@ A simple GUI library for Minecraft plugins. This library is written in Kotlin an
 
 For installation instructions and usage examples, visit:
 
-## https://xagui.xap3y.eu
+## https://xagui.xap3y.tech

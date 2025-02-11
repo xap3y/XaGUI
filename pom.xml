@@ -6,9 +6,9 @@
 
   <groupId>eu.xap3y</groupId>
   <artifactId>xagui</artifactId>
-  <version>1.2-beta.1</version>
+  <version>1.2-beta.3</version>
   <packaging>jar</packaging>
-    <url>https://xagui.xap3y.eu</url>
+    <url>https://xagui.xap3y.tech</url>
   <name>XaGui</name>
 
   <properties>

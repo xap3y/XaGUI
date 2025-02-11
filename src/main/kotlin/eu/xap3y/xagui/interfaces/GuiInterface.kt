@@ -24,6 +24,9 @@ interface GuiInterface {
     fun setOnClick(onClick: (InventoryClickEvent) -> Unit)
     fun setOnClick(onClick: GuiClickInterface)
 
+    fun setOnClickOwn(onClick: (InventoryClickEvent) -> Unit)
+    fun setOnClickOwn(onClick: GuiOwnClickInterface)
+
     fun setOnPageSwitch(onPageSwitch: (GuiPageSwitchModel) -> Unit)
     fun setOnPageSwitch(onPageSwitch: GuiPageSwitchInterface)
 
@@ -144,4 +147,8 @@ interface GuiInterface {
     fun getAllowedClickTypes(): Set<ClickType>
 
     fun getBlacklistedClickTypes(): Set<ClickType>
+
+    fun callback()
+
+    fun setCallback(callback: () -> Unit)
 }

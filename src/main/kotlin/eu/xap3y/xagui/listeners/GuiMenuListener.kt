@@ -31,6 +31,7 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
                 } else {
                     e.result = Event.Result.DENY
                 }
+                clickedInventory.onClickActionOwn?.onClick(e)
             }
             return
         }
