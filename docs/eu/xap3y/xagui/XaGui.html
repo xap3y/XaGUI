@@ -291,7 +291,7 @@ public final class <span class="typeNameLabel"><a href=XaGui.html>XaGui</a></spa
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=XaGui.html#setBorderItem(org.bukkit.inventory.ItemStack)>setBorderItem</a>(ItemStack item) </code>
                                             </th>
-                                            <td class="colLast">Set the item that will fill the border of the menu</td>
+                                            <td class="colLast">Set the item that will be used to fill the menu border</td>
                                         </tr>
                                         
                                         <tr id="i3" class="rowColor">
@@ -305,12 +305,28 @@ public final class <span class="typeNameLabel"><a href=XaGui.html>XaGui</a></spa
                                         <tr id="i4" class="altColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.html#setNextPageButton(org.bukkit.inventory.ItemStack)>setNextPageButton</a>(ItemStack item) </code>
+                                            </th>
+                                            <td class="colLast">Set the item that will be used in paginator as next page button</td>
+                                        </tr>
+                                        
+                                        <tr id="i5" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.html#setPreviousPageButton(org.bukkit.inventory.ItemStack)>setPreviousPageButton</a>(ItemStack item) </code>
+                                            </th>
+                                            <td class="colLast">Set the item that will be used in paginator as previous page button</td>
+                                        </tr>
+                                        
+                                        <tr id="i6" class="altColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
                                             <th class="colSecond" scope="row"><code><a href=XaGui.html#setRedirectSound(org.bukkit.Sound)>setRedirectSound</a>(Sound sound) </code>
                                             </th>
                                             <td class="colLast">Set the sound that will be played when a player is redirected to another menu</td>
                                         </tr>
                                         
-                                        <tr id="i5" class="rowColor">
+                                        <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=XaGui.html#setCloseButtonSound(org.bukkit.Sound)>setCloseButtonSound</a>(Sound sound) </code>
@@ -318,7 +334,7 @@ public final class <span class="typeNameLabel"><a href=XaGui.html>XaGui</a></spa
                                             <td class="colLast">Set the sound that will be played when a player closes a menu</td>
                                         </tr>
                                         
-                                        <tr id="i6" class="altColor">
+                                        <tr id="i8" class="altColor">
                                             <td class="colFirst"><code>final &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=XaGui.html#initRegistry()>initRegistry</a>() </code>
@@ -326,7 +342,7 @@ public final class <span class="typeNameLabel"><a href=XaGui.html>XaGui</a></spa
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i7" class="rowColor">
+                                        <tr id="i9" class="rowColor">
                                             <td class="colFirst"><code>final &lt;T extends <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-any/index.html>Any</a>&gt; <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=XaGui.html#initRegistry(java.lang.Class)>initRegistry</a>(<a href=https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html>Class</a>&lt;<a href=XaGui.html#initRegistry(java.lang.Class)>T</a>&gt; clazz) </code>
@@ -334,7 +350,7 @@ public final class <span class="typeNameLabel"><a href=XaGui.html>XaGui</a></spa
                                             <td class="colLast"></td>
                                         </tr>
                                         
-                                        <tr id="i8" class="altColor">
+                                        <tr id="i10" class="altColor">
                                             <td class="colFirst"><code>final <a href=GuiRegistry.html>GuiRegistry</a>&lt;?&gt;</code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=XaGui.html#getRegistry()>getRegistry</a>() </code>
@@ -492,7 +508,7 @@ public final class <span class="typeNameLabel"><a href=XaGui.html>XaGui</a></spa
                                     <li class="blockList">
                                         <h4>setBorderItem</h4>
                                         <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=XaGui.html#setBorderItem(org.bukkit.inventory.ItemStack)>setBorderItem</a>(ItemStack item)</pre>
-                                        <div class="block"><p>Set the item that will fill the border of the menu</p></div>
+                                        <div class="block"><p>Set the item that will be used to fill the menu border</p></div>
 
                                         <dl>
 
@@ -533,6 +549,52 @@ public final class <span class="typeNameLabel"><a href=XaGui.html>XaGui</a></spa
                                             <dd><code>item</code> - The item that will be used as the close button</dd>
                                             
                                             
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="setNextPageButton(org.bukkit.inventory.ItemStack)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setNextPageButton</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=XaGui.html#setNextPageButton(org.bukkit.inventory.ItemStack)>setNextPageButton</a>(ItemStack item)</pre>
+                                        <div class="block"><p>Set the item that will be used in paginator as next page button</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="setPreviousPageButton(org.bukkit.inventory.ItemStack)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setPreviousPageButton</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=XaGui.html#setPreviousPageButton(org.bukkit.inventory.ItemStack)>setPreviousPageButton</a>(ItemStack item)</pre>
+                                        <div class="block"><p>Set the item that will be used in paginator as previous page button</p></div>
+
+                                        <dl>
+
                                         
 
                                         

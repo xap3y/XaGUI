@@ -453,6 +453,14 @@ public final class <span class="typeNameLabel"><a href=GuiButton.html>GuiButton<
                                         </tr>
                                         
                                         <tr id="i24" class="altColor">
+                                            <td class="colFirst"><code><a href=GuiButton.html>GuiButton</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=GuiButton.html#withClickSound(org.bukkit.Sound)>withClickSound</a>(Sound sound) </code>
+                                            </th>
+                                            <td class="colLast">Set the sound that will be played when the button is clicked, set to null to disable</td>
+                                        </tr>
+                                        
+                                        <tr id="i25" class="rowColor">
                                             <td class="colFirst"><code><a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=GuiButton.html#callRedirect(org.bukkit.entity.Player)>callRedirect</a>(Player p) </code>
@@ -460,12 +468,20 @@ public final class <span class="typeNameLabel"><a href=GuiButton.html>GuiButton<
                                             <td class="colLast">Redirect player to another menu</td>
                                         </tr>
                                         
-                                        <tr id="i25" class="rowColor">
+                                        <tr id="i26" class="altColor">
                                             <td class="colFirst"><code><a href=../interfaces/ButtonListener.html>ButtonListener</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=GuiButton.html#getClickListener()>getClickListener</a>() </code>
                                             </th>
-                                            <td class="colLast"></td>
+                                            <td class="colLast">Get the listener of the button</td>
+                                        </tr>
+                                        
+                                        <tr id="i27" class="rowColor">
+                                            <td class="colFirst"><code>Sound</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=GuiButton.html#getClickSound()>getClickSound</a>() </code>
+                                            </th>
+                                            <td class="colLast">Get the sound that will be played when the button is clicked</td>
                                         </tr>
                                         
                                         </tbody>
@@ -1299,6 +1315,39 @@ public final class <span class="typeNameLabel"><a href=GuiButton.html>GuiButton<
                                     </li>
                                 </ul>
                                 
+                                <a id="withClickSound(org.bukkit.Sound)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>withClickSound</h4>
+                                        <pre class="methodSignature"> <a href=GuiButton.html>GuiButton</a> <a href=GuiButton.html#withClickSound(org.bukkit.Sound)>withClickSound</a>(Sound sound)</pre>
+                                        <div class="block"><p>Set the sound that will be played when the button is clicked, set to null to disable</p></div>
+
+                                        <dl>
+
+                                        
+                                            <dt><span class="paramLabel">Parameters:</span></dt>
+                                            
+                                            
+                                            <dd><code>sound</code> - The sound that will be played</dd>
+                                            
+                                            
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The button with the new sound</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
                                 <a id="callRedirect(org.bukkit.entity.Player)">
                                     <!--   -->
                                 </a>
@@ -1336,17 +1385,46 @@ public final class <span class="typeNameLabel"><a href=GuiButton.html>GuiButton<
                                     <!--   -->
                                 </a>
                                 <ul class=
-                                              "blockListLast"
+                                              "blockList"
                                           >
                                     <li class="blockList">
                                         <h4>getClickListener</h4>
                                         <pre class="methodSignature"> <a href=../interfaces/ButtonListener.html>ButtonListener</a> <a href=GuiButton.html#getClickListener()>getClickListener</a>()</pre>
-                                        <div class="block"></div>
+                                        <div class="block"><p>Get the listener of the button</p></div>
 
                                         <dl>
 
                                         
 
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The listener of the button</p></dd>
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getClickSound()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockListLast"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getClickSound</h4>
+                                        <pre class="methodSignature"> Sound <a href=GuiButton.html#getClickSound()>getClickSound</a>()</pre>
+                                        <div class="block"><p>Get the sound that will be played when the button is clicked</p></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+                                            <dt><span class="returnLabel">Returns:</span></dt>
+                                            <dd><p>The sound that will be played</p></dd>
                                         
 
                                         

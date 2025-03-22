@@ -2,6 +2,7 @@ package eu.xap3y.xagui.listeners
 
 import eu.xap3y.xagui.GuiMenu
 import eu.xap3y.xagui.interfaces.GuiButtonInterface
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import org.bukkit.event.EventHandler
@@ -61,6 +62,11 @@ class GuiMenuListener(private val plugin: JavaPlugin): Listener {
         clickedInventory.onClickAction?.onClick(e)
 
         val button: GuiButtonInterface = clickedInventory.getSlot(e.slot) ?: return
+
+        if (button.getClickSound() != null) {
+            val player: Player = e.whoClicked as Player
+            player.playSound(player, button.getClickSound() ?: Sound.UI_BUTTON_CLICK, 1f, 1f)
+        }
 
         button.getClickListener()?.onClick(e)
 

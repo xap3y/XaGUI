@@ -3,6 +3,7 @@ package eu.xap3y.xagui.interfaces
 import eu.xap3y.xagui.GuiMenu
 import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -62,9 +63,13 @@ interface GuiButtonInterface {
 
     fun getClickListener(): ButtonListener?
 
+    fun getClickSound(): Sound?
+
     fun clone(): GuiButton
 
     fun withRedirect(menu: () -> GuiMenu): GuiButton
+
+    fun withClickSound(sound: Sound?): GuiButton
 
     fun callRedirect(p: Player)
 

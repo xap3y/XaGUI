@@ -11,6 +11,7 @@ import eu.xap3y.xagui.models.GuiPageSwitchModel
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -22,7 +23,6 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.jvm.Throws
-import kotlin.reflect.KClass
 
 /**
  * Represents a GUI menu
@@ -35,7 +35,7 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     //private val slots: ConcurrentHashMap<Int, GuiButtonInterface> = ConcurrentHashMap()
     private val pageMapping: ConcurrentHashMap<Int, ConcurrentHashMap<Int, GuiButtonInterface>> = ConcurrentHashMap()
     private val invMapping: ConcurrentHashMap<Int, Inventory> = ConcurrentHashMap()
-    private val totalPages = pages
+    private var totalPages = pages
     private val stickySlots = mutableSetOf<Int>()
     private var name: String
     private var rows: Int
@@ -43,6 +43,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
     private val allowedClickTypes = mutableSetOf<ClickType>()
     private val allowedClickTypesSelf = mutableSetOf<ClickType>()
     private val blacklistedClickTypes = mutableSetOf<ClickType>()
+
+    private var paginator: Boolean = false
+    private var nextPageButton: ItemStack? = null
+    private var previousPageButton: ItemStack? = null
+    private var pageSwitchSound: Sound? = null
 
     var onCloseAction: GuiCloseInterface? = null
 
@@ -255,7 +260,6 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         invMapping[page]?.setItem(slot, button.getItem())
     }
 
-
     /**
      * Set a button in a slot
      * @param slot The slot to set the button in
@@ -272,6 +276,39 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
      */
     override fun setSlot(page: Int, slot: Int, button: Material) {
         setSlot(page, slot, GuiButton(ItemStack(button)))
+    }
+
+    /**
+     * Set a button in all pages of GUI
+     * @param slot The slot to set the button in
+     * @param button The button to set
+     */
+    override fun setAllPageSlot(slot: Int, button: GuiButtonInterface) {
+        for (i in 0 until totalPages) {
+            setSlot(i, slot, button)
+        }
+    }
+
+    /**
+     * Set a button in all pages of GUI
+     * @param slot The slot to set the button in
+     * @param item The item to set
+     */
+    override fun setAllPageSlot(slot: Int, item: ItemStack) {
+        for (i in 0 until totalPages) {
+            setSlot(i, slot, item)
+        }
+    }
+
+    /**
+     * Set a button in all pages of GUI
+     * @param slot The slot to set the button in
+     * @param item The item to set
+     */
+    override fun setAllPageSlot(slot: Int, item: Material) {
+        for (i in 0 until totalPages) {
+            setSlot(i, slot, item)
+        }
     }
 
     /**
@@ -476,6 +513,16 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         if (pageIndex > totalPages-1 || pageIndex < 0) throw PageOutOfBoundException()
         val oldPage: Int = currentOpenedPage
         currentOpenedPage = pageIndex
+
+        if (paginator) {
+            if (pageIndex > 0 && previousPageButton != null) {
+                setSlot(currentOpenedPage, 3 + ((rows-1)*9), GuiButton(previousPageButton!!).withListener { switchPage(pageIndex - 1, player) })
+            }
+            if (pageIndex < totalPages-1 && nextPageButton != null) {
+                setSlot(currentOpenedPage, 5 + ((rows-1)*9), GuiButton(nextPageButton!!).withListener { switchPage(pageIndex + 1, player) })
+            }
+        }
+
         val inv: Inventory = invMapping[currentOpenedPage] ?: return
         stickySlots.forEach {
             setSlot(pageIndex, it, pageMapping[0]?.get(it) ?: return@forEach)
@@ -484,6 +531,11 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
             //plugin.server.pluginManager.callEvent(GuiPageSwitchEvent(player, page, currentOpenedPage, inv, invMapping[currentOpenedPage]))
             player.openInventory(inv)
         })
+
+        if (pageIndex != oldPage && this.pageSwitchSound != null) {
+            player.playSound(player, this.pageSwitchSound!!, 1f, 1f)
+        }
+
         this.onPageSwitchAction?.onPageSwitch(GuiPageSwitchModel(player, pageIndex, oldPage))
     }
 
@@ -598,6 +650,39 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
             addCloseButton(i, XaGui.closeButton)
         }
         //setSlot(row * 9 + middle, GuiButton(button).setName("&c&lClose").withListener { it.whoClicked.closeInventory() })
+    }
+
+    /**
+     * Add a paginator to the menu
+     */
+    override fun addPaginator() {
+        this.nextPageButton = XaGui.nextPageButton
+        this.previousPageButton = XaGui.previousPageButton
+        this.paginator = true
+    }
+
+    /**
+     * Set the next page button
+     * @param item The item to set
+     */
+    override fun setNextPageButton(item: ItemStack) {
+        this.nextPageButton = item
+    }
+
+    /**
+     * Set the previous page button
+     * @param item The item to set
+     */
+    override fun setPreviousPageButton(item: ItemStack) {
+        this.previousPageButton = item
+    }
+
+    /**
+     * Set the sound that will be played when the page is switched
+     * @param sound The sound to play
+     */
+    override fun setPageSwitchSound(sound: Sound?) {
+        this.pageSwitchSound = sound
     }
 
     /**
@@ -720,12 +805,38 @@ class GuiMenu(private val plugin: JavaPlugin, private val title: String, private
         return blacklistedClickTypes
     }
 
+    /**
+     * Callback action
+     */
     override fun callback() {
         callbackAction?.invoke()
     }
 
+    /**
+     * Set the callback action
+     * @param callback The callback action
+     */
     override fun setCallback(callback: () -> Unit) {
         callbackAction = callback
+    }
+
+    /**
+     * Set the total number of pages, this will clear all buttons
+     * @param pages The total number of pages
+     */
+    override fun setTotalPages(pages: Int) {
+        this.totalPages = pages
+        pageMapping.clear()
+        invMapping.clear()
+        unlockedSlots.clear()
+
+        (totalPages-1).let {
+            for (i in 0..it) {
+                pageMapping[i] = ConcurrentHashMap()
+                invMapping[i] = Bukkit.createInventory(this, getSize(), getName())
+                unlockedSlots[i] = mutableSetOf()
+            }
+        }
     }
 
     //private val inv: Inventory = Bukkit.createInventory(this, getSize(), getName())

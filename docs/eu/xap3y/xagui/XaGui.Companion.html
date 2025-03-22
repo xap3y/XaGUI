@@ -191,8 +191,20 @@ public class <span class="typeNameLabel"><a href=XaGui.Companion.html>XaGui.Comp
                                         </tr>
                                         
                                         <tr class="rowColor">
-                                            <td class="colFirst"><code>private  <a href=models/GuiButton.html>GuiButton</a></code></td>
+                                            <td class="colFirst"><code>private  <a href=interfaces/GuiButtonInterface.html>GuiButtonInterface</a></code></td>
                                             <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#closeButton>closeButton</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="altColor">
+                                            <td class="colFirst"><code>private  ItemStack</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#nextPageButton>nextPageButton</a></code></th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr class="rowColor">
+                                            <td class="colFirst"><code>private  ItemStack</code></td>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#previousPageButton>previousPageButton</a></code></th>
                                             <td class="colLast"></td>
                                         </tr>
                                         
@@ -324,7 +336,7 @@ public class <span class="typeNameLabel"><a href=XaGui.Companion.html>XaGui.Comp
                                         </tr>
                                         
                                         <tr id="i6" class="altColor">
-                                            <td class="colFirst"><code>final <a href=models/GuiButton.html>GuiButton</a></code>
+                                            <td class="colFirst"><code>final <a href=interfaces/GuiButtonInterface.html>GuiButtonInterface</a></code>
                                             </td>
                                             <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#getCloseButton()>getCloseButton</a>() </code>
                                             </th>
@@ -334,7 +346,39 @@ public class <span class="typeNameLabel"><a href=XaGui.Companion.html>XaGui.Comp
                                         <tr id="i7" class="rowColor">
                                             <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
                                             </td>
-                                            <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#setCloseButton(eu.xap3y.xagui.models.GuiButton)>setCloseButton</a>(<a href=models/GuiButton.html>GuiButton</a> closeButton) </code>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#setCloseButton(eu.xap3y.xagui.interfaces.GuiButtonInterface)>setCloseButton</a>(<a href=interfaces/GuiButtonInterface.html>GuiButtonInterface</a> closeButton) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i8" class="altColor">
+                                            <td class="colFirst"><code>final ItemStack</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#getNextPageButton()>getNextPageButton</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i9" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#setNextPageButton(org.bukkit.inventory.ItemStack)>setNextPageButton</a>(ItemStack nextPageButton) </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i10" class="altColor">
+                                            <td class="colFirst"><code>final ItemStack</code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#getPreviousPageButton()>getPreviousPageButton</a>() </code>
+                                            </th>
+                                            <td class="colLast"></td>
+                                        </tr>
+                                        
+                                        <tr id="i11" class="rowColor">
+                                            <td class="colFirst"><code>final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a></code>
+                                            </td>
+                                            <th class="colSecond" scope="row"><code><a href=XaGui.Companion.html#setPreviousPageButton(org.bukkit.inventory.ItemStack)>setPreviousPageButton</a>(ItemStack previousPageButton) </code>
                                             </th>
                                             <td class="colLast"></td>
                                         </tr>
@@ -529,7 +573,7 @@ public class <span class="typeNameLabel"><a href=XaGui.Companion.html>XaGui.Comp
                                           >
                                     <li class="blockList">
                                         <h4>getCloseButton</h4>
-                                        <pre class="methodSignature"> final <a href=models/GuiButton.html>GuiButton</a> <a href=XaGui.Companion.html#getCloseButton()>getCloseButton</a>()</pre>
+                                        <pre class="methodSignature"> final <a href=interfaces/GuiButtonInterface.html>GuiButtonInterface</a> <a href=XaGui.Companion.html#getCloseButton()>getCloseButton</a>()</pre>
                                         <div class="block"></div>
 
                                         <dl>
@@ -544,15 +588,107 @@ public class <span class="typeNameLabel"><a href=XaGui.Companion.html>XaGui.Comp
                                     </li>
                                 </ul>
                                 
-                                <a id="setCloseButton(eu.xap3y.xagui.models.GuiButton)">
+                                <a id="setCloseButton(eu.xap3y.xagui.interfaces.GuiButtonInterface)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setCloseButton</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=XaGui.Companion.html#setCloseButton(eu.xap3y.xagui.interfaces.GuiButtonInterface)>setCloseButton</a>(<a href=interfaces/GuiButtonInterface.html>GuiButtonInterface</a> closeButton)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getNextPageButton()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getNextPageButton</h4>
+                                        <pre class="methodSignature"> final ItemStack <a href=XaGui.Companion.html#getNextPageButton()>getNextPageButton</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="setNextPageButton(org.bukkit.inventory.ItemStack)">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>setNextPageButton</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=XaGui.Companion.html#setNextPageButton(org.bukkit.inventory.ItemStack)>setNextPageButton</a>(ItemStack nextPageButton)</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="getPreviousPageButton()">
+                                    <!--   -->
+                                </a>
+                                <ul class=
+                                              "blockList"
+                                          >
+                                    <li class="blockList">
+                                        <h4>getPreviousPageButton</h4>
+                                        <pre class="methodSignature"> final ItemStack <a href=XaGui.Companion.html#getPreviousPageButton()>getPreviousPageButton</a>()</pre>
+                                        <div class="block"></div>
+
+                                        <dl>
+
+                                        
+
+                                        
+
+                                        
+
+                                        </dl>
+                                    </li>
+                                </ul>
+                                
+                                <a id="setPreviousPageButton(org.bukkit.inventory.ItemStack)">
                                     <!--   -->
                                 </a>
                                 <ul class=
                                               "blockListLast"
                                           >
                                     <li class="blockList">
-                                        <h4>setCloseButton</h4>
-                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=XaGui.Companion.html#setCloseButton(eu.xap3y.xagui.models.GuiButton)>setCloseButton</a>(<a href=models/GuiButton.html>GuiButton</a> closeButton)</pre>
+                                        <h4>setPreviousPageButton</h4>
+                                        <pre class="methodSignature"> final <a href=https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html>Unit</a> <a href=XaGui.Companion.html#setPreviousPageButton(org.bukkit.inventory.ItemStack)>setPreviousPageButton</a>(ItemStack previousPageButton)</pre>
                                         <div class="block"></div>
 
                                         <dl>

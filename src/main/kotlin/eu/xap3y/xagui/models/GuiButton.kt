@@ -325,6 +325,17 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
     }
 
     /**
+     * Set the sound that will be played when the button is clicked, set to null to disable
+     *
+     * @param sound The sound that will be played
+     * @return The button with the new sound
+     */
+    override fun withClickSound(sound: Sound?): GuiButton {
+        this.sound = sound
+        return this
+    }
+
+    /**
      * Redirect player to another menu
      *
      * @param p The player that will be redirected
@@ -342,12 +353,28 @@ class GuiButton(private val item: ItemStack): GuiButtonInterface {
 
     private var icon: ItemStack = item
 
+    private var sound: Sound? = null
+
     private var listener: ButtonListener? = null
 
     private var redirectMenu: (() -> GuiMenu)? = null
 
+    /**
+     * Get the listener of the button
+     *
+     * @return The listener of the button
+     */
     override fun getClickListener(): ButtonListener? {
         return listener
+    }
+
+    /**
+     * Get the sound that will be played when the button is clicked
+     *
+     * @return The sound that will be played
+     */
+    override fun getClickSound(): Sound? {
+        return sound
     }
 
 }

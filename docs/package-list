@@ -2,6 +2,7 @@ $dokka.format:javadoc-v1
 $dokka.linkExtension:html
 $dokka.location:eu.xap3y.xagui/XaGui.Companion///PointingToDeclaration/eu/xap3y/xagui/XaGui.Companion.html
 eu.xap3y.xagui
+eu.xap3y.xagui.annotations
 eu.xap3y.xagui.exceptions
 eu.xap3y.xagui.interfaces
 eu.xap3y.xagui.listeners
