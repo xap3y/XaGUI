@@ -11,6 +11,10 @@ abstract class VirtualMenu<T> : VirtualMenuInterface<T> {
         this.gui = instance.createMenu(name, rows)
     }
 
+    constructor(name: String, rows: Int, pages: Int, instance: XaGui) {
+        this.gui = instance.createMenu(name, rows, pages)
+    }
+
     constructor(gui: GuiInterface) {
         this.gui = gui
     }
