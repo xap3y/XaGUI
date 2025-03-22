@@ -1,7 +1,9 @@
 package eu.xap3y.xagui.interfaces
 
+import eu.xap3y.xagui.annotations.Experimental
 import eu.xap3y.xagui.models.GuiPageSwitchModel
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.ClickType
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -45,6 +47,12 @@ interface GuiInterface {
     fun getCurrentPage(): Int
 
     fun setSlot(slot: Int, button: GuiButtonInterface)
+
+    fun setAllPageSlot(slot: Int, button: GuiButtonInterface)
+
+    fun setAllPageSlot(slot: Int, item: ItemStack)
+
+    fun setAllPageSlot(slot: Int, item: Material)
 
     fun setSlot(slot: Int, item: ItemStack)
 
@@ -124,6 +132,14 @@ interface GuiInterface {
 
     fun addCloseButton(page: Int, button: GuiButtonInterface)
 
+    fun addPaginator()
+
+    fun setNextPageButton(item: ItemStack)
+
+    fun setPreviousPageButton(item: ItemStack)
+
+    fun setPageSwitchSound(sound: Sound?)
+
     fun fillBorder()
 
     fun fillBorder(page: Int, item: ItemStack)
@@ -151,4 +167,8 @@ interface GuiInterface {
     fun callback()
 
     fun setCallback(callback: () -> Unit)
+
+    @Experimental
+    fun setTotalPages(pages: Int)
+
 }

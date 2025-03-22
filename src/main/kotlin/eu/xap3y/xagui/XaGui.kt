@@ -1,6 +1,7 @@
 package eu.xap3y.xagui
 
 import com.cryptomorin.xseries.XMaterial
+import eu.xap3y.xagui.interfaces.GuiButtonInterface
 import eu.xap3y.xagui.listeners.GuiMenuListener
 import eu.xap3y.xagui.models.GuiButton
 import org.bukkit.Material
@@ -48,7 +49,7 @@ class XaGui(private val plugin: JavaPlugin) {
     }
 
     /**
-     * Set the item that will fill the border of the menu
+     * Set the item that will be used to fill the menu border
      *
      * @param item The item that will fill the border
      */
@@ -63,6 +64,24 @@ class XaGui(private val plugin: JavaPlugin) {
      */
     fun setCloseButton(item: GuiButton) {
         closeButton = item
+    }
+
+    /**
+     * Set the item that will be used in paginator as next page button
+     *
+     * @param item
+     */
+    fun setNextPageButton(item: ItemStack) {
+        nextPageButton = item
+    }
+
+    /**
+     * Set the item that will be used in paginator as previous page button
+     *
+     * @param item
+     */
+    fun setPreviousPageButton(item: ItemStack) {
+        previousPageButton = item
     }
 
     /**
@@ -99,12 +118,15 @@ class XaGui(private val plugin: JavaPlugin) {
         var redirectSound: Sound? = null
         var closeButtonSound: Sound? = null
         var borderFiller: ItemStack = GuiButton(XMaterial.GRAY_STAINED_GLASS_PANE.parseItem() ?: ItemStack(Material.AIR)).setName("&r").getItem()
-        var closeButton: GuiButton = GuiButton(ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR)).setName("&cClose").withListener {
+        var closeButton: GuiButtonInterface = GuiButton(ItemStack(XMaterial.BARRIER.parseMaterial() ?: Material.AIR)).setName("&cClose").withListener {
             it.whoClicked.closeInventory()
             if (closeButtonSound != null) {
                 (it.whoClicked as Player).playSound(it.whoClicked as Player, closeButtonSound ?: Sound.BLOCK_ENDER_CHEST_CLOSE, .5f, 1f)
             }
         }
+
+        var nextPageButton: ItemStack = GuiButton(Material.ARROW).setName("&eNext page").getItem()
+        var previousPageButton: ItemStack = GuiButton(Material.ARROW).setName("&ePrevious page").getItem()
 
         lateinit var registry: GuiRegistry<*>
     }
