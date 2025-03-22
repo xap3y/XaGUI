@@ -1,6 +1,6 @@
-<center>
-[![Maven-central](https://img.shields.io/maven-metadata/v.svg?label=maven-central&metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Feu%2Fxap3y%2Fxagui%2Fmaven-metadata.xml)](https://central.sonatype.com/artifact/eu.xap3y/xagui)
-</center>
+<a align="center" href="https://central.sonatype.com/artifact/eu.xap3y/xagui">
+  <img src="https://img.shields.io/maven-metadata/v.svg?label=maven-central&metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Feu%2Fxap3y%2Fxagui%2Fmaven-metadata.xml" />
+</a>
 
 # Minecraft GUI library
 
