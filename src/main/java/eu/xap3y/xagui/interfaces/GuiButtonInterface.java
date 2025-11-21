@@ -45,10 +45,11 @@ public interface GuiButtonInterface {
 
     GuiClickInterface getClickListener();
     Sound getClickSound();
+    float getClickSoundVolume();
     GuiButton clone();
 
     GuiButton withRedirect(Supplier<GuiMenuInterface> menu);
-    GuiButton withClickSound(Sound sound);
+    GuiButton withClickSound(Sound sound, float volume);
 
     void callRedirect(Player p);
 }

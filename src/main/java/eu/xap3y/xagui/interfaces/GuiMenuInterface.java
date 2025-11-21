@@ -9,6 +9,8 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 
 public interface GuiMenuInterface {
@@ -23,6 +25,7 @@ public interface GuiMenuInterface {
     void setOnPageSwitch(GuiPageSwitchInterface onPageSwitch);
 
     void setName(String newName);
+    void close();
     String getName();
     String getRawName();
     int getSize();
@@ -72,6 +75,8 @@ public interface GuiMenuInterface {
 
     void fillSlots(ItemStack item, int... slots);
     void fillSlots(ItemStack item, Integer[] slots);
+    void fillSlots(ItemStack item, Set<Integer> slots);
+    void fillSlots(ItemStack item, List<Integer> slots);
     void fillSlots(GuiButtonInterface item, int... slots);
 
     void fillSlots(int page, ItemStack item, int... slots);

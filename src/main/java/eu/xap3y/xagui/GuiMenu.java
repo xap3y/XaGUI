@@ -1,6 +1,5 @@
 package eu.xap3y.xagui;
 
-import com.cryptomorin.xseries.XMaterial;
 import eu.xap3y.xagui.exception.PageOutOfBoundException;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
@@ -22,6 +21,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -106,9 +106,19 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
      * @return the currently active page inventory
      */
     @Override
-    public Inventory getInventory() {
+    public @NotNull Inventory getInventory() {
         Inventory inv = invMapping.get(currentOpenedPage);
         return inv != null ? inv : Bukkit.createInventory(this, getSize(), getName());
+    }
+
+    /**
+     * Close the GUI for the current viewer.
+     */
+    @Override
+    public void close() {
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            getInventory().close();
+        });
     }
 
     // Open/Close/Click wiring
@@ -698,6 +708,34 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
     }
 
     /**
+     * Fill the given slots on the current page with an ItemStack.
+     *
+     * @param item  itemstack to place
+     * @param slots set of slot indices
+     */
+    @Override
+    public void fillSlots(ItemStack item, Set<Integer> slots) {
+        int page = currentOpenedPage;
+        for (int s : slots) {
+            setSlot(page, s, new GuiButton(item));
+        }
+    }
+
+    /**
+     * Fill the given slots on the current page with an ItemStack.
+     *
+     * @param item  itemstack to place
+     * @param slots list of slot indices
+     */
+    @Override
+    public void fillSlots(ItemStack item, List<Integer> slots) {
+        int page = currentOpenedPage;
+        for (int s : slots) {
+            setSlot(page, s, new GuiButton(item));
+        }
+    }
+
+    /**
      * Fill the given slots on the current page with a button instance.
      *
      * @param item  button instance
@@ -1012,8 +1050,7 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
      * @return a filler ItemStack
      */
     private static ItemStack grayPaneNamedSpace() {
-        Material mat = XMaterial.GRAY_STAINED_GLASS_PANE.parseMaterial();
-        if (mat == null) mat = Material.AIR;
+        Material mat = Material.GRAY_STAINED_GLASS_PANE;
         ItemStack item = new ItemStack(mat);
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {

@@ -1,6 +1,8 @@
 package eu.xap3y.xagui.listeners;
 
 import eu.xap3y.xagui.GuiMenu;
+import eu.xap3y.xagui.XaGui;
+import eu.xap3y.xagui.events.GuiClickEvent;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import lombok.AllArgsConstructor;
 import org.bukkit.Sound;
@@ -38,7 +40,7 @@ public class MenuListener implements Listener {
                     }
                 }
                 if (clickedInventory.onClickActionOwn != null) {
-                    clickedInventory.onClickActionOwn.onClick(e);
+                    clickedInventory.onClickActionOwn.onClick(new GuiClickEvent(e));
                 }
             }
             return;
@@ -69,18 +71,25 @@ public class MenuListener implements Listener {
         }
 
         if (clickedInventory.onClickAction != null) {
-            clickedInventory.onClickAction.onClick(e);
+            clickedInventory.onClickAction.onClick(new GuiClickEvent(e));
         }
 
         GuiButtonInterface button = clickedInventory.getSlot(e.getSlot());
 
+        if (button == null) return;
+
         if (button.getClickSound() != null) {
             Player player = (Player) e.getWhoClicked();
-            player.playSound(player, button.getClickSound() != null ? button.getClickSound() : Sound.UI_BUTTON_CLICK, 1f, 1f);
+            player.playSound(player, button.getClickSound() != null ? button.getClickSound() : Sound.UI_BUTTON_CLICK, button.getClickSoundVolume(), 1f);
+        } else {
+            if (XaGui.getClickSound() != null) {
+                Player player = (Player) e.getWhoClicked();
+                player.playSound(player, XaGui.getClickSound(), 1f, 1f);
+            }
         }
 
         if (button.getClickListener() != null) {
-            button.getClickListener().onClick(e);
+            button.getClickListener().onClick(new GuiClickEvent(e));
         }
 
         button.callRedirect((Player) e.getWhoClicked());
@@ -93,6 +102,8 @@ public class MenuListener implements Listener {
         JavaPlugin owner = clickedInventory.getOwner();
         if (!Objects.equals(owner, plugin)) return;
 
+        XaGui.removeOpenMenu(e.getPlayer().getUniqueId());
+
         if (clickedInventory.onCloseAction != null) {
             clickedInventory.onCloseAction.onClose(e);
         }
@@ -104,6 +115,8 @@ public class MenuListener implements Listener {
 
         JavaPlugin owner = clickedInventory.getOwner();
         if (!Objects.equals(owner, plugin)) return;
+
+        XaGui.addOpenMenu(e.getPlayer().getUniqueId(), clickedInventory);
 
         if (clickedInventory.onOpenAction != null) {
             clickedInventory.onOpenAction.onOpen(e);

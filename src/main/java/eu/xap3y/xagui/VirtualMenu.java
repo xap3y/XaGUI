@@ -107,20 +107,20 @@ public abstract class VirtualMenu<T> implements VirtualMenuInterface<T> {
      * <p>
      * Implementations should mutate {@link #gui} as needed and return it.
      *
-     * @param o context object (non-null)
+     * @param ctx context object (non-null)
      * @return the (possibly modified) GUI instance to open
      */
     @Override
-    public abstract @NotNull GuiMenuInterface build(@NotNull T o);
+    public abstract @NotNull GuiMenuInterface build(@NotNull T ctx);
 
     /**
      * Build the GUI with a context object and open it for a player.
      *
      * @param player target player
-     * @param o      contextual data
+     * @param ctx      contextual data
      */
-    public void open(Player player, T o) {
-        GuiMenuInterface built = build(o);
+    public void open(Player player, T ctx) {
+        GuiMenuInterface built = build(ctx);
         built.open(player);
     }
 

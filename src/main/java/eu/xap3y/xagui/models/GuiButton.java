@@ -49,6 +49,11 @@ public class GuiButton implements GuiButtonInterface {
     private Sound sound;
 
     /**
+     * Volume for the click sound.
+     */
+    private float soundVolume = 1f;
+
+    /**
      * Optional click listener invoked when the button is clicked.
      */
     private GuiClickInterface listener;
@@ -65,6 +70,10 @@ public class GuiButton implements GuiButtonInterface {
      */
     public GuiButton(ItemStack item) {
         this.icon = item;
+        if (XaGui.getButtonClickSound() != null) {
+            this.sound = XaGui.getButtonClickSound();
+            this.soundVolume = XaGui.getButtonClickSoundVolume();
+        }
     }
 
     /**
@@ -392,6 +401,16 @@ public class GuiButton implements GuiButtonInterface {
     }
 
     /**
+     * Get the volume configured for the click sound.
+     *
+     * @return the click sound volume
+     */
+    @Override
+    public float getClickSoundVolume() {
+        return soundVolume;
+    }
+
+    /**
      * Create a shallow copy of this button.
      * <p>
      * The copy contains a cloned ItemStack and copies over listener, redirect, and sound references.
@@ -423,11 +442,13 @@ public class GuiButton implements GuiButtonInterface {
      * Configure a sound to play when this button is clicked. Use null to disable.
      *
      * @param sound the sound to play, or null
+     * @param volume the volume to play the sound at
      * @return this button for chaining
      */
     @Override
-    public GuiButton withClickSound(Sound sound) {
+    public GuiButton withClickSound(Sound sound, float volume) {
         this.sound = sound;
+        this.soundVolume = volume;
         return this;
     }
 
