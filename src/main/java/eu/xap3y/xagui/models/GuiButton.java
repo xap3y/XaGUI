@@ -1,6 +1,7 @@
 package eu.xap3y.xagui.models;
 
 import eu.xap3y.xagui.XaGui;
+import eu.xap3y.xagui.adapter.PaperAdapter;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import eu.xap3y.xagui.interfaces.listeners.GuiClickInterface;
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
@@ -9,16 +10,14 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -137,7 +136,11 @@ public class GuiButton implements GuiButtonInterface {
     public GuiButton setName(String name) {
         ItemMeta meta = icon.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+            if (XaGui.isUseKyoriText()) {
+                PaperAdapter.setName(meta, name);
+            } else {
+                meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+            }
             icon.setItemMeta(meta);
         }
         return this;
@@ -157,7 +160,11 @@ public class GuiButton implements GuiButtonInterface {
         }
         ItemMeta meta = icon.getItemMeta();
         if (meta != null) {
-            meta.setLore(colored);
+            if (XaGui.isUseKyoriText()) {
+                PaperAdapter.setLoreList(meta, newLore);
+            } else {
+                meta.setLore(colored);
+            }
             icon.setItemMeta(meta);
         }
         return this;
@@ -172,7 +179,7 @@ public class GuiButton implements GuiButtonInterface {
     @Override
     public GuiButton setLore(String... args) {
         List<String> list = new ArrayList<>(args.length);
-        for (String s : args) list.add(s);
+        list.addAll(Arrays.asList(args));
         return setLoreList(list);
     }
 
@@ -185,7 +192,7 @@ public class GuiButton implements GuiButtonInterface {
     @Override
     public GuiButton setLoreArray(String[] array) {
         List<String> list = new ArrayList<>(array.length);
-        for (String s : array) list.add(s);
+        list.addAll(Arrays.asList(array));
         return setLoreList(list);
     }
 
@@ -238,7 +245,7 @@ public class GuiButton implements GuiButtonInterface {
     @Override
     public GuiButton addLore(String... args) {
         List<String> list = new ArrayList<>(args.length);
-        for (String s : args) list.add(s);
+        list.addAll(Arrays.asList(args));
         return addLoreList(list);
     }
 
@@ -251,7 +258,7 @@ public class GuiButton implements GuiButtonInterface {
     @Override
     public GuiButton addLoreArray(String[] array) {
         List<String> list = new ArrayList<>(array.length);
-        for (String s : array) list.add(s);
+        list.addAll(Arrays.asList(array));
         return addLoreList(list);
     }
 

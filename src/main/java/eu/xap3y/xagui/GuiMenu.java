@@ -1,5 +1,6 @@
 package eu.xap3y.xagui;
 
+import eu.xap3y.xagui.adapter.PaperAdapter;
 import eu.xap3y.xagui.exception.PageOutOfBoundException;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
@@ -10,6 +11,7 @@ import eu.xap3y.xagui.interfaces.listeners.GuiOwnClickInterface;
 import eu.xap3y.xagui.interfaces.listeners.GuiPageSwitchInterface;
 import eu.xap3y.xagui.models.GuiButton;
 import eu.xap3y.xagui.models.GuiPageSwitchModel;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -52,6 +54,7 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
 
     private int totalPages;
     private String name;
+
     private final int rows;
 
     private boolean unlockSelfInventoryClick = false;
@@ -95,7 +98,11 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
 
         for (int i = 0; i <= totalPages - 1; i++) {
             pageMapping.put(i, new ConcurrentHashMap<>());
-            invMapping.put(i, Bukkit.createInventory(this, getSize(), getName()));
+            if (XaGui.isUseKyoriText()) {
+                invMapping.put(i, PaperAdapter.createInventory(this, getSize(), getName()));
+            } else {
+                invMapping.put(i, Bukkit.createInventory(this, getSize(), getName()));
+            }
             unlockedSlots.put(i, new HashSet<>());
         }
     }
@@ -116,9 +123,16 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
      */
     @Override
     public void close() {
-        Bukkit.getScheduler().runTask(plugin, () -> {
-            getInventory().close();
-        });
+        if (XaGui.isFolia()) {
+            getInventory().getViewers().forEach(viewer -> {
+                viewer.getScheduler().run(plugin, (e) -> viewer.closeInventory(), null);
+            });
+        } else {
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                getInventory().close();
+            });
+        }
+
     }
 
     // Open/Close/Click wiring
@@ -626,7 +640,15 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
             setSlot(pageIndex, s, btn);
         }
 
-        Bukkit.getScheduler().runTask(plugin, () -> player.openInventory(inv));
+        if (XaGui.isPaper()) {
+            if (XaGui.isFolia()) {
+                player.getScheduler().run(plugin, (e) -> player.openInventory(inv), null);
+            } else {
+                plugin.getServer().getScheduler().runTask(plugin, () -> player.openInventory(inv));
+            }
+        } else {
+            Bukkit.getScheduler().runTask(plugin, () -> player.openInventory(inv));
+        }
 
         if (pageIndex != oldPage && this.pageSwitchSound != null) {
             player.playSound(player, this.pageSwitchSound, 1f, 1f);
@@ -674,7 +696,11 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
      */
     @Override
     public void close(Player player) {
-        Bukkit.getScheduler().runTask(plugin, () -> player.closeInventory());
+        if (XaGui.isFolia()) {
+            player.getScheduler().run(plugin, (e) -> player.closeInventory(), null);
+        } else {
+            Bukkit.getScheduler().runTask(plugin, () -> player.closeInventory());
+        }
     }
 
     // Fillers

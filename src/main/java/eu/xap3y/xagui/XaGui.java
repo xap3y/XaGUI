@@ -20,11 +20,40 @@ public class XaGui {
 
     private final JavaPlugin plugin;
 
+    @Getter
+    private static boolean isPaper = false;
+
+    @Getter
+    private static boolean isFolia = false;
+
+    @Getter
+    private static boolean useKyoriText = false;
+
     private final static Map<UUID, GuiMenuInterface> openMenus = new ConcurrentHashMap<>();
 
     public XaGui(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
+        plugin.getServer().getConsoleSender().sendMessage("Registering XaGui..");
         plugin.getServer().getPluginManager().registerEvents(new MenuListener(plugin), plugin);
+
+        try {
+            Class.forName("com.destroystokyo.paper.PaperConfig");
+            isPaper = true;
+        } catch (ClassNotFoundException ignored) {}
+
+        plugin.getServer().getConsoleSender().sendMessage("Checking for Kyori Adventure...");
+        try {
+            //plugin.getServer().getConsoleSender().sendMessage("&cUsing Kyori Adventure for text components");
+            Class.forName("net.kyori.adventure.text.Component");
+            useKyoriText = true;
+        } catch (ClassNotFoundException ignored) {
+            //plugin.getServer().getConsoleSender().sendMessage("&cNot using Kyori Adventure for text components");
+        }
+
+        try {
+            Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+            isFolia = true;
+        } catch (ClassNotFoundException ignored) {}
     }
 
     /**
