@@ -1,5 +1,6 @@
 package eu.xap3y.xagui;
 
+import eu.xap3y.xagui.adapter.Legacy;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
 import eu.xap3y.xagui.listeners.MenuListener;
@@ -201,7 +202,7 @@ public class XaGui {
     private static Sound closeButtonSound = null;
 
     @Getter
-    private static ItemStack borderFiller = new GuiButton(Material.GRAY_STAINED_GLASS_PANE).setName("&r").getItem();
+    private static ItemStack borderFiller = Legacy.createBorderFiller();
 
     @Getter
     private static GuiButtonInterface closeButton = new GuiButton(

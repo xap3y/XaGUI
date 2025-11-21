@@ -1,5 +1,6 @@
 package eu.xap3y.xagui;
 
+import eu.xap3y.xagui.adapter.Legacy;
 import eu.xap3y.xagui.adapter.PaperAdapter;
 import eu.xap3y.xagui.exception.PageOutOfBoundException;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
@@ -1076,13 +1077,6 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
      * @return a filler ItemStack
      */
     private static ItemStack grayPaneNamedSpace() {
-        Material mat = Material.GRAY_STAINED_GLASS_PANE;
-        ItemStack item = new ItemStack(mat);
-        ItemMeta meta = item.getItemMeta();
-        if (meta != null) {
-            meta.setDisplayName(" ");
-            item.setItemMeta(meta);
-        }
-        return item;
+        return Legacy.createBorderFiller();
     }
 }
