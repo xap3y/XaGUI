@@ -50,6 +50,9 @@ public interface GuiButtonInterface {
 
     GuiButton withRedirect(Supplier<GuiMenuInterface> menu);
     GuiButton withClickSound(Sound sound, float volume);
+    default GuiButton withClickSound(Sound sound) {
+        return withClickSound(sound, 1.0f);
+    }
 
     void callRedirect(Player p);
 }

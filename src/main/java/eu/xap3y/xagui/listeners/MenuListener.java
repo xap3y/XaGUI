@@ -122,6 +122,11 @@ public class MenuListener implements Listener {
 
         XaGui.addOpenMenu(e.getPlayer().getUniqueId(), clickedInventory);
 
+        if (clickedInventory.getOpenSound() != null) {
+            Player player = (Player) e.getPlayer();
+            player.playSound(player, clickedInventory.getOpenSound(), clickedInventory.getOpenSoundVolume(), 1f);
+        }
+
         if (clickedInventory.onOpenAction != null) {
             clickedInventory.onOpenAction.onOpen(e);
         }

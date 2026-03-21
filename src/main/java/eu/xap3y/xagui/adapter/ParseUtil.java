@@ -61,10 +61,10 @@ public final class ParseUtil {
         // 1. Normalize section sign to ampersands
         String normalized = input.replace('§', '&');
 
-        // 2. Convert nibble hex (&x&F&F&0&0&0&A) -> <#FF000A>
+        // 2. Convert nibble hex (&x&F&F&0&0&0&A) -> <reset><#FF000A>
         normalized = convertNibbleHex(normalized);
 
-        // 3. Convert hash hex (&#FF00AA) -> <#FF00AA>
+        // 3. Convert hash hex (&#FF00AA) -> <reset><#FF00AA>
         normalized = convertHashHex(normalized);
 
         // 4. Convert legacy color and format codes to MiniMessage tags
@@ -81,7 +81,7 @@ public final class ParseUtil {
             try {
                 component = MINI.deserialize(normalized);
             } catch (Exception ex) {
-                // Fallback: do pure legacy parse on the original normalized (before conversions could be stored separately if desired)
+                // Fallback: do pure legacy parse
                 component = LegacyComponentSerializer.legacyAmpersand().deserialize(input.replace('§', '&'));
             }
         } else {
@@ -99,13 +99,14 @@ public final class ParseUtil {
         StringBuffer sb = new StringBuffer();
         while (m.find()) {
             String hex = m.group(1).toUpperCase();
-            m.appendReplacement(sb, "<#" + hex + ">");
+            // Color codes in legacy reset formatting; ensure we reset before applying color
+            m.appendReplacement(sb, "<reset><#" + hex + ">");
         }
         m.appendTail(sb);
         return sb.toString();
     }
 
-    // Convert &x&R&R&G&G&B&B sequences to <#RRGGBB>
+    // Convert &x&R&R&G&G&B&B sequences to <reset><#RRGGBB>
     private static String convertNibbleHex(String s) {
         StringBuilder out = new StringBuilder(s.length());
         int i = 0;
@@ -120,7 +121,7 @@ public final class ParseUtil {
                 for (int off = 3; off <= 13; off += 2) {
                     hex.append(s.charAt(i + off));
                 }
-                out.append("<#").append(hex.toString().toUpperCase()).append(">");
+                out.append("<reset><#").append(hex.toString().toUpperCase()).append(">");
                 i += 14;
             } else {
                 out.append(s.charAt(i));
@@ -157,17 +158,17 @@ public final class ParseUtil {
             if (c == '&' && i + 1 < s.length()) {
                 char code = Character.toLowerCase(s.charAt(i + 1));
 
-                // Formatting
+                // Formatting codes (&l, &o, &n, &m, &k, &r)
                 if (FORMAT_TAGS.containsKey(code)) {
                     String tag = FORMAT_TAGS.get(code);
                     out.append('<').append(tag).append('>');
                     i++;
                     continue;
                 }
-                // Color
+                // Color codes (&0..&f) should reset previous formatting
                 if (COLOR_TAGS.containsKey(code)) {
                     String tag = COLOR_TAGS.get(code);
-                    out.append('<').append(tag).append('>');
+                    out.append("<reset>").append('<').append(tag).append('>');
                     i++;
                     continue;
                 }

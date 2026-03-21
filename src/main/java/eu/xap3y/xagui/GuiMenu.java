@@ -67,6 +67,8 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
     private ItemStack nextPageButton = null;
     private ItemStack previousPageButton = null;
     private Sound pageSwitchSound = null;
+    private Sound openSound = null;
+    private float openSoundFloat = 1f;
 
     /** Callback invoked on inventory close. */
     public GuiCloseInterface onCloseAction = null;
@@ -889,6 +891,38 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
     @Override
     public void setPageSwitchSound(Sound sound) {
         this.pageSwitchSound = sound;
+    }
+
+    /**
+     * Set an optional sound to play when opening the GUI.
+     *
+     * @param sound open sound (nullable to disable)
+     * @param volume sound volume
+     */
+    @Override
+    public void setOpenSound(Sound sound, float volume) {
+        this.openSound = sound;
+        this.openSoundFloat = volume;
+    }
+
+    /**
+     * Get the sound played when opening the GUI.
+     *
+     * @return open sound
+     */
+    @Override
+    public Sound getOpenSound() {
+        return openSound;
+    }
+
+    /**
+     * Get the volume of the sound played when opening the GUI.
+     *
+     * @return open sound volume
+     */
+    @Override
+    public float getOpenSoundVolume() {
+        return openSoundFloat;
     }
 
     // Borders

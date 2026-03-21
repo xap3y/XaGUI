@@ -91,6 +91,12 @@ public interface GuiMenuInterface {
     void setNextPageButton(ItemStack item);
     void setPreviousPageButton(ItemStack item);
     void setPageSwitchSound(Sound sound);
+    void setOpenSound(Sound sound, float volume);
+    default void setOpenSound(Sound sound) {
+        setOpenSound(sound, 1.0f);
+    }
+    Sound getOpenSound();
+    float getOpenSoundVolume();
 
     void fillBorder();
     void fillBorder(int page, ItemStack item);
