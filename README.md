@@ -4,8 +4,22 @@
 
 # Minecraft GUI library
 
-A simple GUI library for Minecraft plugins. This library is written in Kotlin and can be used in both Java and Kotlin plugins.
+A simple GUI library for Minecraft plugins.
+For installation instructions and usage examples, visit [docs](https://xagui.xap3y.eu)
 
-For installation instructions and usage examples, visit:
+## Supported versions & platforms
 
-## https://xagui.xap3y.eu
+- 1.8 - 1.21.x
+- Spigot, Paper, Purpur, Folia
+
+## Links
+- [docs](https://xagui.xap3y.eu)
+- [javadoc](https://xagui-javadocs.xap3y.eu/)
+- [maven central](https://central.sonatype.com/artifact/eu.xap3y/xagui)
+
+## Project using XaGui
+
+- [ConnectFour](https://modrinth.com/plugin/connectfour)
+- [ChatMentions](https://modrinth.com/plugin/chat-mentions)
+- [EggHunt](https://www.spigotmc.org/resources/egghunt-geocaching-%EF%B8%8F.133920/)
+- [AdventCalendar](https://git.lipovcan.cz/Minecore/AdventCalendar)
