@@ -6,9 +6,9 @@
 
     <groupId>eu.xap3y</groupId>
     <artifactId>xagui</artifactId>
-    <version>1.3.2</version>
+    <version>1.3.3</version>
     <packaging>jar</packaging>
-    <url>https://xagui.xap3y.space</url>
+    <url>https://xagui.xap3y.eu</url>
     <name>XaGui</name>
 
     <properties>
@@ -37,13 +37,13 @@
         </license>
     </licenses>
 
-    <description>LightWeight minecraft GUI library</description>
+    <description>LightWeight Minecraft GUI library</description>
     <developers>
         <developer>
             <id>xap3y</id>
             <name>Martin</name>
             <email>xap3y@mail.ru</email>
-            <url>https://xap3y.fun</url>
+            <url>https://xap3y.eu</url>
         </developer>
     </developers>
 
@@ -152,6 +152,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.32</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.cryptomorin</groupId>
+            <artifactId>XSeries</artifactId>
+            <version>13.6.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -3,9 +3,12 @@ package eu.xap3y.xagui;
 import eu.xap3y.xagui.adapter.Legacy;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
+import eu.xap3y.xagui.interfaces.listeners.GuiCloseInterface;
+import eu.xap3y.xagui.interfaces.listeners.GuiOpenInterface;
 import eu.xap3y.xagui.listeners.MenuListener;
 import eu.xap3y.xagui.models.GuiButton;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -21,6 +24,8 @@ public class XaGui {
 
     private final JavaPlugin plugin;
 
+    private final String VERSION = "1.3.3";
+
     @Getter
     private static boolean isPaper = false;
 
@@ -34,7 +39,7 @@ public class XaGui {
 
     public XaGui(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
-        plugin.getServer().getConsoleSender().sendMessage("Registering XaGui..");
+        plugin.getServer().getConsoleSender().sendMessage("Registering XaGui v" + VERSION + "..");
         plugin.getServer().getPluginManager().registerEvents(new MenuListener(plugin), plugin);
 
         try {
@@ -55,6 +60,8 @@ public class XaGui {
             Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
             isFolia = true;
         } catch (ClassNotFoundException ignored) {}
+
+        plugin.getServer().getConsoleSender().sendMessage("XaGui registered successfully!");
     }
 
     /**
@@ -111,6 +118,24 @@ public class XaGui {
      */
     public void setBorderItem(ItemStack item) {
         borderFiller = item;
+    }
+
+    /**
+     * Set a handler invoked when any xagui inventory is closed.
+     *
+     * @param closeAction close handler
+     */
+    public void setOnClose(GuiCloseInterface closeAction) {
+        onCloseAction = closeAction;
+    }
+
+    /**
+     * Set a handler invoked when any xagui inventory is opened.
+     *
+     * @param openAction open handler
+     */
+    public void setOnOpen(GuiOpenInterface openAction) {
+        this.onOpenAction = openAction;
     }
 
     /**
@@ -205,13 +230,27 @@ public class XaGui {
     private static ItemStack borderFiller = Legacy.createBorderFiller();
 
     @Getter
+    private static GuiCloseInterface onCloseAction = null;
+
+    @Getter
+    private static GuiOpenInterface onOpenAction = null;
+
+    @Getter
     private static GuiButtonInterface closeButton = new GuiButton(
             new ItemStack(Material.BARRIER)
     ).setName("&cClose").withListener(e -> {
         e.getWhoClicked().closeInventory();
         if (closeButtonSound != null) {
             Player p = (Player) e.getWhoClicked();
-            p.playSound(p, closeButtonSound != null ? closeButtonSound : Sound.BLOCK_ENDER_CHEST_CLOSE, .5f, 1f);
+            try {
+                p.playSound(p, closeButtonSound != null ? closeButtonSound : Sound.BLOCK_ENDER_CHEST_CLOSE, .5f, 1f);
+            } catch (NoSuchFieldError | NoSuchMethodError | Exception ignored) {
+                try { // 1.8.8 fallback
+                    p.playSound(p.getLocation(), closeButtonSound != null ? closeButtonSound : Sound.BLOCK_ENDER_CHEST_CLOSE, .5f, 1f);
+                } catch (NoSuchFieldError | NoSuchMethodError | Exception ignored2) {
+                    // IGNORE
+                }
+            }
         }
     });
 

@@ -108,6 +108,10 @@ public class MenuListener implements Listener {
 
         XaGui.removeOpenMenu(e.getPlayer().getUniqueId());
 
+        if (XaGui.getOnCloseAction() != null) {
+            XaGui.getOnCloseAction().onClose(e);
+        }
+
         if (clickedInventory.onCloseAction != null) {
             clickedInventory.onCloseAction.onClose(e);
         }
@@ -124,7 +128,19 @@ public class MenuListener implements Listener {
 
         if (clickedInventory.getOpenSound() != null) {
             Player player = (Player) e.getPlayer();
-            player.playSound(player, clickedInventory.getOpenSound(), clickedInventory.getOpenSoundVolume(), 1f);
+            try {
+                player.playSound(player, clickedInventory.getOpenSound(), clickedInventory.getOpenSoundVolume(), 1f);
+            } catch (NoSuchFieldError | NoSuchMethodError | Exception ignored) {
+                try { // 1.8.8 fallback
+                    player.playSound(player.getLocation(), clickedInventory.getOpenSound(), clickedInventory.getOpenSoundVolume(), 1f);
+                } catch (NoSuchFieldError | NoSuchMethodError | Exception ignored2) {
+                    // IGNORE
+                }
+            }
+        }
+
+        if (XaGui.getOnOpenAction() != null) {
+            XaGui.getOnOpenAction().onOpen(e);
         }
 
         if (clickedInventory.onOpenAction != null) {

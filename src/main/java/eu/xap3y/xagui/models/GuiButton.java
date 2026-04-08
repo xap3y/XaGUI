@@ -1,5 +1,6 @@
 package eu.xap3y.xagui.models;
 
+import com.cryptomorin.xseries.XMaterial;
 import eu.xap3y.xagui.XaGui;
 import eu.xap3y.xagui.adapter.PaperAdapter;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
@@ -82,6 +83,15 @@ public class GuiButton implements GuiButtonInterface {
      */
     public GuiButton(Material material) {
         this(new ItemStack(material));
+    }
+
+    /**
+     * Create a new GuiButton with a XMaterial (amount 1).
+     *
+     * @param xmaterial the material to use
+     */
+    public GuiButton(XMaterial xmaterial) {
+        this(new ItemStack(xmaterial.get()));
     }
 
     /**
@@ -473,7 +483,15 @@ public class GuiButton implements GuiButtonInterface {
                 menu.open(p);
             }
             if (XaGui.getRedirectSound() != null) {
-                p.playSound(p, XaGui.getRedirectSound(), 1f, 1f);
+                try {
+                    p.playSound(p, XaGui.getRedirectSound(), 1f, 1f);
+                } catch (Exception ignored) {
+                    try {
+                        p.playSound(p.getLocation(), XaGui.getRedirectSound(), 1f, 1f);
+                    } catch (Exception ignored2) {
+                        // IGNORE
+                    }
+                }
             }
         }
     }
