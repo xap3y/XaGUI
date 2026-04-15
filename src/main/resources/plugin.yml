@@ -1,0 +1,10 @@
+name: XaGui
+version: ${project.version}
+main: eu.xap3y.xagui.XaGuiPlugin
+api-version: 1.13
+description: Standalone library for XaGui
+
+commands:
+    xagui:
+        description: Main command for XaGui
+        usage: /<command> <subcommand>

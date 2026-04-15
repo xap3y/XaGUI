@@ -1,6 +1,8 @@
 package eu.xap3y.xagui;
 
 import eu.xap3y.xagui.adapter.Legacy;
+import eu.xap3y.xagui.commands.XaGuiCommand;
+import eu.xap3y.xagui.commands.XaGuiCommandPaper;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
 import eu.xap3y.xagui.interfaces.listeners.GuiCloseInterface;
@@ -8,11 +10,14 @@ import eu.xap3y.xagui.interfaces.listeners.GuiOpenInterface;
 import eu.xap3y.xagui.listeners.MenuListener;
 import eu.xap3y.xagui.models.GuiButton;
 import lombok.Getter;
-import lombok.Setter;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,9 +27,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class XaGui {
 
+    @Getter
     private final JavaPlugin plugin;
 
-    private final String VERSION = "1.3.3";
+    @Getter
+    private static final String VERSION = "1.4";
 
     @Getter
     private static boolean isPaper = false;
@@ -62,6 +69,7 @@ public class XaGui {
         } catch (ClassNotFoundException ignored) {}
 
         plugin.getServer().getConsoleSender().sendMessage("XaGui registered successfully!");
+        XaGuiPlugin.registerAsXaGui(this);
     }
 
     /**
@@ -267,4 +275,39 @@ public class XaGui {
     public static void removeOpenMenu(UUID uuid) {
         openMenus.remove(uuid);
     }
+
+    public void injectCommand() {
+
+        if (!isPaper()) {
+            PluginCommand command = plugin.getCommand("xagui");
+            if (command != null) {
+                command.setExecutor(new XaGuiCommand());
+            }
+        } else {
+            plugin.registerCommand("xagui", "XaGui control plugin", new XaGuiCommandPaper());
+        }
+
+
+        injectPermissions();
+    }
+
+    private void injectPermissions() {
+        registerPermission("xagui.command.*", "Allows using all xagui commands", PermissionDefault.OP);
+        registerPermission("xagui.command.closeall", "Allow to close all opened GUI by XaGui", PermissionDefault.OP);
+        registerPermission("xagui.command.help", "Show help menu", PermissionDefault.OP);
+        registerPermission("xagui.command.ver", "Show version", PermissionDefault.NOT_OP);
+    }
+
+    private void registerPermission(
+            String node,
+            String description,
+            PermissionDefault defaultValue
+    ) {
+        Permission existing = Bukkit.getPluginManager().getPermission(node);
+        if (existing != null) return;
+
+        Permission permission = new Permission(node, description, defaultValue);
+        Bukkit.getPluginManager().addPermission(permission);
+    }
+
 }

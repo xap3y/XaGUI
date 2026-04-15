@@ -12,7 +12,6 @@ import eu.xap3y.xagui.interfaces.listeners.GuiOwnClickInterface;
 import eu.xap3y.xagui.interfaces.listeners.GuiPageSwitchInterface;
 import eu.xap3y.xagui.models.GuiButton;
 import eu.xap3y.xagui.models.GuiPageSwitchModel;
-import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -22,7 +21,6 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 

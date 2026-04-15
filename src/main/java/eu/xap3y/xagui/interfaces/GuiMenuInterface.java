@@ -1,7 +1,6 @@
 package eu.xap3y.xagui.interfaces;
 
 import eu.xap3y.xagui.interfaces.listeners.*;
-import eu.xap3y.xagui.models.GuiPageSwitchModel;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -11,7 +10,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 import java.util.Set;
-import java.util.function.Consumer;
 
 public interface GuiMenuInterface {
     void setOnOpen(GuiOpenInterface openAction);
