@@ -1,4 +1,4 @@
-package eu.xap3y.xagui.internal.exception;
+package eu.xap3y.xagui.exception;
 
 public class PageOutOfBoundException extends RuntimeException {
     public PageOutOfBoundException(String message) {
