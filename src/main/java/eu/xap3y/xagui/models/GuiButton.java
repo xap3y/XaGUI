@@ -1,6 +1,5 @@
 package eu.xap3y.xagui.models;
 
-import com.cryptomorin.xseries.XMaterial;
 import eu.xap3y.xagui.XaGui;
 import eu.xap3y.xagui.adapter.PaperAdapter;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
@@ -83,15 +82,6 @@ public class GuiButton implements GuiButtonInterface {
      */
     public GuiButton(Material material) {
         this(new ItemStack(material));
-    }
-
-    /**
-     * Create a new GuiButton with a XMaterial (amount 1).
-     *
-     * @param xmaterial the material to use
-     */
-    public GuiButton(XMaterial xmaterial) {
-        this(new ItemStack(xmaterial.get()));
     }
 
     /**

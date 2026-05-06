@@ -31,7 +31,7 @@ public class XaGui {
     private final JavaPlugin plugin;
 
     @Getter
-    private static final String VERSION = "1.4";
+    private static final String VERSION = "1.4.1";
 
     @Getter
     private static boolean isPaper = false;
