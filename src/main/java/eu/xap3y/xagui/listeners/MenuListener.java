@@ -124,6 +124,12 @@ public class MenuListener implements Listener {
         JavaPlugin owner = clickedInventory.getOwner();
         if (!Objects.equals(owner, plugin)) return;
 
+        if (!XaGui.isEnabled()) {
+            e.setCancelled(true);
+            plugin.getServer().getConsoleSender().sendMessage("§a[§bXaGui§a] §4Blocked §c" + e.getPlayer().getName() + " §4from opening a menu because XaGui is disabled!");
+            return;
+        }
+
         XaGui.addOpenMenu(e.getPlayer().getUniqueId(), clickedInventory);
 
         if (clickedInventory.getOpenSound() != null) {

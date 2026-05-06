@@ -9,7 +9,9 @@ import eu.xap3y.xagui.interfaces.listeners.GuiCloseInterface;
 import eu.xap3y.xagui.interfaces.listeners.GuiOpenInterface;
 import eu.xap3y.xagui.listeners.MenuListener;
 import eu.xap3y.xagui.models.GuiButton;
+import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -31,7 +33,7 @@ public class XaGui {
     private final JavaPlugin plugin;
 
     @Getter
-    private static final String VERSION = "1.4.1";
+    private static final String VERSION = "1.5.0";
 
     @Getter
     private static boolean isPaper = false;
@@ -42,11 +44,17 @@ public class XaGui {
     @Getter
     private static boolean useKyoriText = false;
 
+    @Getter
+    @Setter
+    private static boolean enabled = true;
+
+    private final String prefix = "§a[§bXaGui§a] §7§o";
+
     private final static Map<UUID, GuiMenuInterface> openMenus = new ConcurrentHashMap<>();
 
     public XaGui(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
-        plugin.getServer().getConsoleSender().sendMessage("Registering XaGui v" + VERSION + "..");
+        plugin.getServer().getConsoleSender().sendMessage(prefix + "Registering XaGui v" + VERSION + "...");
         plugin.getServer().getPluginManager().registerEvents(new MenuListener(plugin), plugin);
 
         try {
@@ -54,7 +62,7 @@ public class XaGui {
             isPaper = true;
         } catch (ClassNotFoundException ignored) {}
 
-        plugin.getServer().getConsoleSender().sendMessage("Checking for Kyori Adventure...");
+        plugin.getServer().getConsoleSender().sendMessage(prefix + "Checking for Kyori Adventure...");
         try {
             //plugin.getServer().getConsoleSender().sendMessage("&cUsing Kyori Adventure for text components");
             Class.forName("net.kyori.adventure.text.Component");
@@ -68,7 +76,7 @@ public class XaGui {
             isFolia = true;
         } catch (ClassNotFoundException ignored) {}
 
-        plugin.getServer().getConsoleSender().sendMessage("XaGui registered successfully!");
+        plugin.getServer().getConsoleSender().sendMessage(prefix + "XaGui registered successfully!");
         XaGuiPlugin.registerAsXaGui(this);
     }
 
