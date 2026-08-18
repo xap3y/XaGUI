@@ -1,5 +1,6 @@
 package eu.xap3y.xagui;
 
+import eu.xap3y.xagui.commands.XaGuiCommandInjector;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,7 +15,7 @@ public class XaGuiPlugin extends JavaPlugin {
 
         xaGui = new XaGui(this);
 
-        xaGui.injectCommand();
+        XaGuiCommandInjector.injectCommand();
     }
 
     public static void registerAsXaGui(XaGui p0) {

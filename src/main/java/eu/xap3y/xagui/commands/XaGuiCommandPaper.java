@@ -1,10 +1,8 @@
 package eu.xap3y.xagui.commands;
 
-import eu.xap3y.xagui.XaGui;
 import eu.xap3y.xagui.XaGuiPlugin;
 import io.papermc.paper.command.brigadier.BasicCommand;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
-import org.bukkit.entity.Player;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Collection;
@@ -35,5 +33,9 @@ public class XaGuiCommandPaper implements BasicCommand {
         } else {
             return Collections.emptyList();
         }
+    }
+
+    public static void injectPaper() {
+        XaGuiPlugin.getXaGui().getPlugin().registerCommand("xagui", "XaGui control plugin", new XaGuiCommandPaper());
     }
 }

@@ -1,21 +1,17 @@
 package eu.xap3y.xagui;
 
 import eu.xap3y.xagui.adapter.Legacy;
-import eu.xap3y.xagui.commands.XaGuiCommand;
-import eu.xap3y.xagui.commands.XaGuiCommandPaper;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
 import eu.xap3y.xagui.interfaces.listeners.GuiCloseInterface;
 import eu.xap3y.xagui.interfaces.listeners.GuiOpenInterface;
 import eu.xap3y.xagui.listeners.MenuListener;
 import eu.xap3y.xagui.models.GuiButton;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.Permission;
@@ -284,22 +280,7 @@ public class XaGui {
         openMenus.remove(uuid);
     }
 
-    public void injectCommand() {
-
-        if (!isPaper()) {
-            PluginCommand command = plugin.getCommand("xagui");
-            if (command != null) {
-                command.setExecutor(new XaGuiCommand());
-            }
-        } else {
-            plugin.registerCommand("xagui", "XaGui control plugin", new XaGuiCommandPaper());
-        }
-
-
-        injectPermissions();
-    }
-
-    private void injectPermissions() {
+    public void injectPermissions() {
         registerPermission("xagui.command.*", "Allows using all xagui commands", PermissionDefault.OP);
         registerPermission("xagui.command.closeall", "Allow to close all opened GUI by XaGui", PermissionDefault.OP);
         registerPermission("xagui.command.help", "Show help menu", PermissionDefault.OP);

@@ -6,7 +6,7 @@
 
     <groupId>eu.xap3y</groupId>
     <artifactId>xagui</artifactId>
-    <version>1.5.1</version>
+    <version>1.5.2</version>
     <packaging>jar</packaging>
     <url>https://xagui.xap3y.eu</url>
     <name>XaGui</name>
@@ -122,7 +122,7 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.5.0</version>
+                <version>0.10.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
