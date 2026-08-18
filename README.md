@@ -9,7 +9,7 @@ For installation instructions and usage examples, visit [docs](https://xagui.xap
 
 ## Supported versions & platforms
 
-- 1.8 - 1.21.x
+- 1.8 - 26.2
 - Spigot, Paper, Purpur, Folia
 
 ## Links
