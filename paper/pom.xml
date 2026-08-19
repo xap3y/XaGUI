@@ -6,7 +6,7 @@
     <parent>
         <groupId>eu.xap3y</groupId>
         <artifactId>xagui-parent</artifactId>
-        <version>1.6.0</version>
+        <version>1.6.1</version>
     </parent>
 
     <artifactId>xagui-paper</artifactId>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>eu.xap3y</groupId>
             <artifactId>xagui</artifactId>
-            <version>1.6.0</version>
+            <version>1.6.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

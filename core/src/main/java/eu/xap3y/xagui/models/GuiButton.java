@@ -138,7 +138,9 @@ public class GuiButton implements GuiButtonInterface {
             if (XaGui.isUseKyoriText()) {
                 try {
                     Class.forName("eu.xap3y.xagui.paper.PaperAdapter").getMethod("setName", ItemMeta.class, String.class).invoke(null, meta, name);
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+                }
             } else {
                 meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
             }
@@ -164,7 +166,9 @@ public class GuiButton implements GuiButtonInterface {
             if (XaGui.isUseKyoriText()) {
                 try {
                     Class.forName("eu.xap3y.xagui.paper.PaperAdapter").getMethod("setLoreList", ItemMeta.class, List.class).invoke(null, meta, newLore);
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    meta.setLore(colored);
+                }
             } else {
                 meta.setLore(colored);
             }
