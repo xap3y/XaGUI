@@ -9,6 +9,7 @@ For installation instructions and usage examples, visit [docs](https://xagui.xap
 
 ## Supported versions & platforms
 
+- Java 8 - 26
 - 1.8 - 26.2
 - Spigot, Paper, Purpur, Folia
 
