@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"eu.xap3y.xagui.paper"}];updateSearchResults();

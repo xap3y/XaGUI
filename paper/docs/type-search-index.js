@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"eu.xap3y.xagui.paper","l":"PaperAdapter"},{"p":"eu.xap3y.xagui.paper","l":"ParseUtil"},{"p":"eu.xap3y.xagui.paper","l":"XaGuiCommandPaper"}];updateSearchResults();
