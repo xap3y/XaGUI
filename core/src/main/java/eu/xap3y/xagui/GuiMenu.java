@@ -1,6 +1,7 @@
 package eu.xap3y.xagui;
 
 import eu.xap3y.xagui.adapter.Legacy;
+import eu.xap3y.xagui.tracking.ScreenTracker;
 import eu.xap3y.xagui.exception.PageOutOfBoundException;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
@@ -95,6 +96,7 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
         this.name = title;
         this.rows = rowsToSet;
         this.totalPages = pages;
+        ScreenTracker.getInstance().register(this, getClass());
 
         for (int i = 0; i <= totalPages - 1; i++) {
             pageMapping.put(i, new ConcurrentHashMap<>());
@@ -620,6 +622,11 @@ public class GuiMenu implements InventoryHolder, GuiMenuInterface {
     public void switchPage(int pageIndex, Player player) {
         if (pageIndex > totalPages - 1 || pageIndex < 0) {
             throw new PageOutOfBoundException();
+        }
+
+        if (!XaGui.isEnabled() || ScreenTracker.getInstance().isDisabled(this)) {
+            player.sendMessage("§cOpening this GUI is currently disabled.");
+            return;
         }
 
         int oldPage = currentOpenedPage;

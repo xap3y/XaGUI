@@ -11,7 +11,9 @@ public class XaGuiCommandInjector {
         if (!XaGui.isPaper()) {
             PluginCommand command = XaGuiPlugin.getXaGui().getPlugin().getCommand("xagui");
             if (command != null) {
-                command.setExecutor(new XaGuiCommand());
+                XaGuiCommand executor = new XaGuiCommand();
+                command.setExecutor(executor);
+                command.setTabCompleter(executor);
             }
         } else {
             try {

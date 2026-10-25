@@ -278,6 +278,9 @@ public class XaGui {
     public void injectPermissions() {
         registerPermission("xagui.command.*", "Allows using all xagui commands", PermissionDefault.OP);
         registerPermission("xagui.command.closeall", "Allow to close all opened GUI by XaGui", PermissionDefault.OP);
+        registerPermission("xagui.command.screens-detailed", "View detailed open GUI sessions", PermissionDefault.OP);
+        registerPermission("xagui.command.screens-history", "View recent GUI openings", PermissionDefault.OP);
+        registerPermission("xagui.command.screen-toggle", "Toggle opening individual GUI classes", PermissionDefault.OP);
         registerPermission("xagui.command.help", "Show help menu", PermissionDefault.OP);
         registerPermission("xagui.command.ver", "Show version", PermissionDefault.NOT_OP);
     }

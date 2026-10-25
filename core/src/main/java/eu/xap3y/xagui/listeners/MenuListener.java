@@ -2,6 +2,7 @@ package eu.xap3y.xagui.listeners;
 
 import eu.xap3y.xagui.GuiMenu;
 import eu.xap3y.xagui.XaGui;
+import eu.xap3y.xagui.tracking.ScreenTracker;
 import eu.xap3y.xagui.events.GuiClickEvent;
 import eu.xap3y.xagui.interfaces.GuiButtonInterface;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.*;
 import org.bukkit.inventory.Inventory;
@@ -114,6 +116,7 @@ public class MenuListener implements Listener {
         if (!Objects.equals(owner, plugin)) return;
 
         XaGui.removeOpenMenu(e.getPlayer().getUniqueId());
+        ScreenTracker.getInstance().closed(e.getPlayer().getUniqueId(), clickedInventory);
 
         if (XaGui.getOnCloseAction() != null) {
             XaGui.getOnCloseAction().onClose(e);
@@ -124,7 +127,7 @@ public class MenuListener implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onInventoryOpen(InventoryOpenEvent e) {
         if (!(e.getInventory().getHolder() instanceof GuiMenu)) return;
         GuiMenu clickedInventory = (GuiMenu) e.getInventory().getHolder();
@@ -132,13 +135,15 @@ public class MenuListener implements Listener {
         JavaPlugin owner = clickedInventory.getOwner();
         if (!Objects.equals(owner, plugin)) return;
 
-        if (!XaGui.isEnabled()) {
+        if (!XaGui.isEnabled() || ScreenTracker.getInstance().isDisabled(clickedInventory)) {
             e.setCancelled(true);
-            plugin.getServer().getConsoleSender().sendMessage("§a[§bXaGui§a] §4Blocked §c" + e.getPlayer().getName() + " §4from opening a menu because XaGui is disabled!");
+            e.getPlayer().sendMessage("§cOpening this GUI is currently disabled.");
+            plugin.getServer().getConsoleSender().sendMessage(
+                    "§a[§bXaGui§a] §cBlocked " + e.getPlayer().getName()
+                            + " from opening " + ScreenTracker.getInstance().getIdentity(clickedInventory)
+            );
             return;
         }
-
-        XaGui.addOpenMenu(e.getPlayer().getUniqueId(), clickedInventory);
 
         if (clickedInventory.getOpenSound() != null) {
             Player player = (Player) e.getPlayer();
@@ -155,6 +160,24 @@ public class MenuListener implements Listener {
         if (clickedInventory.onOpenAction != null) {
             clickedInventory.onOpenAction.onOpen(e);
         }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void trackInventoryOpen(InventoryOpenEvent event) {
+        if (!(event.getInventory().getHolder() instanceof GuiMenu)) {
+            return;
+        }
+        GuiMenu menu = (GuiMenu) event.getInventory().getHolder();
+        if (!Objects.equals(menu.getOwner(), plugin)) {
+            return;
+        }
+        XaGui.addOpenMenu(event.getPlayer().getUniqueId(), menu);
+        ScreenTracker.getInstance().opened(
+                event.getPlayer().getUniqueId(),
+                event.getPlayer().getName(),
+                menu,
+                menu.getRawName()
+        );
     }
 
     public static Inventory getTopInventory(InventoryEvent event) {

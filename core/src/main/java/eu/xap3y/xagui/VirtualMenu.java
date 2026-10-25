@@ -2,6 +2,7 @@ package eu.xap3y.xagui;
 
 import eu.xap3y.xagui.interfaces.GuiMenuInterface;
 import eu.xap3y.xagui.interfaces.VirtualMenuInterface;
+import eu.xap3y.xagui.tracking.ScreenTracker;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -51,6 +52,7 @@ public abstract class VirtualMenu<T> implements VirtualMenuInterface<T> {
      */
     public VirtualMenu(String name, int rows, XaGui instance) {
         this.gui = instance.createMenu(name, rows);
+        ScreenTracker.getInstance().register(this.gui, getClass());
     }
 
     /**
@@ -63,6 +65,7 @@ public abstract class VirtualMenu<T> implements VirtualMenuInterface<T> {
      */
     public VirtualMenu(String name, int rows, int pages, XaGui instance) {
         this.gui = instance.createMenu(name, rows, pages);
+        ScreenTracker.getInstance().register(this.gui, getClass());
     }
 
     /**
@@ -72,6 +75,7 @@ public abstract class VirtualMenu<T> implements VirtualMenuInterface<T> {
      */
     public VirtualMenu(GuiMenuInterface gui) {
         this.gui = gui;
+        ScreenTracker.getInstance().register(this.gui, getClass());
     }
 
     /**
