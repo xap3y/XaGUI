@@ -30,7 +30,8 @@ public class MenuListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
         try {
-            if (e.getClickedInventory() == null || !(e.getClickedInventory().getHolder() instanceof GuiMenu)) {
+            Inventory inventory = getClickedInventory(e);
+            if (inventory == null || !(inventory.getHolder() instanceof GuiMenu)) {
                 if (getTopInventory(e).getHolder() instanceof GuiMenu) {
                     GuiMenu clickedInventory = (GuiMenu) getTopInventory(e).getHolder();
                     if (!clickedInventory.getSelfInventoryAccess()) {
@@ -50,7 +51,7 @@ public class MenuListener implements Listener {
                 return;
             }
 
-            GuiMenu clickedInventory = (GuiMenu) e.getClickedInventory().getHolder();
+            GuiMenu clickedInventory = (GuiMenu) inventory.getHolder();
             JavaPlugin owner = clickedInventory.getOwner();
             if (!Objects.equals(owner, plugin)) return;
 
@@ -178,6 +179,29 @@ public class MenuListener implements Listener {
                 menu,
                 menu.getRawName()
         );
+    }
+
+    /**
+     * Resolves the clicked inventory without the API method missing on old Bukkit.
+     */
+    public static Inventory getClickedInventory(InventoryClickEvent event) {
+        if (event.getRawSlot() < 0) {
+            return null;
+        }
+
+        Inventory topInventory = getTopInventory(event);
+        if (event.getRawSlot() < topInventory.getSize()) {
+            return topInventory;
+        }
+
+        try {
+            Object view = event.getView();
+            Method getBottomInventory = view.getClass().getMethod("getBottomInventory");
+            getBottomInventory.setAccessible(true);
+            return (Inventory) getBottomInventory.invoke(view);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static Inventory getTopInventory(InventoryEvent event) {
