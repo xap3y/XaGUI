@@ -29,7 +29,7 @@ public class XaGui {
     private final JavaPlugin plugin;
 
     @Getter
-    private static final String VERSION = "1.6.1";
+    private static final String VERSION = "1.6.3";
 
     @Getter
     private static boolean isPaper = false;
